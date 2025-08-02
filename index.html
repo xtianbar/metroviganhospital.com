@@ -27,7 +27,6 @@
 
   <!-- icons & stylesheet -->
   <link rel="stylesheet" href="src/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="icon" href="src/img/logo/favicon.ico" type="image/x-icon">
 
@@ -940,32 +939,35 @@
   </section>
 
   <!-- ABOUT US SECTION -->
-  <section class="py-16 bg-white" id="about">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
-      <!-- Left: Image (Same as Hero) -->
+<section id="about-us" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Top: Image + Description -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+      
+      <!-- Left: Image -->
       <div data-aos="fade-right">
-        <img src="src/img/hero/IMG_9508.JPG" alt="Metro Vigan Hospital" class="rounded-2xl shadow-xl w-full object-cover">
+        <img src="src/img/hero/IMG_9508.JPG" alt="Metro Vigan Hospital" class="rounded-2xl shadow-lg w-full object-cover">
       </div>
-
-      <!-- Right: Content -->
+      
+      <!-- Right: Description -->
       <div data-aos="fade-left">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
           About <span class="text-green-600">Metro Vigan Hospital</span>
         </h2>
-        <p class="text-gray-600 mt-4 leading-relaxed">
+        <p class="text-gray-600 leading-relaxed mb-6">
           Metro Vigan Hospital is committed to delivering exceptional healthcare services 
           with compassion and expertise. Equipped with state-of-the-art facilities and 
           staffed by highly skilled medical professionals, we provide patient-centered 
           care in a safe and comfortable environment.
         </p>
-        <p class="text-gray-600 mt-3 leading-relaxed">
+        <p class="text-gray-600 leading-relaxed mb-6">
           Our hospital is dedicated to continuous innovation and excellence, ensuring 
           our community has access to advanced medical treatments and a supportive 
           team that truly cares for your well-being.
         </p>
 
         <!-- Statistics -->
-        <div class="mt-8 grid grid-cols-3 gap-6 text-center">
+        <div class="grid grid-cols-3 gap-6 text-center">
           <div data-aos="fade-up" data-aos-delay="100">
             <h3 class="text-3xl font-bold text-green-600">100+</h3>
             <p class="text-gray-600 text-sm">Expert Doctors</p>
@@ -979,87 +981,82 @@
             <p class="text-gray-600 text-sm">Patients Served Daily</p>
           </div>
         </div>
-
-        <!-- Button -->
-        <div class="mt-8">
-          <a href="#services" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-green-700 transition">
-            Explore Our Services
-          </a>
-        </div>
       </div>
     </div>
-  </section>
 
-  <!-- HMO ACCREDITED PARTNERS -->
-  <section class="py-12 bg-white" id="hmo">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6" data-aos="fade-up">
-        HMO <span class="text-green-600">Accredited Partners</span>
-      </h2>
-      <p class="text-gray-600 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+    <!-- Bottom: HMO Accredited Partners -->
+    <div data-aos="fade-up" data-aos-delay="100">
+      <h3 class="text-3xl font-semibold text-gray-800 text-center"><span class="text-green-600">HMO</span> Accredited Partners</h3>
+      <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto aos-init">
         We are proud to be accredited by the following Health Maintenance Organizations (HMOs) to better serve our patients.
       </p>
-
-      <!-- HMO Logos Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/maxicare.png" alt="HMO Partner 1" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- HMO 1 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/maxicare.png" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/Med.png" alt="HMO Partner 2" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        <!-- HMO 2 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/Med.png" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/intellicare.webp" alt="HMO Partner 3" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        <!-- HMO 3 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/intellicare.webp" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/inlife.png" alt="HMO Partner 4" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        <!-- HMO 4 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/inlife.png" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/philcare.jpg" alt="HMO Partner 5" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        <!-- HMO 5 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/cocolife.png" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/valucare.png" alt="HMO Partner 6" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        <!-- HMO 6 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/philcare.jpg" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/cocolife.png" alt="HMO Partner 7" class="max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        <!-- HMO 7 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/kaiser.png" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
-        <div class="w-40 h-24 flex items-center justify-center bg-white">
-          <img src="src/img/hmo/kaiser.png" alt="HMO Partner 8" class="max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        <!-- HMO 8 -->
+        <div class="flex justify-center">
+          <img src="src/img/hmo/valucare.png" alt="HMO Partner 1" class="w-32 h-20 object-contain filter grayscale hover:grayscale-0 transform hover:scale-105 transition duration-300">
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ACCREDITATIONS -->
-  <section class="py-8 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center gap-6">
+<!-- CONTACT US -->    
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Accreditation Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center items-center mb-16" data-aos="fade-up" data-aos-delay="100">
+      
       <!-- PhilHealth Accredited -->
-      <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
+      <div class="flex justify-center items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
         <img src="src/img/certifications/phic.png" alt="PhilHealth Accredited" class="h-10 w-auto">
         <span class="text-gray-700 text-sm font-medium">PhilHealth Accredited</span>
       </div>
-    
-  <!-- konsulta Certified -->
-      <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
-        <img src="src/img/certifications/konsulta.png" alt="ISO Certified" class="h-10 w-auto">
-        <span class="text-gray-700 text-sm font-medium">Philhealth Konsulta Accredited</span>
-      </div>
 
       <!-- ISO Certified -->
-      <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
+      <div class="flex justify-center items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
         <img src="src/img/certifications/iso.png" alt="ISO Certified" class="h-10 w-auto">
         <span class="text-gray-700 text-sm font-medium">ISO Certified</span>
       </div>
+      <!-- konsulta Certified -->
+      <div class="flex justify-center items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
+        <img src="src/img/certifications/konsulta.png" alt="ISO Certified" class="h-10 w-auto">
+        <span class="text-gray-700 text-sm font-medium">Philhealth Konsulta Accredited</span>
+      </div>
     </div>
-  </section>
 
-  <!-- ADDRESS & CONTACT FORM -->
-  <section class="py-16 bg-gray-50" id="contact">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-start">
-      
+    <!-- Address & Contact Form Row -->
+    <div class="grid md:grid-cols-2 gap-12">
       <!-- Left: Google Map & Address -->
-      <div data-aos="fade-right">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Location</h3>
+      <div data-aos="fade-left" data-aos-delay="200">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Location</h2>
         <p class="text-gray-600 mb-4">
           We are located at <strong><a href="https://maps.app.goo.gl/acCeWcUGXqfhwvtcA" 
               target="_blank" class="hover:underline hover:underline-offset-2">Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</a></strong>. 
@@ -1073,9 +1070,9 @@
         </div>
       </div>
 
-      <!-- Right: Contact Form -->
-      <div data-aos="fade-left">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Contact Us</h3>
+      <!-- Right: Contact Us Form -->
+      <div data-aos="fade-right" data-aos-delay="200">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Contact Us</h2>
         <p class="text-gray-600 mb-6">
           Have questions or need assistance? Send us a message, and our team will respond as soon as possible.
         </p>
@@ -1102,8 +1099,10 @@
         </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+    
 <!--
 <section>
  Emergency Contact Section 
@@ -1201,24 +1200,38 @@
         <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
         <ul class="space-y-3 text-gray-600 text-sm">
           <li class="flex items-center space-x-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26c.7.47 1.52.47 2.22 0L21 8m-18 8h18" />
-            </svg>
-            <span><a href="mailto:info@metroviganhospital.com?cc=marketing@metroviganhospital.com" target="_blank" class="hover:underline hover:underline-offset-2">info@metroviganhospital.com</a></span>
-          </li>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26c.7.47 1.62.47 2.32 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
+  </svg>
+  <span>
+    <a href="mailto:info@metroviganhospital.com?cc=marketing@metroviganhospital.com" target="_blank" class="hover:underline hover:underline-offset-2">
+      info@metroviganhospital.com
+    </a>
+  </span>
+</li>
+
           <li class="flex items-center space-x-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59-1.35 2.44C7.08 16.37 7.5 17 8.2 17h7.6c.7 0 1.12-.63.95-1.26l-1.35-2.44L19 5h2" />
-            </svg>
-            <span>+63 (123) 456-7890</span>
-          </li>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.2 3.59a1 1 0 01-.27 1.05l-2.2 2.2a16 16 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.27l3.59 1.2a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
+  </svg>
+  <span>
+    <a href="tel:+631234567890" class="hover:underline hover:underline-offset-2">
+      +63 (123) 456-7890
+    </a>
+  </span>
+</li>
+
           <li class="flex items-center space-x-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2c4.97 0 9 4.03 9 9 0 7-9 13-9 13S3 18 3 11c0-4.97 4.03-9 9-9z" />
-            </svg>
-            <span><a href="https://maps.app.goo.gl/acCeWcUGXqfhwvtcA" 
-              target="_blank" class="hover:underline hover:underline-offset-2">Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</a></span>
-          </li>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7z" />
+    <circle cx="12" cy="9" r="2" stroke-width="2" />
+  </svg>
+  <span>
+    <a href="https://maps.app.goo.gl/acCeWcUGXqfhwvtcA" target="_blank" class="hover:underline hover:underline-offset-2">
+      Rizal St., Brgy. IV (Poblacion), Bantay, Philippines
+    </a>
+  </span>
+</li>
 
         </ul>
       </div>
@@ -1229,15 +1242,15 @@
         <div class="flex space-x-4">
           <!-- Facebook -->
           <a href="https://www.facebook.com/metroviganhospital" target="_blank" class="hover:text-green-600 transition" aria-label="Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.463.1 2.795.144v3.24h-1.918c-1.505 0-1.796.716-1.796 1.763v2.314h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .597 23.403 0 22.675 0z"/>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 hover:text-green-600 transition" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.891h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.772-1.63 1.562v1.875h2.773l-.443 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
+  </svg>
           </a>
           <!-- Instagram -->
           <a href="https://www.instagram.com/metroviganhospital/" target="_blank" class="hover:text-green-600 transition" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm4.25 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 hover:text-green-600 transition" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"/>
+  </svg>
           </a>
         </div>
       </div>
