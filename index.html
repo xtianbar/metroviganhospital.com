@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Metro Vigan Hospital</title>
-  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- icons -->
+  <!-- Title & Description -->
+  <title>Metro Vigan Hospital</title>
+  <meta name="description" content="Read the Privacy Notice of Metro Vigan Hospital. We are committed to protecting your personal and health information, following the Data Privacy Act.">
+  
+  <!-- Keywords -->
+  <meta name="keywords" content="Metro Vigan Hospital, MVH, Private Hospital, Level 2 Private Hospital, Bantay, Ilocos Sur, Ilocos Sur Healthcare">
+  
+  <!-- Author -->
+  <meta name="author" content="Metro Vigan Hospital">
+  
+  <!-- Robots (SEO Indexing) -->
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Privacy Notice - Metro Vigan Hospital">
+  <meta property="og:description" content="We are committed to safeguarding your health data and privacy. Read our full Privacy Notice here.">
+  <meta property="og:image" content="https://metroviganhospital.vercel.app/mvh_logo.png">
+  <meta property="og:url" content="https://metroviganhospital.vercel.app/privacy-policy">
+
+  <!-- icons & stylesheet -->
+  <link rel="stylesheet" href="src/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="icon" href="src/img/logo/favicon.ico" type="image/x-icon">
@@ -14,39 +34,19 @@
   <!-- Google Font: Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <style>
-    body { font-family: 'Roboto', sans-serif; }
-
-/* Heartbeat Animation */
-.heartbeat-line path {
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-  animation: heartbeatDraw 4s linear infinite;
-  filter: drop-shadow(0 0 4px #22c55e); /* Glow effect */
-}
-
-@keyframes heartbeatDraw {
-  0% {
-    stroke-dashoffset: 1200;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-</style>
 
 </head>
 <body class="bg-white text-gray-800">
 
-
+  <!-- NAVBAR SECTION -->
   <nav class="fixed top-0 z-50 w-full bg-white border-b shadow-md sm:px-4 md:px-6 px-10 py-2" aria-label="Main navigation">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      
       <!-- Logo -->
       <a href="" class="flex items-center justify-center">
         <img src="src/img/logo/mvh_logo.png" class="h-16 mr-3" alt="MVH Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap hidden md:inline">Metro Vigan Hospital</span>
-    </a>
+      </a>
   
       <!-- Toggle Button (Visible on small & medium screens) -->
       <button id="menu-toggle" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg lg:hidden">
@@ -69,11 +69,11 @@
           </li>
         </ul>
       </div>
+
     </div>
   </nav>
-  
     
-  <!-- Header 
+  <!-- HEADER 
   <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm transition duration-300" data-aos="fade-down" data-aos-duration="800">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
    
@@ -126,9 +126,10 @@
 
     -->
 
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <section id="home" class="flex flex-col lg:flex-row items-center pt-32">
-  <!-- Left Content (60%) -->
+  
+    <!-- Left Content (60%) -->
   <div class="w-full md:w-3/5 px-6 md:px-16 py-10 md:py-20 text-center md:text-left relative">
     <h2 class="text-3xl md:text-6xl font-bold" data-aos="fade-up" data-aos-delay="100">METRO VIGAN HOSPITAL</h2>
     <p class="text-lg md:text-3xl mt-3" data-aos="fade-up" data-aos-delay="200">Entrust your health to us</p>
@@ -136,38 +137,38 @@
 
     <!-- Decorative Line -->
     <div class="mt-4 flex justify-center md:justify-start" data-aos="fade-up" data-aos-delay="400">
-  <svg xmlns="http://www.w3.org/2000/svg" width="600" height="120" viewBox="0 0 600 120" fill="none" class="heartbeat-line">
-    <!-- Gradient Definition -->
-    <defs>
-      <linearGradient id="heartbeatGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#16a34a"/> <!-- Green-600 -->
-        <stop offset="100%" stop-color="#22c55e"/> <!-- Green-500 -->
-      </linearGradient>
-    </defs>
+      <svg xmlns="http://www.w3.org/2000/svg" width="600" height="120" viewBox="0 0 600 120" fill="none" class="heartbeat-line">
+        <!-- Gradient Definition -->
+        <defs>
+          <linearGradient id="heartbeatGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#16a34a"/> <!-- Green-600 -->
+            <stop offset="100%" stop-color="#22c55e"/> <!-- Green-500 -->
+          </linearGradient>
+        </defs>
 
-    <!-- Heartbeat Path -->
-    <path d="
-      M0 70 
-      L80 70 
-      L100 30 
-      L120 90 
-      L140 50 
-      L160 70 
-      L280 70 
-      L300 20 
-      L320 100 
-      L340 50 
-      L360 70 
-      L480 70 
-      L500 25 
-      L520 95 
-      L540 50 
-      L560 70 
-      L600 70
-    " 
-    stroke="url(#heartbeatGradient)" stroke-width="3" fill="none"/>
-  </svg>
-</div>
+        <!-- Heartbeat Path -->
+        <path d="
+          M0 70 
+          L80 70 
+          L100 30 
+          L120 90 
+          L140 50 
+          L160 70 
+          L280 70 
+          L300 20 
+          L320 100 
+          L340 50 
+          L360 70 
+          L480 70 
+          L500 25 
+          L520 95 
+          L540 50 
+          L560 70 
+          L600 70
+        " 
+        stroke="url(#heartbeatGradient)" stroke-width="3" fill="none"/>
+      </svg>
+    </div>
 
     <!-- Description -->
     <p class="text-gray-600 mt-6 max-w-auto mx-auto md:mx-0" data-aos="fade-up" data-aos-delay="500">
@@ -226,900 +227,974 @@
       </svg>
     </div>
   </div>
-</section>
+  </section>
 
+  <!-- SERVICES SECTION -->
+  <section class="py-16 bg-gray-50" id="services">
+    <div class="w-full mx-auto px-12 md:px-12 text-center">
+      <!-- Section Title -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
+        Our <span class="text-green-600">Services</span>
+      </h2>
+      <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        We provide comprehensive medical care and specialized services to meet the healthcare needs of our community.
+      </p>
 
+      <!-- Services Grid -->
+      <div class="mt-12 grid gap-8 lg:grid-cols-2 xl:grid-cols-4">
 
-<section class="py-16 bg-gray-50" id="services">
-  <div class="w-full mx-auto px-12 md:px-12 text-center">
-    <!-- Section Title -->
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
-      Our <span class="text-green-600">Services</span>
-    </h2>
-    <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-      We provide comprehensive medical care and specialized services to meet the healthcare needs of our community.
-    </p>
+        <!-- Services ER -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/er.png" class="w-[60px] h-[60px] mb-6" alt="Emergency Services" />
+              <h3 class="text-xl font-semibold text-gray-800 text-left">General Hospital Services</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
 
-    <!-- Services Grid -->
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Emergency Services</p>
+                </div>
 
-    
-    <div class="mt-12 grid gap-8 lg:grid-cols-2 xl:grid-cols-4">
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/er.png" class="w-[60px] h-[60px] mb-6" alt="Emergency Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">General Hospital Services</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Emergency Services</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Inpatient Services</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Outpatient Services</p>
-                            </div>
-            </div>
-      </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
 
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/lab.png" class="w-[60px] h-[60px] mb-6" alt="Laboratory Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">Diagnostics & Laboratory</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Clinical Laboratory</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Radiology & Imaging</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">ECG / 2D Echo / Stress Test</p>
-                            </div>
-            </div>
-      </div>
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Inpatient Services</p>
+                </div>
 
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/or.png" class="w-[60px] h-[60px] mb-6" alt="Surgical Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">Surgical Services</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">General Surgery</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Operating Room & Recovery Room</p>
-                            </div>
-                           
-            </div>
-      </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+                
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Outpatient Services</p>
+                </div>
 
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/pedia.png" class="w-[60px] h-[60px] mb-6" alt="Pediatrics Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">Maternal & Child Services</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">OB-GYN</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Newborn Screening</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Pediatric Check-up</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                              <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                              <p class="text-sm text-[#909090] font-roboto">Maternity / Delivery Room</p>
-                          </div>
-            </div>
-      </div>
+              </div>
 
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/pharmacy.png" class="w-[60px] h-[60px] mb-6" alt="Pharmacy Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">Pharmacy & Medication</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">In-Hospital Pharmacy</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Outpatient Prescription Services</p>
-                            </div>
-                            
-            </div>
-      </div>
-
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/rehab.png" class="w-[60px] h-[60px] mb-6" alt="Rehab Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">Rehabilitation & Support Services</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Physical Therapy & Rehab
-                                  </p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Occupational Therapy</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Mental Health / Psych Services</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                              <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                              <p class="text-sm text-[#909090] font-roboto">Dietary & Nutrition Counseling</p>
-                          </div>
-                            
-            </div>
-      </div>
-
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/admin.png" class="w-[60px] h-[60px] mb-6" alt="Administrative Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">Administrative Services</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Admissions / Billing</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Medical Records</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">HMO & Insurance Assistance</p>
-                            </div>
-            </div>
-      </div>
-
-      <!-- Service Item -->
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/services/ct_scan.png" class="w-[60px] h-[60px] mb-6" alt="CT-Scan Services" />
-            <h3 class="text-xl font-semibold text-gray-800 text-left">CT-Scan & Dialysis</h3>
-           <div class="mt-4 space-y-3">
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">CT-Scan</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Ilocos Kidney Stone Center</p>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0"></div>
-                                <p class="text-sm text-[#909090] font-roboto">Dialysis Center</p>
-                            </div>
-            </div>
-      </div>
-
-      <!-- SERVICES OLD
-
-      <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <div class="text-green-600 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.5 0-3 1.5-3 3s1.5 3 3 3 3-1.5 3-3-1.5-3-3-3zm-9 4a9 9 0 0118 0" />
-          </svg>
         </div>
-        <h3 class="text-xl font-semibold text-gray-800">Laboratory Tests</h3>
-        <p class="text-gray-600 mt-2 text-sm">
-          Comprehensive testing and analysis to support accurate medical diagnoses.
+
+        <!-- Services Lab -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/lab.png" class="w-[60px] h-[60px] mb-6" alt="Laboratory Services" />
+          <h3 class="text-xl font-semibold text-gray-800 text-left">Diagnostics & Laboratory</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Clinical Laboratory</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Radiology & Imaging</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+                
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">ECG / 2D Echo / Stress Test</p>
+                </div>
+
+              </div>
+              
+        </div>
+
+        <!-- Services OR -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/or.png" class="w-[60px] h-[60px] mb-6" alt="Surgical Services" />
+              <h3 class="text-xl font-semibold text-gray-800 text-left">Surgical Services</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">General Surgery</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Operating Room & Recovery Room</p>
+                </div>
+
+              </div>
+              
+        </div>
+
+        <!-- Services Pedia -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/pedia.png" class="w-[60px] h-[60px] mb-6" alt="Pediatrics Services" />
+              <h3 class="text-xl font-semibold text-gray-800 text-left">Maternal & Child Services</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">OB-GYN</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Newborn Screening</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Maternity / Delivery Room</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Pediatric Check-up</p>
+                </div>
+
+              </div>
+              
+        </div>
+
+        <!-- Services Pharmacy & Medication -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/pharmacy.png" class="w-[60px] h-[60px] mb-6" alt="Pharmacy & Medication" />
+              <h3 class="text-xl font-semibold text-gray-800 text-left">Pharmacy & Medication</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">In-Hospital Pharmacy</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Outpatient Prescription Services</p>
+                </div>
+              </div>
+              
+        </div>
+
+        <!-- Services Rehab -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/rehab.png" class="w-[60px] h-[60px] mb-6" alt="Rehabilitation & Support Services" />
+              <h3 class="text-xl font-semibold text-gray-800 text-left">Rehabilitation & Support Services</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Physical Therapy & Rehab</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Occupational Therapy</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Mental Health / Psych Services</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Dietary & Nutrition Counseling</p>
+                </div>
+
+              </div>
+              
+        </div>
+
+        <!-- Services Admin -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/admin.png" class="w-[60px] h-[60px] mb-6" alt="Administrative Services" />
+              <h3 class="text-xl font-semibold text-gray-800 text-left">Administrative Services</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Admissions / Billing</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Medical Records</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">HMO & Insurance Assistance</p>
+                </div>
+
+              </div>
+              
+        </div>
+
+        <!-- Services CT-Scan -->
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/services/ct_scan.png" class="w-[60px] h-[60px] mb-6" alt="CT-Scan & Dialysis" />
+              <h3 class="text-xl font-semibold text-gray-800 text-left">CT-Scan & Dialysis</h3>
+            
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">CT-Scan</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Ilocos Kidney Stone Center</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-[6px] h-[6px] bg-black rounded-full mt-2 flex-shrink-0">
+
+                  </div>
+                  <p class="text-sm text-[#909090] font-roboto">Dialysis Center</p>
+                </div>
+
+              </div>
+              
+        </div>
+
+
+        <!-- SERVICES OLD
+
+        <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-green-600 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.5 0-3 1.5-3 3s1.5 3 3 3 3-1.5 3-3-1.5-3-3-3zm-9 4a9 9 0 0118 0" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800">Laboratory Tests</h3>
+          <p class="text-gray-600 mt-2 text-sm">
+            Comprehensive testing and analysis to support accurate medical diagnoses.
+          </p>
+        </div>
+
+        View All Services Button 
+
+        <div class="mt-10" data-aos="fade-up" data-aos-delay="800">
+        <a href="#all-services" class="inline-block bg-green-600 text-white px-8 py-3 rounded-md hover:bg-green-700 transition">
+          View All Services
+        </a>
+      </div>
+      </div> -->
+
+      
+      
+    </div>
+  </section>
+
+  <!-- FACILITIES SECTION -->
+  <section class="py-16 bg-gray-50" id="facilities">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
+      <!-- Section Title -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
+        Our <span class="text-green-600">Facilities</span>
+      </h2>
+      <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        State-of-the-art medical facilities designed to provide the best care for our patients.
+      </p>
+
+      <!-- Facilities Grid -->
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Facility 1 -->
+        <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+          <img src="src/img/facility/72ba70_2f2a6a7c21ae4fc59db98014537562db_mv2_d_4320_3240_s_4_2.webp" alt="Emergency Room" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-800">Emergency Room</h3>
+            <p class="text-gray-600 text-sm mt-2">24/7 emergency services with advanced life support equipment.</p>
+          </div>
+        </div>
+
+        <!-- Facility 2 -->
+        <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="250">
+          <img src="src/img/facility/72ba70_0551b19b1bcb46109cf8dfe91de8f37d_mv2_d_4320_3240_s_4_2.webp" alt="Operating Theater" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-800">Operating Theater</h3>
+            <p class="text-gray-600 text-sm mt-2">Fully equipped surgical suites with sterile and modern technology.</p>
+          </div>
+        </div>
+
+        <!-- Facility 3 -->
+        <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="300">
+          <img src="src/img/facility/72ba70_02c9944646934fc694383a6896e1091e_mv2_d_3416_2319_s_2.webp" alt="Laboratory" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-800">Diagnostic Laboratory</h3>
+            <p class="text-gray-600 text-sm mt-2">Comprehensive lab tests with fast and accurate results.</p>
+          </div>
+        </div>
+
+        <!-- Facility 4 -->
+        <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="350">
+          <img src="src/img/facility/72ba70_366c4924ad5d427f940ce97867685e1c_mv2_d_3548_3240_s_4_2.webp" alt="ICU" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-800">Intensive Care Unit (ICU)</h3>
+            <p class="text-gray-600 text-sm mt-2">Critical care units with round-the-clock monitoring and specialists.</p>
+          </div>
+        </div>
+
+        <!-- Facility 5 -->
+        <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="400">
+          <img src="src/img/facility/72ba70_61165bbf148448049e9a0e5aa7890632_mv2_d_2959_1989_s_2.webp" alt="Pharmacy" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-800">Pharmacy</h3>
+            <p class="text-gray-600 text-sm mt-2">In-house pharmacy providing a wide range of medicines and supplies.</p>
+          </div>
+        </div>
+
+        <!-- Facility 6 -->
+        <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="450">
+          <img src="src/img/facility/72ba70_80653b032af94efdaebac50dfb73b6d3_mv2_d_3739_2465_s_4_2.webp" alt="Private Rooms" class="w-full h-48 object-cover">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-800">Private Rooms</h3>
+            <p class="text-gray-600 text-sm mt-2">Comfortable private rooms for patients and their families.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS SECTION -->
+  <section class="py-16 bg-white" id="doctors">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
+      <!-- Section Title -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
+        Our <span class="text-green-600">Doctors</span>
+      </h2>
+      <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        Meet our dedicated team of specialists providing exceptional care.
+      </p>
+
+      <!-- Doctors Grid -->
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Doctor Card Template -->
+        
+              <!-- Doctor 8 -->
+              <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+                <div class="p-6 text-center">
+                  <img src="src/img/doctors/dr_quadra.png" alt="Dr. Sofia Lim" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+                  <!-- Doctor Info -->
+                  <h3 class="text-md font-semibold text-black font-roboto mb-2">Dr. John Christopher Quadra</h3>
+                  <p class="text-md text-[#249f51] font-medium">Internal Medicine</p>
+                  <p class="text-md text-[#249f51] font-medium mb-3">Adult Pulmonary Medicine</p>
+                  
+                  <!-- Clinic Hours -->
+                  <div class="text-left space-y-2 mb-4">
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                              <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">Wednesday: 2PM-4PM</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">OPD Extension</span>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+                    <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/doctors/dr_dianne.png" alt="Dr. Dianne Riambon" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-md font-semibold text-black font-roboto mb-2">Dr. Dianne Millado-Riambon</h3>
+            <p class="text-md text-[#249f51] font-medium">Pediatric Pulmonary & Critical Care Medicine Specialist</p>
+            <p class="text-md text-[#249f51] font-medium mb-3">Pediatric Pulmonary Rehabilitation Specialist</p>
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Tuesday: 10AM-12NN</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">OPD Extension, Room 5</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+              <!-- Doctor 8 -->
+              <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+                <div class="p-6 text-center">
+                  <img src="src/img/doctors/dr_nijell.png" alt="Dr. Nijell Pizarro" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+                  <!-- Doctor Info -->
+                  <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Nijell Bangasan-Pizarro</h3>
+                  <p class="text-md text-[#249f51] font-medium mb-3">Internal Medicine</p>
+                  
+                  <!-- Clinic Hours -->
+                  <div class="text-left space-y-2 mb-4">
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                              <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">Friday: 2PM-4PM</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">OPD Extension</span>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+                    <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/doctors/dr_jonas.png" alt="Dr. Jonas Claro Cauton" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-xl font-semibold text-black font-roboto mb-2">Dr. Jonas Claro Cauton</h3>
+            <p class="text-md text-[#249f51] font-medium mb-3">Rehabilitation Medicine</p>
+            
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Wednesday: 1PM-4PM</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">4th Flr, Room 407</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+              <!-- Doctor 8 -->
+              <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+                <div class="p-6 text-center">
+                  <img src="src/img/doctors/dr_miko.png" alt="Dr. Miko Galut" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+                  <!-- Doctor Info -->
+                  <h3 class="text-xl font-semibold text-black font-roboto mb-2">Dr. Miko Galut</h3>
+                  <p class="text-md text-[#249f51] font-medium mb-3">Urologic Surgery</p>
+                  
+                  <!-- Clinic Hours -->
+                  <div class="text-left space-y-2 mb-4">
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                              <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">Tuesday: 1PM-3PM</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                            <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                        </svg>
+                        <span class="text-sm text-gray-600">Wednesday: 10AM-12NN</span>
+                    </div>
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">Ground Flr, Room 106</span>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+                    <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/doctors/dr_frances.png" alt="Dr. Frances Obrero-Artajos" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Frances Obrero-Artajos</h3>
+            <p class="text-md text-[#249f51] font-medium">Internal Medicine</p>
+            <p class="text-md text-[#249f51] font-medium mb-3">Endocrinology, Diabetes & Metabolism</p>
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Thursday: 10AM-12NN</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">OPD Extension, Room 5</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+              <!-- Doctor 8 -->
+              <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+                <div class="p-6 text-center">
+                  <img src="src/img/doctors/dr_marga.png" alt="Dr. Margarita Cobangco" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+                  <!-- Doctor Info -->
+                  <h3 class="text-xl font-semibold text-black font-roboto mb-2">Dr. Margarita Cobangco</h3>
+                  <p class="text-md text-[#249f51] font-medium mb-3">General Surgery</p>
+                  
+                  <!-- Clinic Hours -->
+                  <div class="text-left space-y-2 mb-4">
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                              <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">Wednesday: 2PM-4PM</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                          <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                          </svg>
+                          <span class="text-sm text-gray-600">OPD Extension, Room 5</span>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+        <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/doctors/dr_benjamin.png" alt="Dr. Benjamin Tolentino III" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Benjamin Tolentino III</h3>
+            <p class="text-md text-[#249f51] font-medium mb-3">General Surgery</p>
+            
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/logo/mvh_logo.png" alt="Dr. Jonah Lyn" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Jonah Lyn Toribio</h3>
+            <p class="text-md text-[#249f51] font-medium mb-3">General Surgery</p>
+            
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/doctors/dr_xyrose.png" alt="Dr. Benjamin Tolentino III" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Xyrose Lex-Deo Andres</h3>
+            <p class="text-md text-[#249f51] font-medium">Ear, Nose, Throat</p>
+            <p class="text-md text-[#249f51] font-medium mb-3">Head & Neck Surgery</p>
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/doctors/dr_cuanang.png" alt="Dr. Dr. Domingo Cuanang III" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Domingo Cuanang III</h3>
+            <p class="text-md text-[#249f51] font-medium mb-3">Radiation Oncology</p>
+            
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 8 -->
+        <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
+          <div class="p-6 text-center">
+            <img src="src/img/doctors/dr_marvin.png" alt="Dr. Marvin Riambon" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
+            <!-- Doctor Info -->
+            <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Marvin Riambon</h3>
+            <p class="text-md text-[#249f51] font-medium">Internal Medicine</p>
+            <p class="text-md text-[#249f51] font-medium mb-3">Adult Cardiology</p>
+            <!-- Clinic Hours -->
+            <div class="text-left space-y-2 mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+                        <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Not Applicable</span>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US SECTION -->
+  <section class="py-16 bg-white" id="about">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
+      <!-- Left: Image (Same as Hero) -->
+      <div data-aos="fade-right">
+        <img src="src/img/hero/IMG_9508.JPG" alt="Metro Vigan Hospital" class="rounded-2xl shadow-xl w-full object-cover">
+      </div>
+
+      <!-- Right: Content -->
+      <div data-aos="fade-left">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+          About <span class="text-green-600">Metro Vigan Hospital</span>
+        </h2>
+        <p class="text-gray-600 mt-4 leading-relaxed">
+          Metro Vigan Hospital is committed to delivering exceptional healthcare services 
+          with compassion and expertise. Equipped with state-of-the-art facilities and 
+          staffed by highly skilled medical professionals, we provide patient-centered 
+          care in a safe and comfortable environment.
+        </p>
+        <p class="text-gray-600 mt-3 leading-relaxed">
+          Our hospital is dedicated to continuous innovation and excellence, ensuring 
+          our community has access to advanced medical treatments and a supportive 
+          team that truly cares for your well-being.
+        </p>
+
+        <!-- Statistics -->
+        <div class="mt-8 grid grid-cols-3 gap-6 text-center">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <h3 class="text-3xl font-bold text-green-600">100+</h3>
+            <p class="text-gray-600 text-sm">Expert Doctors</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-3xl font-bold text-green-600">24/7</h3>
+            <p class="text-gray-600 text-sm">Emergency Care</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <h3 class="text-3xl font-bold text-green-600">500+</h3>
+            <p class="text-gray-600 text-sm">Patients Served Daily</p>
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div class="mt-8">
+          <a href="#services" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-green-700 transition">
+            Explore Our Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HMO ACCREDITED PARTNERS -->
+  <section class="py-12 bg-white" id="hmo">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6" data-aos="fade-up">
+        HMO <span class="text-green-600">Accredited Partners</span>
+      </h2>
+      <p class="text-gray-600 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        We are proud to be accredited by the following Health Maintenance Organizations (HMOs) to better serve our patients.
+      </p>
+
+      <!-- HMO Logos Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/maxicare.png" alt="HMO Partner 1" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/Med.png" alt="HMO Partner 2" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/intellicare.webp" alt="HMO Partner 3" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/inlife.png" alt="HMO Partner 4" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/philcare.jpg" alt="HMO Partner 5" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/valucare.png" alt="HMO Partner 6" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/cocolife.png" alt="HMO Partner 7" class="max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+        <div class="w-40 h-24 flex items-center justify-center bg-white">
+          <img src="src/img/hmo/kaiser.png" alt="HMO Partner 8" class="max-h-14 object-contain grayscale hover:grayscale-0 transition">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCREDITATIONS -->
+  <section class="py-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center gap-6">
+      <!-- PhilHealth Accredited -->
+      <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
+        <img src="src/img/certifications/phic.png" alt="PhilHealth Accredited" class="h-10 w-auto">
+        <span class="text-gray-700 text-sm font-medium">PhilHealth Accredited</span>
+      </div>
+    
+  <!-- konsulta Certified -->
+      <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
+        <img src="src/img/certifications/konsulta.png" alt="ISO Certified" class="h-10 w-auto">
+        <span class="text-gray-700 text-sm font-medium">Philhealth Konsulta Accredited</span>
+      </div>
+
+      <!-- ISO Certified -->
+      <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
+        <img src="src/img/certifications/iso.png" alt="ISO Certified" class="h-10 w-auto">
+        <span class="text-gray-700 text-sm font-medium">ISO Certified</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDRESS & CONTACT FORM -->
+  <section class="py-16 bg-gray-50" id="contact">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-start">
+      
+      <!-- Left: Google Map & Address -->
+      <div data-aos="fade-right">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Location</h3>
+        <p class="text-gray-600 mb-4">
+          We are located at <strong>Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</strong>. 
+          Our hospital is easily accessible with convenient parking for patients and visitors.
+        </p>
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+          <iframe 
+            src="https://www.google.com/maps?q=Rizal+St.,+Brgy.+IV+(Poblacion),+Bantay,+Philippines&output=embed"
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div data-aos="fade-left">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Contact Us</h3>
+        <p class="text-gray-600 mb-6">
+          Have questions or need assistance? Send us a message, and our team will respond as soon as possible.
+        </p>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+            <input type="text" id="name" name="name" required 
+                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input type="email" id="email" name="email" required 
+                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+            <textarea id="message" name="message" rows="4" required 
+                      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"></textarea>
+          </div>
+          <button type="submit" 
+                  class="w-full bg-green-600 text-white font-medium py-2 px-4 rounded-md hover:bg-green-700 transition">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-50 text-gray-800">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Logo & About -->
+      <div>
+        <div class="flex items-center space-x-3">
+          <img src="src/img/logo/mvh_logo-wht.png" alt="Metro Vigan Hospital Logo" class="h-12 w-auto">
+          <span class="text-lg font-semibold">Metro Vigan Hospital</span>
+        </div>
+        <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+          Entrust your health to us!
+        </p>
+  <p class="text-gray-600 text-sm leading-relaxed">
+          We Care, We Cure, We Can.
         </p>
       </div>
 
-       View All Services Button 
-
-      <div class="mt-10" data-aos="fade-up" data-aos-delay="800">
-      <a href="#all-services" class="inline-block bg-green-600 text-white px-8 py-3 rounded-md hover:bg-green-700 transition">
-        View All Services
-      </a>
-    </div>
-    </div> -->
-
-    
-    
-  </div>
-</section>
-
-<!-- FACILITIES SECTION -->
-<section class="py-16 bg-gray-50" id="facilities">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
-    <!-- Section Title -->
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
-      Our <span class="text-green-600">Facilities</span>
-    </h2>
-    <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-      State-of-the-art medical facilities designed to provide the best care for our patients.
-    </p>
-
-    <!-- Facilities Grid -->
-    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Facility 1 -->
-      <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="200">
-        <img src="src/img/facility/72ba70_2f2a6a7c21ae4fc59db98014537562db_mv2_d_4320_3240_s_4_2.webp" alt="Emergency Room" class="w-full h-48 object-cover">
-        <div class="p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800">Emergency Room</h3>
-          <p class="text-gray-600 text-sm mt-2">24/7 emergency services with advanced life support equipment.</p>
-        </div>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-gray-600 text-sm">
+          <li><a href="#services" class="hover:text-green-600 transition">Our Services</a></li>
+          <li><a href="#facilities" class="hover:text-green-600 transition">Facilities</a></li>
+          <li><a href="#doctors" class="hover:text-green-600 transition">Our Doctors</a></li>
+          <li><a href="#about" class="hover:text-green-600 transition">About Us</a></li>
+          <li><a href="#contact" class="hover:text-green-600 transition">Contact</a></li>
+        </ul>
       </div>
 
-      <!-- Facility 2 -->
-      <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="250">
-        <img src="src/img/facility/72ba70_0551b19b1bcb46109cf8dfe91de8f37d_mv2_d_4320_3240_s_4_2.webp" alt="Operating Theater" class="w-full h-48 object-cover">
-        <div class="p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800">Operating Theater</h3>
-          <p class="text-gray-600 text-sm mt-2">Fully equipped surgical suites with sterile and modern technology.</p>
-        </div>
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <ul class="space-y-3 text-gray-600 text-sm">
+          <li class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26c.7.47 1.52.47 2.22 0L21 8m-18 8h18" />
+            </svg>
+            <span>info@metroviganhospital.com</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59-1.35 2.44C7.08 16.37 7.5 17 8.2 17h7.6c.7 0 1.12-.63.95-1.26l-1.35-2.44L19 5h2" />
+            </svg>
+            <span>+63 (123) 456-7890</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2c4.97 0 9 4.03 9 9 0 7-9 13-9 13S3 18 3 11c0-4.97 4.03-9 9-9z" />
+            </svg>
+            <span>Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</span>
+          </li>
+        </ul>
       </div>
 
-      <!-- Facility 3 -->
-      <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="300">
-        <img src="src/img/facility/72ba70_02c9944646934fc694383a6896e1091e_mv2_d_3416_2319_s_2.webp" alt="Laboratory" class="w-full h-48 object-cover">
-        <div class="p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800">Diagnostic Laboratory</h3>
-          <p class="text-gray-600 text-sm mt-2">Comprehensive lab tests with fast and accurate results.</p>
-        </div>
-      </div>
-
-      <!-- Facility 4 -->
-      <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="350">
-        <img src="src/img/facility/72ba70_366c4924ad5d427f940ce97867685e1c_mv2_d_3548_3240_s_4_2.webp" alt="ICU" class="w-full h-48 object-cover">
-        <div class="p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800">Intensive Care Unit (ICU)</h3>
-          <p class="text-gray-600 text-sm mt-2">Critical care units with round-the-clock monitoring and specialists.</p>
-        </div>
-      </div>
-
-      <!-- Facility 5 -->
-      <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="400">
-        <img src="src/img/facility/72ba70_61165bbf148448049e9a0e5aa7890632_mv2_d_2959_1989_s_2.webp" alt="Pharmacy" class="w-full h-48 object-cover">
-        <div class="p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800">Pharmacy</h3>
-          <p class="text-gray-600 text-sm mt-2">In-house pharmacy providing a wide range of medicines and supplies.</p>
-        </div>
-      </div>
-
-      <!-- Facility 6 -->
-      <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="450">
-        <img src="src/img/facility/72ba70_80653b032af94efdaebac50dfb73b6d3_mv2_d_3739_2465_s_4_2.webp" alt="Private Rooms" class="w-full h-48 object-cover">
-        <div class="p-6 text-center">
-          <h3 class="text-xl font-semibold text-gray-800">Private Rooms</h3>
-          <p class="text-gray-600 text-sm mt-2">Comfortable private rooms for patients and their families.</p>
+      <!-- Social Media -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+        <div class="flex space-x-4">
+          <!-- Facebook -->
+          <a href="#" class="hover:text-green-600 transition" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.463.1 2.795.144v3.24h-1.918c-1.505 0-1.796.716-1.796 1.763v2.314h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .597 23.403 0 22.675 0z"/>
+            </svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" class="hover:text-green-600 transition" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22.46 6.003c-.793.353-1.644.59-2.538.697a4.48 4.48 0 0 0 1.963-2.47 8.966 8.966 0 0 1-2.84 1.084 4.466 4.466 0 0 0-7.606 4.07A12.675 12.675 0 0 1 3.16 4.852a4.466 4.466 0 0 0 1.382 5.956 4.449 4.449 0 0 1-2.023-.56v.057a4.47 4.47 0 0 0 3.58 4.377 4.482 4.482 0 0 1-2.016.076 4.474 4.474 0 0 0 4.174 3.104A8.963 8.963 0 0 1 2 19.54 12.65 12.65 0 0 0 8.86 21.5c7.547 0 11.675-6.253 11.675-11.675 0-.178-.004-.355-.012-.531a8.354 8.354 0 0 0 2.053-2.126z"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="hover:text-green-600 transition" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm4.25 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-
-
-<!-- DOCTORS SECTION -->
-<section class="py-16 bg-white" id="doctors">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
-    <!-- Section Title -->
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
-      Our <span class="text-green-600">Doctors</span>
-    </h2>
-    <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-      Meet our dedicated team of specialists providing exceptional care.
-    </p>
-
-    <!-- Doctors Grid -->
-    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-      <!-- Doctor Card Template -->
-      
-            <!-- Doctor 8 -->
-            <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-              <div class="p-6 text-center">
-                <img src="src/img/doctors/dr_quadra.png" alt="Dr. Sofia Lim" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-                <!-- Doctor Info -->
-                <h3 class="text-md font-semibold text-black font-roboto mb-2">Dr. John Christopher Quadra</h3>
-                <p class="text-md text-[#249f51] font-medium">Internal Medicine</p>
-                <p class="text-md text-[#249f51] font-medium mb-3">Adult Pulmonary Medicine</p>
-                
-                <!-- Clinic Hours -->
-                <div class="text-left space-y-2 mb-4">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                            <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">Wednesday: 2PM-4PM</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">OPD Extension</span>
-                    </div>
-                </div>
-              </div>
-            </div>
-
-                  <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/doctors/dr_dianne.png" alt="Dr. Dianne Riambon" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-md font-semibold text-black font-roboto mb-2">Dr. Dianne Millado-Riambon</h3>
-          <p class="text-md text-[#249f51] font-medium">Pediatric Pulmonary & Critical Care Medicine Specialist</p>
-          <p class="text-md text-[#249f51] font-medium mb-3">Pediatric Pulmonary Rehabilitation Specialist</p>
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Tuesday: 10AM-12NN</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">OPD Extension, Room 5</span>
-              </div>
-          </div>
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-200 mt-8">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
+        <div class="space-x-4 mt-2 md:mt-0">
+          <a href="src/pages/privacy-policy.html" class="hover:text-green-600 transition">Privacy Policy</a>
+          <a href="src/pages/terms-of-service.html" class="hover:text-green-600 transition">Terms of Service</a>
         </div>
       </div>
-
-            <!-- Doctor 8 -->
-            <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-              <div class="p-6 text-center">
-                <img src="src/img/doctors/dr_nijell.png" alt="Dr. Nijell Pizarro" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-                <!-- Doctor Info -->
-                <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Nijell Bangasan-Pizarro</h3>
-                <p class="text-md text-[#249f51] font-medium mb-3">Internal Medicine</p>
-                
-                <!-- Clinic Hours -->
-                <div class="text-left space-y-2 mb-4">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                            <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">Friday: 2PM-4PM</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">OPD Extension</span>
-                    </div>
-                </div>
-              </div>
-            </div>
-
-                  <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/doctors/dr_jonas.png" alt="Dr. Jonas Claro Cauton" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-xl font-semibold text-black font-roboto mb-2">Dr. Jonas Claro Cauton</h3>
-          <p class="text-md text-[#249f51] font-medium mb-3">Rehabilitation Medicine</p>
-          
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Wednesday: 1PM-4PM</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">4th Flr, Room 407</span>
-              </div>
-          </div>
-        </div>
-      </div>
-
-            <!-- Doctor 8 -->
-            <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-              <div class="p-6 text-center">
-                <img src="src/img/doctors/dr_miko.png" alt="Dr. Miko Galut" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-                <!-- Doctor Info -->
-                <h3 class="text-xl font-semibold text-black font-roboto mb-2">Dr. Miko Galut</h3>
-                <p class="text-md text-[#249f51] font-medium mb-3">Urologic Surgery</p>
-                
-                <!-- Clinic Hours -->
-                <div class="text-left space-y-2 mb-4">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                            <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">Tuesday: 1PM-3PM</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                          <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                      </svg>
-                      <span class="text-sm text-gray-600">Wednesday: 10AM-12NN</span>
-                  </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">Ground Flr, Room 106</span>
-                    </div>
-                </div>
-              </div>
-            </div>
-
-                  <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/doctors/dr_frances.png" alt="Dr. Frances Obrero-Artajos" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Frances Obrero-Artajos</h3>
-          <p class="text-md text-[#249f51] font-medium">Internal Medicine</p>
-          <p class="text-md text-[#249f51] font-medium mb-3">Endocrinology, Diabetes & Metabolism</p>
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Thursday: 10AM-12NN</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">OPD Extension, Room 5</span>
-              </div>
-          </div>
-        </div>
-      </div>
-
-            <!-- Doctor 8 -->
-            <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-              <div class="p-6 text-center">
-                <img src="src/img/doctors/dr_marga.png" alt="Dr. Margarita Cobangco" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-                <!-- Doctor Info -->
-                <h3 class="text-xl font-semibold text-black font-roboto mb-2">Dr. Margarita Cobangco</h3>
-                <p class="text-md text-[#249f51] font-medium mb-3">General Surgery</p>
-                
-                <!-- Clinic Hours -->
-                <div class="text-left space-y-2 mb-4">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                            <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">Wednesday: 2PM-4PM</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                        </svg>
-                        <span class="text-sm text-gray-600">OPD Extension, Room 5</span>
-                    </div>
-                </div>
-              </div>
-            </div>
-
-      <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/doctors/dr_benjamin.png" alt="Dr. Benjamin Tolentino III" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Benjamin Tolentino III</h3>
-          <p class="text-md text-[#249f51] font-medium mb-3">General Surgery</p>
-          
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/logo/mvh_logo.png" alt="Dr. Jonah Lyn" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Jonah Lyn Toribio</h3>
-          <p class="text-md text-[#249f51] font-medium mb-3">General Surgery</p>
-          
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/doctors/dr_xyrose.png" alt="Dr. Benjamin Tolentino III" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Xyrose Lex-Deo Andres</h3>
-          <p class="text-md text-[#249f51] font-medium">Ear, Nose, Throat</p>
-          <p class="text-md text-[#249f51] font-medium mb-3">Head & Neck Surgery</p>
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/doctors/dr_cuanang.png" alt="Dr. Dr. Domingo Cuanang III" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Domingo Cuanang III</h3>
-          <p class="text-md text-[#249f51] font-medium mb-3">Radiation Oncology</p>
-          
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Doctor 8 -->
-      <div class="bg-gray-50 shadow-md rounded-xl hover:shadow-lg transform hover:scale-105 transition duration-300" data-aos="fade-up" data-aos-delay="550">
-        <div class="p-6 text-center">
-          <img src="src/img/doctors/dr_marvin.png" alt="Dr. Marvin Riambon" class="w-50 h-50 rounded-full mx-auto mb-4 object-cover">
-          <!-- Doctor Info -->
-          <h3 class="text-lg font-semibold text-black font-roboto mb-2">Dr. Marvin Riambon</h3>
-          <p class="text-md text-[#249f51] font-medium">Internal Medicine</p>
-          <p class="text-md text-[#249f51] font-medium mb-3">Adult Cardiology</p>
-          <!-- Clinic Hours -->
-          <div class="text-left space-y-2 mb-4">
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
-                      <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-              <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-[#249f51]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                  <span class="text-sm text-gray-600">Not Applicable</span>
-              </div>
-          </div>
-        </div>
-      </div>
-
-
     </div>
-  </div>
-</section>
-
-
-<!-- ABOUT US SECTION -->
-<section class="py-16 bg-white" id="about">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
-    <!-- Left: Image (Same as Hero) -->
-    <div data-aos="fade-right">
-      <img src="src/img/hero/IMG_9508.JPG" alt="Metro Vigan Hospital" class="rounded-2xl shadow-xl w-full object-cover">
-    </div>
-
-    <!-- Right: Content -->
-    <div data-aos="fade-left">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
-        About <span class="text-green-600">Metro Vigan Hospital</span>
-      </h2>
-      <p class="text-gray-600 mt-4 leading-relaxed">
-        Metro Vigan Hospital is committed to delivering exceptional healthcare services 
-        with compassion and expertise. Equipped with state-of-the-art facilities and 
-        staffed by highly skilled medical professionals, we provide patient-centered 
-        care in a safe and comfortable environment.
-      </p>
-      <p class="text-gray-600 mt-3 leading-relaxed">
-        Our hospital is dedicated to continuous innovation and excellence, ensuring 
-        our community has access to advanced medical treatments and a supportive 
-        team that truly cares for your well-being.
-      </p>
-
-      <!-- Statistics -->
-      <div class="mt-8 grid grid-cols-3 gap-6 text-center">
-        <div data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-3xl font-bold text-green-600">100+</h3>
-          <p class="text-gray-600 text-sm">Expert Doctors</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-3xl font-bold text-green-600">24/7</h3>
-          <p class="text-gray-600 text-sm">Emergency Care</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="300">
-          <h3 class="text-3xl font-bold text-green-600">500+</h3>
-          <p class="text-gray-600 text-sm">Patients Served Daily</p>
-        </div>
-      </div>
-
-      <!-- Button -->
-      <div class="mt-8">
-        <a href="#services" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-green-700 transition">
-          Explore Our Services
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HMO ACCREDITED PARTNERS -->
-<section class="py-12 bg-white" id="hmo">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6" data-aos="fade-up">
-      HMO <span class="text-green-600">Accredited Partners</span>
-    </h2>
-    <p class="text-gray-600 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-      We are proud to be accredited by the following Health Maintenance Organizations (HMOs) to better serve our patients.
-    </p>
-
-    <!-- HMO Logos Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/maxicare.png" alt="HMO Partner 1" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/Med.png" alt="HMO Partner 2" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/intellicare.webp" alt="HMO Partner 3" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/inlife.png" alt="HMO Partner 4" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/philcare.jpg" alt="HMO Partner 5" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/valucare.png" alt="HMO Partner 6" class="p-2 max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/cocolife.png" alt="HMO Partner 7" class="max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-      <div class="w-40 h-24 flex items-center justify-center bg-white">
-        <img src="src/img/hmo/kaiser.png" alt="HMO Partner 8" class="max-h-14 object-contain grayscale hover:grayscale-0 transition">
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ACCREDITATIONS -->
-<section class="py-8 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center gap-6">
-    <!-- PhilHealth Accredited -->
-    <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
-      <img src="src/img/certifications/phic.png" alt="PhilHealth Accredited" class="h-10 w-auto">
-      <span class="text-gray-700 text-sm font-medium">PhilHealth Accredited</span>
-    </div>
-	
-<!-- konsulta Certified -->
-    <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
-      <img src="src/img/certifications/konsulta.png" alt="ISO Certified" class="h-10 w-auto">
-      <span class="text-gray-700 text-sm font-medium">Philhealth Konsulta Accredited</span>
-    </div>
-
-    <!-- ISO Certified -->
-    <div class="flex items-center bg-white shadow-md rounded-full px-5 py-3 space-x-3 hover:shadow-lg transition">
-      <img src="src/img/certifications/iso.png" alt="ISO Certified" class="h-10 w-auto">
-      <span class="text-gray-700 text-sm font-medium">ISO Certified</span>
-    </div>
-  </div>
-</section>
-
-<!-- ADDRESS & CONTACT FORM -->
-<section class="py-16 bg-gray-50" id="contact">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-start">
-    
-    <!-- Left: Google Map & Address -->
-    <div data-aos="fade-right">
-      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Location</h3>
-      <p class="text-gray-600 mb-4">
-        We are located at <strong>Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</strong>. 
-        Our hospital is easily accessible with convenient parking for patients and visitors.
-      </p>
-      <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200">
-        <iframe 
-          src="https://www.google.com/maps?q=Rizal+St.,+Brgy.+IV+(Poblacion),+Bantay,+Philippines&output=embed"
-          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-      </div>
-    </div>
-
-    <!-- Right: Contact Form -->
-    <div data-aos="fade-left">
-      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Contact Us</h3>
-      <p class="text-gray-600 mb-6">
-        Have questions or need assistance? Send us a message, and our team will respond as soon as possible.
-      </p>
-      <form action="#" method="POST" class="space-y-4">
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-          <input type="text" id="name" name="name" required 
-                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
-        </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-          <input type="email" id="email" name="email" required 
-                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
-        </div>
-        <div>
-          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-          <textarea id="message" name="message" rows="4" required 
-                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"></textarea>
-        </div>
-        <button type="submit" 
-                class="w-full bg-green-600 text-white font-medium py-2 px-4 rounded-md hover:bg-green-700 transition">
-          Send Message
-        </button>
-      </form>
-    </div>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer class="bg-gray-50 text-gray-800">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-    
-    <!-- Logo & About -->
-    <div>
-      <div class="flex items-center space-x-3">
-        <img src="src/img/logo/mvh_logo-wht.png" alt="Metro Vigan Hospital Logo" class="h-12 w-auto">
-        <span class="text-lg font-semibold">Metro Vigan Hospital</span>
-      </div>
-      <p class="mt-4 text-gray-600 text-sm leading-relaxed">
-        Entrust your health to us!
-      </p>
-<p class="text-gray-600 text-sm leading-relaxed">
-        We Care, We Cure, We Can.
-      </p>
-    </div>
-
-    <!-- Quick Links -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-      <ul class="space-y-2 text-gray-600 text-sm">
-        <li><a href="#services" class="hover:text-green-600 transition">Our Services</a></li>
-        <li><a href="#facilities" class="hover:text-green-600 transition">Facilities</a></li>
-        <li><a href="#doctors" class="hover:text-green-600 transition">Our Doctors</a></li>
-        <li><a href="#about" class="hover:text-green-600 transition">About Us</a></li>
-        <li><a href="#contact" class="hover:text-green-600 transition">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact Info -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-      <ul class="space-y-3 text-gray-600 text-sm">
-        <li class="flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26c.7.47 1.52.47 2.22 0L21 8m-18 8h18" />
-          </svg>
-          <span>info@metroviganhospital.com</span>
-        </li>
-        <li class="flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59-1.35 2.44C7.08 16.37 7.5 17 8.2 17h7.6c.7 0 1.12-.63.95-1.26l-1.35-2.44L19 5h2" />
-          </svg>
-          <span>+63 (123) 456-7890</span>
-        </li>
-        <li class="flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2c4.97 0 9 4.03 9 9 0 7-9 13-9 13S3 18 3 11c0-4.97 4.03-9 9-9z" />
-          </svg>
-          <span>Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Social Media -->
-    <div>
-      <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
-      <div class="flex space-x-4">
-        <!-- Facebook -->
-        <a href="#" class="hover:text-green-600 transition" aria-label="Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.333v21.333C0 23.403.597 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.463.1 2.795.144v3.24h-1.918c-1.505 0-1.796.716-1.796 1.763v2.314h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .597 23.403 0 22.675 0z"/>
-          </svg>
-        </a>
-        <!-- Twitter/X -->
-        <a href="#" class="hover:text-green-600 transition" aria-label="Twitter">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M22.46 6.003c-.793.353-1.644.59-2.538.697a4.48 4.48 0 0 0 1.963-2.47 8.966 8.966 0 0 1-2.84 1.084 4.466 4.466 0 0 0-7.606 4.07A12.675 12.675 0 0 1 3.16 4.852a4.466 4.466 0 0 0 1.382 5.956 4.449 4.449 0 0 1-2.023-.56v.057a4.47 4.47 0 0 0 3.58 4.377 4.482 4.482 0 0 1-2.016.076 4.474 4.474 0 0 0 4.174 3.104A8.963 8.963 0 0 1 2 19.54 12.65 12.65 0 0 0 8.86 21.5c7.547 0 11.675-6.253 11.675-11.675 0-.178-.004-.355-.012-.531a8.354 8.354 0 0 0 2.053-2.126z"/>
-          </svg>
-        </a>
-        <!-- Instagram -->
-        <a href="#" class="hover:text-green-600 transition" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zm4.25 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom Bar -->
-  <div class="border-t border-gray-200 mt-8">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-      <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
-      <div class="space-x-4 mt-2 md:mt-0">
-        <a href="#" class="hover:text-green-600 transition">Privacy Policy</a>
-        <a href="#" class="hover:text-green-600 transition">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
+  </footer>
 
 <!-- icons / css -->
 <script>
@@ -1131,15 +1206,19 @@
   });
 </script>
 
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
     AOS.init();
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
-  </script>
+</script>
+
 </body>
 </html>

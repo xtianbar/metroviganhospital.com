@@ -1,0 +1,66 @@
+body { 
+    font-family: 'Roboto', sans-serif; 
+  }
+
+/* Heartbeat Animation */
+.heartbeat-line path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: heartbeatDraw 4s linear infinite;
+    filter: drop-shadow(0 0 4px #22c55e); /* Glow effect */
+}
+
+  @keyframes heartbeatDraw {
+    0% {
+      stroke-dashoffset: 1200;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+/* Watermark Styling */
+#pdf-content::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url('../img/logo/mvh_logo.png') no-repeat center;
+    background-size: 300px;
+    opacity: 0.05;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#pdf-content > * {
+    position: relative;
+    z-index: 10;
+}
+
+/* Watermark effect for background */
+#tos-content::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url('../img/logo/mvh_logo.png') no-repeat center;
+    background-size: 300px;
+    opacity: 0.05;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  #tos-content > * { 
+    position: relative; 
+    z-index: 10; 
+}
+
+.curve-header {
+    clip-path: ellipse(160% 100% at 50% 0%);
+  }
+  .curve-footer {
+    clip-path: ellipse(160% 100% at 50% 100%);
+  }
