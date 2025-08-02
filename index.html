@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
 <head>
   
   <meta charset="UTF-8">
@@ -35,7 +35,7 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-800 overflow-x-hidden">
 
   <!-- NAVBAR SECTION -->
   <nav class="fixed top-0 z-50 w-full bg-white border-b shadow-md sm:px-4 md:px-6 px-10 py-2" aria-label="Main navigation">
@@ -44,7 +44,8 @@
       <!-- Logo -->
       <a href="" class="flex items-center justify-center">
         <img src="src/img/logo/mvh_logo.png" class="h-16 mr-3" alt="MVH Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap hidden md:inline">Metro Vigan Hospital</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap hidden xl:inline">Metro Vigan Hospital</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap inline xl:hidden">MVH</span>
       </a>
   
       <!-- Toggle Button (Visible on small & medium screens) -->
@@ -58,13 +59,13 @@
       <!-- Navbar Menu -->
       <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
         <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
-          <li><a href="" class="block py-2 font-bold hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700 decoration-green-700 underline underline-offset-[0.425rem]">Home</a></li>
-          <li><a href="#services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Services</a></li>
-          <li><a href="#facilities" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Facilities</a></li>
-          <li><a href="#doctors" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Doctors</a></li>
-          <li><a href="src/pages/about-us.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">About Us</a></li>
+          <li><a href="" class="block py-2 font-bold hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b] decoration-[#04813b] underline underline-offset-[0.425rem]">Home</a></li>
+          <li><a href="#services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Services</a></li>
+          <li><a href="#facilities" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Facilities</a></li>
+          <li><a href="#doctors" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Doctors</a></li>
+          <li><a href="src/pages/about-us.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">About Us</a></li>
           <li>
-            <a href="#contact" class="block w-full text-center bg-green-700 text-white rounded-md hover:bg-green-800 px-6 py-2">Contact Us</a>
+            <a href="#contact" class="block w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">Contact Us</a>
           </li>
         </ul>
       </div>
@@ -87,15 +88,15 @@
       
        Desktop Navigation 
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-800">
-        <a href="" class="hover:text-green-700">Home</a>
-        <a href="#services" class="hover:text-green-700">Services</a>
-        <a href="#facilities" class="hover:text-green-700">Facilities</a>
-        <a href="#doctors" class="hover:text-green-700">Doctors</a>
-        <a href="#about" class="hover:text-green-700">About Us</a>
+        <a href="" class="hover:text-[#04813b]">Home</a>
+        <a href="#services" class="hover:text-[#04813b]">Services</a>
+        <a href="#facilities" class="hover:text-[#04813b]">Facilities</a>
+        <a href="#doctors" class="hover:text-[#04813b]">Doctors</a>
+        <a href="#about" class="hover:text-[#04813b]">About Us</a>
       </nav>
 
        Contact Button 
-      <button class="hidden md:block bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-green-700 transition">
+      <button class="hidden md:block bg-[#16a94c] text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-[#04813b] transition">
         Contact Us
       </button>
     </div>
@@ -112,12 +113,12 @@
 
    Mobile Dropdown 
   <nav id="mobile-menu" class="hidden flex-col bg-white/95 shadow-md backdrop-blur px-6 py-4 md:hidden">
-    <a href="" class="py-2 border-b hover:text-green-700 transition">Home</a>
-    <a href="#services" class="py-2 border-b hover:text-green-700 transition">Services</a>
-    <a href="#facilities" class="py-2 border-b hover:text-green-700 transition">Facilities</a>
-    <a href="#doctors" class="py-2 border-b hover:text-green-700 transition">Doctors</a>
-    <a href="#about" class="py-2 border-b hover:text-green-700 transition">About Us</a>
-    <button class="mt-4 bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-green-700 w-full">
+    <a href="" class="py-2 border-b hover:text-[#04813b] transition">Home</a>
+    <a href="#services" class="py-2 border-b hover:text-[#04813b] transition">Services</a>
+    <a href="#facilities" class="py-2 border-b hover:text-[#04813b] transition">Facilities</a>
+    <a href="#doctors" class="py-2 border-b hover:text-[#04813b] transition">Doctors</a>
+    <a href="#about" class="py-2 border-b hover:text-[#04813b] transition">About Us</a>
+    <button class="mt-4 bg-[#16a94c] text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-[#04813b] w-full">
       Contact Us
     </button>
   </nav>
@@ -129,18 +130,18 @@
   <section id="home" class="flex flex-col lg:flex-row items-center pt-32">
   
     <!-- Left Content (60%) -->
-  <div class="w-full md:w-3/5 px-6 md:px-16 py-10 md:py-20 text-center md:text-left relative">
-    <h2 class="text-3xl md:text-6xl font-bold" data-aos="fade-up" data-aos-delay="100">METRO VIGAN HOSPITAL</h2>
-    <p class="text-lg md:text-3xl mt-3" data-aos="fade-up" data-aos-delay="200">Entrust your health to us</p>
-    <p class="text-lg md:text-3xl mt-1" data-aos="fade-up" data-aos-delay="300">We Care, We Cure, We Can!</p>
+  <div class="w-full lg:w-3/5 px-6 lg:px-16 py-10 lg:py-20 text-center lg:text-left relative" data-aos="fade-right">
+    <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold">METRO VIGAN HOSPITAL</h2>
+    <p class="text-lg md:text-2xl lg:text-3xl mt-3">Entrust your health to us</p>
+    <p class="text-lg md:text-2xl lg:text-3xl mt-1">We Care, We Cure, We Can!</p>
 
     <!-- Decorative Line -->
-    <div class="mt-4 flex justify-center md:justify-start" data-aos="fade-up" data-aos-delay="400">
+    <div class="mt-4 flex justify-center lg:justify-start">
       <svg xmlns="http://www.w3.org/2000/svg" width="600" height="120" viewBox="0 0 600 120" fill="none" class="heartbeat-line">
         <!-- Gradient Definition -->
         <defs>
           <linearGradient id="heartbeatGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#16a34a"/> <!-- Green-600 -->
+            <stop offset="0%" stop-color="#16a34a"/> <!-- [#16a94c] -->
             <stop offset="100%" stop-color="#22c55e"/> <!-- Green-500 -->
           </linearGradient>
         </defs>
@@ -170,7 +171,7 @@
     </div>
 
     <!-- Description -->
-    <p class="text-gray-600 mt-6 max-w-auto mx-auto md:mx-0" data-aos="fade-up" data-aos-delay="500">
+    <p class="text-gray-600 mt-6 max-w-auto mx-auto md:mx-0">
       Metro Vigan Hospital knows what exceptional service truly means. Through personalized guidance 
       and immense support, our team of licensed professionals are here to ensure that all your health 
       related needs are met. We provide patients with all the tools they need to walk out happier and 
@@ -178,50 +179,71 @@
     </p>
 
     <!-- Buttons -->
-    <div class="flex flex-col md:flex-row gap-4 mt-6 items-center md:items-start" data-aos="fade-up" data-aos-delay="600">
-      <button class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 w-full md:w-auto">View Packages</button>
-      <button class="bg-green-700 text-white px-6 py-3 rounded-md hover:bg-green-800 w-full md:w-auto">Learn More</button>
+    <div class="flex flex-col md:flex-row gap-4 mt-6 items-center lg:items-start">
+      <button class="hover:bg-[#16a94c] bg-[#04813b] text-white px-6 py-3 rounded-md w-full md:w-auto">View Packages</button>
+      <button class="bg-[#16a94c] hover:bg-[#04813b] text-white px-6 py-3 rounded-md w-full md:w-auto">Learn More</button>
     </div>
 
     <!-- Left Dotted Pattern -->
-    <div class="absolute bottom-8 left-0" data-aos="fade-in" data-aos-delay="800">
+    <div class="z-[-50] hidden lg:inline xl:absolute bottom-20 left-3">
       <!-- Dots SVG -->
-      <svg width="60" height="80" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#0EA5E9">
+      <svg width="60" height="100" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#000000">
           <circle cx="5" cy="5" r="2"></circle>
           <circle cx="5" cy="20" r="2"></circle>
           <circle cx="5" cy="35" r="2"></circle>
           <circle cx="5" cy="50" r="2"></circle>
           <circle cx="5" cy="65" r="2"></circle>
+          <circle cx="5" cy="80" r="2"></circle>
+          <circle cx="5" cy="95" r="2"></circle>
           <circle cx="20" cy="5" r="2"></circle>
           <circle cx="20" cy="20" r="2"></circle>
           <circle cx="20" cy="35" r="2"></circle>
           <circle cx="20" cy="50" r="2"></circle>
           <circle cx="20" cy="65" r="2"></circle>
+          <circle cx="20" cy="80" r="2"></circle>
+          <circle cx="20" cy="95" r="2"></circle>
           <circle cx="35" cy="5" r="2"></circle>
           <circle cx="35" cy="20" r="2"></circle>
           <circle cx="35" cy="35" r="2"></circle>
           <circle cx="35" cy="50" r="2"></circle>
           <circle cx="35" cy="65" r="2"></circle>
+          <circle cx="35" cy="80" r="2"></circle>
+          <circle cx="35" cy="95" r="2"></circle>
         </g>
       </svg>
     </div>
   </div>
 
   <!-- Right Image (40%) -->
-  <div class="relative w-full md:w-2/5 bg-green-600 flex items-end justify-center" data-aos="fade-left" data-aos-delay="300">
-    <img src="src/img/hero/mvh.png" alt="Metro Vigan Hospital Building" class="w-full h-full object-cover">
+  <div class="relative w-full lg:w-2/5 bg-[#16a94c] flex items-end justify-center" data-aos="fade-left">
+    <img src="src/img/hero/mvh.png" alt="Metro Vigan Hospital Building" class="w-full h-full object-cover z-50">
 
     <!-- Top Right Dotted Pattern -->
-    <div class="absolute top-6 right-6 hidden md:block" data-aos="fade-in" data-aos-delay="700">
-      <svg width="60" height="80" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#0EA5E9">
+    <div class="hidden lg:inline xl:absolute top-4 right-0 z-50">
+      <svg width="60" height="100" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#000000">
           <circle cx="5" cy="5" r="2"></circle>
-          <circle cx="20" cy="5" r="2"></circle>
-          <circle cx="35" cy="5" r="2"></circle>
           <circle cx="5" cy="20" r="2"></circle>
+          <circle cx="5" cy="35" r="2"></circle>
+          <circle cx="5" cy="50" r="2"></circle>
+          <circle cx="5" cy="65" r="2"></circle>
+          <circle cx="5" cy="80" r="2"></circle>
+          <circle cx="5" cy="95" r="2"></circle>
+          <circle cx="20" cy="5" r="2"></circle>
           <circle cx="20" cy="20" r="2"></circle>
+          <circle cx="20" cy="35" r="2"></circle>
+          <circle cx="20" cy="50" r="2"></circle>
+          <circle cx="20" cy="65" r="2"></circle>
+          <circle cx="20" cy="80" r="2"></circle>
+          <circle cx="20" cy="95" r="2"></circle>
+          <circle cx="35" cy="5" r="2"></circle>
           <circle cx="35" cy="20" r="2"></circle>
+          <circle cx="35" cy="35" r="2"></circle>
+          <circle cx="35" cy="50" r="2"></circle>
+          <circle cx="35" cy="65" r="2"></circle>
+          <circle cx="35" cy="80" r="2"></circle>
+          <circle cx="35" cy="95" r="2"></circle>
         </g>
       </svg>
     </div>
@@ -233,14 +255,14 @@
     <div class="w-full mx-auto px-12 md:px-12 text-center">
       <!-- Section Title -->
       <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
-        Our <span class="text-green-600">Services</span>
+        Our <span class="text-[#04813b]">Services</span>
       </h2>
       <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
         We provide comprehensive medical care and specialized services to meet the healthcare needs of our community.
       </p>
 
       <!-- Services Grid -->
-      <div class="mt-12 grid gap-8 lg:grid-cols-2 xl:grid-cols-4">
+      <div class="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
 
         <!-- Services ER -->
         <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
@@ -491,7 +513,7 @@
         <!-- SERVICES OLD
 
         <div class="bg-white shadow-md rounded-xl p-6 transform hover:scale-105 hover:shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-green-600 mb-4">
+          <div class="text-[#16a94c] mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.5 0-3 1.5-3 3s1.5 3 3 3 3-1.5 3-3-1.5-3-3-3zm-9 4a9 9 0 0118 0" />
             </svg>
@@ -505,7 +527,7 @@
         View All Services Button 
 
         <div class="mt-10" data-aos="fade-up" data-aos-delay="800">
-        <a href="#all-services" class="inline-block bg-green-600 text-white px-8 py-3 rounded-md hover:bg-green-700 transition">
+        <a href="#all-services" class="inline-block bg-[#16a94c] text-white px-8 py-3 rounded-md hover:bg-[#04813b] transition">
           View All Services
         </a>
       </div>
@@ -521,7 +543,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
       <!-- Section Title -->
       <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
-        Our <span class="text-green-600">Facilities</span>
+        Our <span class="text-[#04813b]">Facilities</span>
       </h2>
       <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
         State-of-the-art medical facilities designed to provide the best care for our patients.
@@ -591,7 +613,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
       <!-- Section Title -->
       <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
-        Our <span class="text-green-600">Doctors</span>
+        Our <span class="text-[#04813b]">Doctors</span>
       </h2>
       <p class="text-gray-600 mt-3 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
         Meet our dedicated team of specialists providing exceptional care.
@@ -952,7 +974,7 @@
       <!-- Right: Description -->
       <div data-aos="fade-left">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-          About <span class="text-green-600">Metro Vigan Hospital</span>
+          About <span class="text-[#04813b]">Metro Vigan Hospital</span>
         </h2>
         <p class="text-gray-600 leading-relaxed mb-6">
           Metro Vigan Hospital is committed to delivering exceptional healthcare services 
@@ -969,15 +991,15 @@
         <!-- Statistics -->
         <div class="grid grid-cols-3 gap-6 text-center">
           <div data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-3xl font-bold text-green-600">100+</h3>
+            <h3 class="text-3xl font-bold text-[#04813b]">100+</h3>
             <p class="text-gray-600 text-sm">Expert Doctors</p>
           </div>
           <div data-aos="fade-up" data-aos-delay="200">
-            <h3 class="text-3xl font-bold text-green-600">24/7</h3>
+            <h3 class="text-3xl font-bold text-[#04813b]">24/7</h3>
             <p class="text-gray-600 text-sm">Emergency Care</p>
           </div>
           <div data-aos="fade-up" data-aos-delay="300">
-            <h3 class="text-3xl font-bold text-green-600">500+</h3>
+            <h3 class="text-3xl font-bold text-[#04813b]">500+</h3>
             <p class="text-gray-600 text-sm">Patients Served Daily</p>
           </div>
         </div>
@@ -986,7 +1008,7 @@
 
     <!-- Bottom: HMO Accredited Partners -->
     <div data-aos="fade-up" data-aos-delay="100">
-      <h3 class="text-3xl font-semibold text-gray-800 text-center"><span class="text-green-600">HMO</span> Accredited Partners</h3>
+      <h3 class="text-3xl font-semibold text-gray-800 text-center"><span class="text-[#04813b]">HMO</span> Accredited Partners</h3>
       <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto aos-init">
         We are proud to be accredited by the following Health Maintenance Organizations (HMOs) to better serve our patients.
       </p>
@@ -1093,7 +1115,7 @@
                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"></textarea>
           </div>
           <button type="submit" 
-                  class="w-full bg-green-600 text-white font-medium py-2 px-4 rounded-md hover:bg-green-700 transition">
+                  class="w-full hover:bg-[#16a94c] text-white font-medium py-2 px-4 rounded-md bg-[#04813b] transition">
             Send Message
           </button>
         </form>
@@ -1136,13 +1158,13 @@
 <div class="mt-8 flex flex-col lg:flex-row items-center justify-center gap-6 text-center lg:text-left">
   
 
-  <h3 class="text-2xl font-bold text-green-700">📞 For Inquiries:</h3>
+  <h3 class="text-2xl font-bold text-[#04813b]">📞 For Inquiries:</h3>
   
 
   <div class="flex flex-col sm:flex-row gap-4 mt-4 lg:mt-0">
 
     <a href="tel:+639275090414" 
-       class="flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition w-full sm:w-auto">
+       class="flex items-center justify-center bg-[#16a94c] text-white px-6 py-3 rounded-lg shadow hover:bg-[#04813b] transition w-full sm:w-auto">
 
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.498 4.494a1 1 0 01-.502 1.21l-2.243 1.122a11.042 11.042 0 005.516 5.516l1.122-2.243a1 1 0 011.21-.502l4.494 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -1187,11 +1209,11 @@
       <div>
         <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
         <ul class="space-y-2 text-gray-600 text-sm">
-          <li><a href="#services" class="hover:text-green-600 transition">Our Services</a></li>
-          <li><a href="#facilities" class="hover:text-green-600 transition">Our Facilities</a></li>
-          <li><a href="#doctors" class="hover:text-green-600 transition">Our Doctors</a></li>
-          <li><a href="src/pages/about-us.html" class="hover:text-green-600 transition">About Us</a></li>
-          <li><a href="src/pages/careers.html" class="hover:text-green-600 transition">Careers</a></li>
+          <li><a href="#services" class="hover:text-[#04813b] transition">Our Services</a></li>
+          <li><a href="#facilities" class="hover:text-[#04813b] transition">Our Facilities</a></li>
+          <li><a href="#doctors" class="hover:text-[#04813b] transition">Our Doctors</a></li>
+          <li><a href="src/pages/about-us.html" class="hover:text-[#04813b] transition">About Us</a></li>
+          <li><a href="src/pages/careers.html" class="hover:text-[#04813b] transition">Careers</a></li>
         </ul>
       </div>
 
@@ -1200,7 +1222,7 @@
         <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
         <ul class="space-y-3 text-gray-600 text-sm">
           <li class="flex items-center space-x-2">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#04813b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26c.7.47 1.62.47 2.32 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
   </svg>
   <span>
@@ -1211,7 +1233,7 @@
 </li>
 
           <li class="flex items-center space-x-2">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#04813b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.2 3.59a1 1 0 01-.27 1.05l-2.2 2.2a16 16 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.27l3.59 1.2a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
   </svg>
   <span>
@@ -1222,7 +1244,7 @@
 </li>
 
           <li class="flex items-center space-x-2">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#04813b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7z" />
     <circle cx="12" cy="9" r="2" stroke-width="2" />
   </svg>
@@ -1241,14 +1263,14 @@
         <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
         <div class="flex space-x-4">
           <!-- Facebook -->
-          <a href="https://www.facebook.com/metroviganhospital" target="_blank" class="hover:text-green-600 transition" aria-label="Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 hover:text-green-600 transition" viewBox="0 0 24 24" fill="currentColor">
+          <a href="https://www.facebook.com/metroviganhospital" target="_blank" class="hover:text-[#04813b] transition" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 hover:text-[#04813b] transition" viewBox="0 0 24 24" fill="currentColor">
     <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.891h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.772-1.63 1.562v1.875h2.773l-.443 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
   </svg>
           </a>
           <!-- Instagram -->
-          <a href="https://www.instagram.com/metroviganhospital/" target="_blank" class="hover:text-green-600 transition" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 hover:text-green-600 transition" viewBox="0 0 24 24" fill="currentColor">
+          <a href="https://www.instagram.com/metroviganhospital/" target="_blank" class="hover:text-[#04813b] transition" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600 hover:text-[#04813b] transition" viewBox="0 0 24 24" fill="currentColor">
     <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0z"/>
   </svg>
           </a>
@@ -1262,8 +1284,8 @@
       <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
         <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
         <div class="space-x-4 mt-2 md:mt-0">
-          <a href="src/pages/privacy-policy.html" class="hover:text-green-600 transition">Privacy Policy</a>
-          <a href="src/pages/terms-of-service.html" class="hover:text-green-600 transition">Terms of Service</a>
+          <a href="src/pages/privacy-policy.html" class="hover:text-[#04813b] transition">Privacy Policy</a>
+          <a href="src/pages/terms-of-service.html" class="hover:text-[#04813b] transition">Terms of Service</a>
         </div>
       </div>
     </div>
