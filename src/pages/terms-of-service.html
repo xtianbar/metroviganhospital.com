@@ -37,6 +37,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
+  <script src="https://cdn.tailwindcss.com"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -66,7 +67,7 @@
       
       <!-- Logo -->
       <a href="../../" class="flex items-center justify-center">
-        <img src="../img/logo/mvh_logo.avif" class="h-16 mr-3" alt="MVH Logo" fetchpriority="high" loading="eager"/>
+        <img src="../img/logo/mvh_logo_optimized.avif" class="h-16 mr-3" alt="MVH Logo" fetchpriority="high" loading="eager"/>
         <span class="self-center text-2xl font-semibold whitespace-nowrap hidden xl:inline">Metro Vigan Hospital</span>
         <span class="self-center text-2xl font-semibold whitespace-nowrap inline xl:hidden">MVH</span>
       </a>
@@ -100,7 +101,7 @@
   <div id="tos-content" class="relative max-w-4xl mx-auto bg-white shadow-lg border border-gray-300 mt-40 mb-10 p-12 overflow-hidden">
     <!-- Letterhead -->
     <div class="flex flex-col items-center mb-6">
-      <img src="../img/logo/mvh_logo.avif" fetchpriority="low" loading="lazy" alt="Metro Vigan Hospital Logo" class="h-20 mb-2">
+      <img src="../img/logo/mvh_logo_optimized.avif" fetchpriority="low" loading="lazy" alt="Metro Vigan Hospital Logo" class="h-20 mb-2">
       <h2 class="text-lg font-semibold text-gray-700">Metro Vigan Hospital</h2>
       <p class="text-sm text-gray-600">Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</p>
     </div>
@@ -139,7 +140,7 @@
       <!-- Logo & About -->
       <div>
         <div class="flex items-center space-x-3">
-          <img src="../img/logo/mvh_logo-wht.avif" alt="Metro Vigan Hospital Logo" class="h-12 w-auto">
+          <img src="../img/logo/mvh_logo_optimized.avif" alt="Metro Vigan Hospital Logo" class="h-12 w-auto">
           <span class="text-lg font-semibold">Metro Vigan Hospital</span>
         </div>
         <p class="mt-4 text-gray-600 text-sm leading-relaxed">
@@ -237,29 +238,23 @@
     </div>
   </footer>
   
-    <!-- icons / css -->
-    <script>
-      const toggleBtn = document.getElementById('menu-toggle');
-      const menu = document.getElementById('navbar-menu');
-    
-      toggleBtn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-      });
-    </script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- AOS Script -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    
-    <script>
-        AOS.init();
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-    </script>
-    
+<!-- icons / css -->
+<script src="../js/script.js"></script>
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('navbar-menu');
+
+  toggleBtn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+</script>
+
 </body>
 </html>
