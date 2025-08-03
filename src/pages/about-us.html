@@ -7,10 +7,6 @@
 
   <!-- Title & Description -->
   <title>About Us | Metro Vigan Hospital</title>
-  <meta name="description" content="Read the Privacy Notice of Metro Vigan Hospital. We are committed to protecting your personal and health information, following the Data Privacy Act.">
-  
-  <!-- Keywords -->
-  <meta name="keywords" content="Metro Vigan Hospital, MVH, Private Hospital, Level 2 Private Hospital, Bantay, Ilocos Sur, Ilocos Sur Healthcare">
   
   <!-- Author -->
   <meta name="author" content="Metro Vigan Hospital">
@@ -18,22 +14,97 @@
   <!-- Robots (SEO Indexing) -->
   <meta name="robots" content="index, follow">
   
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Privacy Notice - Metro Vigan Hospital">
-  <meta property="og:description" content="We are committed to safeguarding your health data and privacy. Read our full Privacy Notice here.">
-  <meta property="og:image" content="https://metroviganhospital.vercel.app/mvh_logo.png">
-  <meta property="og:url" content="https://metroviganhospital.vercel.app/privacy-policy">
+  <!-- Meta Description -->
+  <meta name="description" content="Learn more about Metro Vigan Hospital, our history, mission, vision, and commitment to delivering quality healthcare services in Ilocos Sur." />
+
+  <!-- Meta Keywords -->
+  <meta name="keywords" content="Metro Vigan Hospital About Us, MVH history, MVH vision, MVH mission, hospital in Ilocos Sur, healthcare in Bantay" />
+
+  <!-- Open Graph (Facebook & Instagram) -->
+  <meta property="og:title" content="About Us - Metro Vigan Hospital" />
+  <meta property="og:description" content="Discover the history, vision, and mission of Metro Vigan Hospital as we continue to provide excellent healthcare services to the community." />
+  <meta property="og:image" content="https://www.metroviganhospital.com/src/img/logo/mvh_logo.png" />
+  <meta property="og:url" content="https://www.metroviganhospital.com/about" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Metro Vigan Hospital" />
 
   <!-- icons & stylesheet -->
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon">
 
   <!-- Google Font: Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Metro Vigan Hospital",
+        "url": "https://www.metroviganhospital.com",
+        "logo": "https://www.metroviganhospital.com/src/img/logo/mvh_logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+63-927-509-0414",
+          "contactType": "Customer Service",
+          "areaServed": "PH",
+          "availableLanguage": "en"
+        },
+        "sameAs": [
+          "https://www.facebook.com/MetroViganHospital",
+          "https://www.instagram.com/MetroViganHospital"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.metroviganhospital.com/about-us",
+        "url": "https://www.metroviganhospital.com/about-us",
+        "name": "About Us - Metro Vigan Hospital",
+        "description": "Learn more about Metro Vigan Hospital's history, mission, vision, facilities, and commitment to providing exceptional healthcare in Ilocos Sur."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What services does Metro Vigan Hospital offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Metro Vigan Hospital offers comprehensive medical services including Surgery, Medicine, Pediatrics, Obstetrics & Gynecology, Radiology, Laboratory, Ophthalmology, ENT, Endoscopy, Anesthesia, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Metro Vigan Hospital located?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Metro Vigan Hospital is located at Rizal St., Brgy. IV (Poblacion), Bantay, Ilocos Sur, Philippines. It is easily accessible from the Bantay national highway."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Metro Vigan Hospital PhilHealth accredited?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Metro Vigan Hospital is PhilHealth accredited and also ISO certified, ensuring high standards of healthcare and patient safety."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Metro Vigan Hospital offer training for medical students?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Metro Vigan Hospital serves as a training ground for nurses, pharmacists, physical therapists, and other allied health professionals."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
 </head>
 <body class="bg-white text-gray-800">
@@ -341,7 +412,12 @@
       <!-- Corporate Values -->
       <section class="mb-8 text-center">
         <h2 class="text-green-700 text-xl font-bold uppercase">Corporate Values</h2>
-        <p class="mt-2 text-base">Integrity • Excellence • Professionalism • Compassion</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center py-2 mt-2 justify-center">
+          <p class="text-base">Integrity</p>
+          <p class="text-base">Excellence</p>
+          <p class="text-base">Professionalism</p>
+          <p class="text-base">Compassion</p>
+        </div>
       </section>
 
       <section class="flex items-center justify-center gap-4 mt-8">
@@ -453,7 +529,7 @@
     <!-- Bottom Bar -->
     <div class="border-t border-gray-200 mt-8">
       <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-        <span class="p-2 text-[0.5rem] opacity-80">website created and maintained by <a href="https://www.instagram.com/_xtianbar/" target="_blank" class="text-[0.6rem] opacity-80 font-bold hover:underline hover:underline-offset-[0.3rem] text-[#04831b] hover:text-gray-800 decoration-[#04813b] underline underline-offset-[0.3rem]">@_xtianbar</a></span>
+        <span class="p-2 text-[0.5rem] opacity-80 flex flex-wrap items-center gap-1 justify-center">website created and maintained by <a href="https://xtianbar.vercel.app/" target="_blank"><img src="../img/logo/xtianbar-logo.png" alt="Metro Vigan Hospital Logo" class="h-2 w-auto"></a></span>
         <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
         <div class="space-x-4 mt-2 md:mt-0">
           <a href="privacy-policy.html" class="hover:text-green-600 transition">Privacy Policy</a>
