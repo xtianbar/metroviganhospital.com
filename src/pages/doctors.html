@@ -108,8 +108,14 @@
   </script>
 
   <style>
-   .highlight { font-weight: bold; color: #16a34a; }
-    .modal { display: none; }
+    
+    .modal {
+      display: none;
+    }
+    .modal.active {
+      display: flex;
+    }
+
   </style>
 
 </head>
@@ -152,49 +158,48 @@
   </nav>
 
 <main class="py-16 mt-24">
+ 
+  <!-- HEADER -->
+  <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center" data-aos="fade-up" data-aos-delay="100">
+        Our <span class="text-green-700">Doctors</span>
+  </h2>
 
-<!-- Header -->
-  <div class="p-5 text-center">
-    <h1 class="text-3xl font-bold">Our Doctors</h1>
-    <p class="text-sm">Find the right doctor for your needs</p>
-  </div>
-
-  <!-- Filter & Search -->
-  <section class="max-w-6xl mx-auto mt-8 px-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
-    <!-- Specialty Dropdown -->
-    <div>
-      <label for="specialtyFilter" class="block text-sm font-medium text-gray-700 mb-1">Filter by Specialty</label>
-      <select id="specialtyFilter" class="border border-gray-300 rounded-lg px-4 py-2 w-60">
+  <!-- FILTER & SEARCH -->
+  <section class="max-w-7xl mx-auto px-6 mt-8">
+    <div class="flex flex-col md:flex-row justify-between gap-4">
+      <!-- Specialty Dropdown -->
+      <select id="specialtyFilter" class="border border-gray-300 rounded p-2 w-full md:w-1/3" data-aos="fade-left" data-aos-delay="300">
         <option value="all">All Specialties</option>
       </select>
-    </div>
 
-    <!-- Search Bar -->
-    <div class="w-full md:w-1/3">
-      <label for="searchInput" class="block text-sm font-medium text-gray-700 mb-1">Search (Name, Specialty, Room, Schedule, or Symptom)</label>
-      <input type="text" id="searchInput" placeholder="Search..." class="border border-gray-300 rounded-lg px-4 py-2 w-full">
+      <!-- Search Box -->
+      <input type="text" id="searchBox" placeholder="Search by name, disease, specialty, room..." class="border border-gray-300 rounded p-2 w-full md:w-2/3" data-aos="fade-left" data-aos-delay="400">
     </div>
   </section>
 
-  <!-- Doctors List -->
-  <section class="max-w-6xl mx-auto mt-8 px-4">
-    <div id="doctorsList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+  <!-- DOCTORS GRID -->
+  <section class="max-w-7xl mx-auto px-6 mt-8" data-aos="fade-up" data-aos-delay="500">
+    <div id="doctorsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    <div class="text-center mt-6">
+      <button id="loadMore" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">Load More</button>
+    </div>
   </section>
 
-  <!-- Doctor Modal -->
-  <div id="doctorModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white rounded-lg p-6 max-w-md w-full relative">
+  <!-- MODAL -->
+  <div id="doctorModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 w-96 relative shadow-lg">
       <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">&times;</button>
-      <img id="modalImage" src="" alt="Doctor" class="w-32 h-32 rounded-full mx-auto border-4 border-green-100">
-      <h2 id="modalName" class="text-2xl font-bold text-center mt-4"></h2>
-      <p id="modalSpecialty" class="text-green-700 text-center"></p>
-      <p id="modalRoom" class="text-center mt-2"></p>
-      <p id="modalSchedule" class="text-center"></p>
-      <p id="modalDescription" class="text-gray-600 text-center mt-4"></p>
+      <img id="modalImage" src="" alt="" class="w-32 h-32 rounded-full mx-auto mb-4">
+      <h2 id="modalName" class="text-xl font-semibold text-center"></h2>
+      <p id="modalSpecialty" class="text-green-600 font-medium text-center"></p>
+      <p id="modalDiseases" class="mt-2 text-sm text-gray-600 text-center"></p>
+      <p id="modalRoom" class="mt-3 font-semibold text-center"></p>
+      <p id="modalSchedule" class="text-sm text-gray-700 text-center"></p>
     </div>
   </div>
 
 </main>
+
   <!-- FOOTER -->
   <footer class="bg-gray-50 text-gray-800">
     <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -219,8 +224,8 @@
         <ul class="space-y-2 text-gray-600 text-sm">
           <li><a href="#services" class="hover:text-green-600 transition">Our Services</a></li>
           <li><a href="#facilities" class="hover:text-green-600 transition">Our Facilities</a></li>
-          <li><a href="" class="hover:text-green-600 transition">Our Doctors</a></li>
-          <li><a href="about-us.html" class="hover:text-green-600 transition">About Us</a></li>
+          <li><a href="doctors.html" class="hover:text-green-600 transition">Our Doctors</a></li>
+          <li><a href="" class="hover:text-green-600 transition">About Us</a></li>
           <li><a href="careers.html" class="hover:text-green-600 transition">Careers</a></li>
         </ul>
       </div>
@@ -298,106 +303,244 @@
         </div>
       </div>
     </div>
-  </footer>  
+  </footer>
 
+<script>
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const times = ["8AM-11AM", "9AM-12NN", "10AM-1PM", "1PM-4PM", "2PM-5PM"];
 
-  <script>
-    const doctors = [
-      { name: "Dr. Juan Dela Cruz", specialty: "Cardiologist", room: "205", schedule: "Mon, Wed, Fri - 9:00 AM to 1:00 PM", diseases: "Heart Disease, Hypertension, Chest Pain", image: "doctor1.jpg", description: "Expert in treating cardiovascular conditions." },
-      { name: "Dr. Maria Santos", specialty: "Pediatrician", room: "310", schedule: "Tue, Thu - 10:00 AM to 3:00 PM", diseases: "Fever, Cough, Childhood Illnesses", image: "doctor2.jpg", description: "Specializes in children's health and development." },
-      { name: "Dr. Jose Ramirez", specialty: "Orthopedic Surgeon", room: "120", schedule: "Mon - Fri, 1:00 PM to 5:00 PM", diseases: "Fractures, Back Pain, Joint Pain", image: "doctor3.jpg", description: "Focused on bones, joints, and musculoskeletal issues." },
-      { name: "Dr. Ana Villanueva", specialty: "Dermatologist", room: "215", schedule: "Wed, Fri - 2:00 PM to 6:00 PM", diseases: "Acne, Skin Allergies, Rashes", image: "doctor4.jpg", description: "Treats skin conditions and improves skin health." },
-      { name: "Dr. Leo Fernandez", specialty: "Neurologist", room: "130", schedule: "Tue, Thu - 8:00 AM to 12:00 PM", diseases: "Migraine, Epilepsy, Stroke", image: "doctor5.jpg", description: "Expert in brain, spinal cord, and nerve disorders." },
-      { name: "Dr. Karen Bautista", specialty: "OB-GYN", room: "225", schedule: "Mon, Thu - 10:00 AM to 4:00 PM", diseases: "Pregnancy, Women's Health", image: "doctor6.jpg", description: "Focuses on women's reproductive health and care." },
-      { name: "Dr. Rafael Cruz", specialty: "General Surgeon", room: "108", schedule: "Mon - Fri, 9:00 AM to 1:00 PM", diseases: "Appendicitis, Hernia, Surgical Cases", image: "doctor7.jpg", description: "Performs surgeries and general medical care." },
-      { name: "Dr. Sofia Lim", specialty: "ENT Specialist", room: "218", schedule: "Tue, Fri - 1:00 PM to 5:00 PM", diseases: "Ear Pain, Sinusitis, Throat Issues", image: "doctor8.jpg", description: "Expert in ear, nose, and throat disorders." },
-      { name: "Dr. Vincent Reyes", specialty: "Gastroenterologist", room: "240", schedule: "Mon, Wed - 10:00 AM to 2:00 PM", diseases: "Stomach Pain, Ulcers, Acid Reflux", image: "doctor9.jpg", description: "Specializes in digestive system conditions." },
-      { name: "Dr. Elaine Uy", specialty: "Pulmonologist", room: "150", schedule: "Tue, Thu - 2:00 PM to 6:00 PM", diseases: "Asthma, Pneumonia, Lung Issues", image: "doctor10.jpg", description: "Focuses on lung and respiratory diseases." }
+    function randomSchedule() {
+      const day1 = days[Math.floor(Math.random() * days.length)];
+      const day2 = days[Math.floor(Math.random() * days.length)];
+      const time1 = times[Math.floor(Math.random() * times.length)];
+      const time2 = times[Math.floor(Math.random() * times.length)];
+      return `${day1}: ${time1} | ${day2}: ${time2}`;
+    }
+
+    function randomRoom() {
+      return `Room ${Math.floor(100 + Math.random() * 400)}`;
+    }
+
+    const diseaseMap = {
+      "General Surgery": ["Appendicitis", "Hernia", "Gallstones", "Breast Lumps"],
+      "Anesthesiology": ["Pain Management", "Pre-op Care", "Anesthesia Consultation"],
+      "Dentistry": ["Tooth Extraction", "Braces", "Cleaning", "Cavity Treatment"],
+      "EENT": ["Sinusitis", "Tonsillitis", "Hearing Loss", "Vertigo"],
+      "Cardiology": ["Hypertension", "Heart Attack", "Arrhythmia", "Heart Failure"],
+      "Family Medicine": ["Diabetes", "Hypertension", "Asthma"],
+      "Internal Medicine": ["Diabetes", "Hypertension", "Infections"],
+      "Rehabilitation Medicine": ["Stroke Recovery", "Arthritis", "Sports Injury Rehab"],
+      "OB-Gyne": ["Pregnancy Care", "C-Section", "Infertility"],
+      "Pathology": ["Lab Analysis", "Biopsy Review"],
+      "Pediatrics": ["Fever", "Asthma", "Flu", "Vaccinations"],
+      "Orthopedic Surgery": ["Fractures", "Joint Replacement", "Back Pain"],
+      "Dermatology": ["Acne", "Psoriasis", "Skin Allergies"],
+      "Endocrinology": ["Diabetes", "Thyroid Disorders"],
+      "Gastroenterology": ["Acid Reflux", "Ulcers", "Liver Disease"],
+      "Infectious Disease": ["Dengue", "Hepatitis", "Tuberculosis"],
+      "Nephrology": ["Kidney Stones", "Chronic Kidney Disease"],
+      "Neurology": ["Migraines", "Stroke", "Seizures"],
+      "Oncology": ["Cancer Care", "Chemotherapy"],
+      "Psychiatry": ["Depression", "Anxiety", "Bipolar Disorder"],
+      "Pulmonology": ["Asthma", "Pneumonia", "COPD"],
+      "Radiology": ["X-Ray", "Ultrasound", "CT Scan"],
+      "Urology": ["Kidney Stones", "UTI", "Prostate Issues"],
+      "Neuro-Surgery": ["Brain Tumors", "Spinal Injuries"]
+    };
+
+    // Full doctors list (All from your provided data)
+    const doctorsList = [
+      { name: "Digna R. Ragasa, MD, MHA, FPCHA", specialty: "General Surgery" },
+      { name: "Estefanie Cabebe, MD, DPBA", specialty: "Anesthesiology" },
+      { name: "Herminia M. Pascua, MD", specialty: "Anesthesiology" },
+      { name: "Anacleto Advincula, MD", specialty: "Anesthesiology" },
+      { name: "Leonor Isabel Caldetera Dy, MD", specialty: "Anesthesiology" },
+      { name: "Sean Vera Cruz, DMD", specialty: "Dentistry" },
+      { name: "Mirella Rosuman, DMD", specialty: "Dentistry" },
+      { name: "Simeon Emmanuel Aquino II, MD, DPBO", specialty: "EENT" },
+      { name: "Rolando Vermudez, MD", specialty: "EENT" },
+      { name: "Robert Q. Lim, MD, FPCP", specialty: "Cardiology" },
+      { name: "Charles Hubert R. Rabara, MD, DPAFD", specialty: "Family Medicine" },
+      { name: "Luz Gregoria L. Velasco, MD", specialty: "Internal Medicine" },
+      { name: "Isaias Alipio Jr., MD, FPARM", specialty: "Rehabilitation Medicine" },
+      { name: "Evangeline De Vera, MD, FPOGS", specialty: "OB-Gyne" },
+      { name: "Ruth Judith Gay Cristobal, MD", specialty: "OB-Gyne" },
+      { name: "Alda Gene Pipo-Tremor, MD", specialty: "OB-Gyne" },
+      { name: "Brenda I. Rosuman, MD", specialty: "Pathology" },
+      { name: "Melissa Donata A. Ragasa, MD", specialty: "Pediatrics" },
+      { name: "Beatriz M. Reyes, MD", specialty: "Pediatrics" },
+      { name: "Anthony R. Vera Cruz, MD", specialty: "Radiology" },
+      { name: "Ernesto Tagorda Jr., MD", specialty: "General Surgery" },
+      { name: "Conrado M. Andal, MD", specialty: "General Surgery" },
+      { name: "Claro Cauton, MD", specialty: "Orthopedic Surgery" },
+      { name: "Marcelino de Peralta, MD", specialty: "Orthopedic Surgery" },
+      { name: "Nelis Plete, MD", specialty: "Anesthesiology" },
+      { name: "Fatima Malcaba, DMD", specialty: "Dentistry" },
+      { name: "Lymuel Remigio Pascua, DMD", specialty: "Dentistry" },
+      { name: "Paula Cynthia Valencia, DMD", specialty: "Dentistry" },
+      { name: "Romen Almazar, MD", specialty: "EENT" },
+      { name: "Nicanor Lacuesta, MD", specialty: "EENT" },
+      { name: "Marc Frederick Panganiban, MD", specialty: "EENT" },
+      { name: "Pedro Patao, MD", specialty: "EENT" },
+      { name: "Leslie Asuncion, MD", specialty: "Cardiology" },
+      { name: "Max Geronimo Butardo, MD", specialty: "Cardiology" },
+      { name: "Gloria Lahoz, MD", specialty: "Cardiology" },
+      { name: "Georgina D. Andal, MD", specialty: "Dermatology" },
+      { name: "Joel Malixi, MD", specialty: "Dermatology" },
+      { name: "Eugenio Pipo III, MD", specialty: "Dermatology" },
+      { name: "Jean Caringal, MD", specialty: "Endocrinology" },
+      { name: "Lorenza Evangelina Pipo, MD", specialty: "Endocrinology" },
+      { name: "Maria Blanca Kua, MD", specialty: "Gastroenterology" },
+      { name: "Ma. Eileen O. Pascua, MD", specialty: "Gastroenterology" },
+      { name: "Glenda Tagorda, MD", specialty: "Internal Medicine" },
+      { name: "Kristal F. Mendoza, MD", specialty: "Internal Medicine" },
+      { name: "Criselda Ciubal, MD", specialty: "Infectious Disease" },
+      { name: "Ofelia Datu, MD", specialty: "Nephrology" },
+      { name: "Amor Rhea Quilala-Narag, MD", specialty: "Nephrology" },
+      { name: "Mary Judith Ragaza, MD", specialty: "Nephrology" },
+      { name: "Steve Arellano, MD", specialty: "Neurology" },
+      { name: "Elton Ong, MD", specialty: "Neurology" },
+      { name: "Ma. Verena Remudaro, MD", specialty: "Oncology" },
+      { name: "Johann Yee, MD", specialty: "Psychiatry" },
+      { name: "Abraham Auberon B., MD", specialty: "Pulmonology" },
+      { name: "Michelleen Corales, MD", specialty: "Pulmonology" },
+      { name: "Dominetta S. Gonzalo, MD", specialty: "Pulmonology" },
+      { name: "Deanne Quilala, MD", specialty: "Pulmonology" },
+      { name: "Caridad Advincula, MD", specialty: "OB-Gyne" },
+      { name: "Cheryl Cabebe, MD", specialty: "OB-Gyne" },
+      { name: "Fides Paat, MD", specialty: "OB-Gyne" },
+      { name: "Glenda Rabino, MD", specialty: "OB-Gyne" },
+      { name: "Asela Pearl Llane Vera Cruz, MD", specialty: "OB-Gyne" },
+      { name: "Gail Domecq Tanawit, MD", specialty: "Pathology" },
+      { name: "Jennifer Baccay, MD", specialty: "Pediatrics" },
+      { name: "Ma. Elena Victoria C. Lahoz, MD", specialty: "Pediatrics" },
+      { name: "Irwina Lazo, MD", specialty: "Pediatrics" },
+      { name: "Jean Mahor, MD", specialty: "Pediatrics" },
+      { name: "Teresita Martin, MD", specialty: "Pediatrics" },
+      { name: "Aurea Dagdag Matias, MD", specialty: "Pediatrics" },
+      { name: "Joan Tubon Galano, MD", specialty: "Pediatrics" },
+      { name: "Marilyn Paz, MD", specialty: "Pediatrics" },
+      { name: "Ma. Eloisa Lazaro-Salvador, MD", specialty: "Pediatrics" },
+      { name: "Joan Roque Viado, MD", specialty: "Pediatrics" },
+      { name: "Marilou Almoite, MD", specialty: "Radiology" },
+      { name: "Bernadette Fragante Bato, MD", specialty: "Radiology" },
+      { name: "Manuel Cajigal, MD", specialty: "General Surgery" },
+      { name: "Reynaldo P. Paz, MD", specialty: "General Surgery" },
+      { name: "Vivencio R. Refuerzo, MD", specialty: "General Surgery" },
+      { name: "Michael Martin Baccay, MD", specialty: "General Surgery" },
+      { name: "Camelot C. Agdeppa, MD", specialty: "General Surgery" },
+      { name: "Crispin Allan T. Viado, MD", specialty: "Neuro-Surgery" },
+      { name: "Leslie V. Rafanan, MD", specialty: "Urology" },
+      { name: "Percival J Yang-Ed, MD", specialty: "Urology" },
+      { name: "Johnson E. Zabat, MD", specialty: "Urology" },
+      { name: "John Christopher Quadra, MD", specialty: "Pulmonology" },
+      { name: "Dianne Millado-Riambon, MD", specialty: "Pediatrics" },
+      { name: "Nijell Bangasan-Pizarro, MD", specialty: "Internal Medicine" },
+      { name: "Jonas Claro Cauton, MD", specialty: "Rehabilitation Medicine" },
+      { name: "Miko Galut, MD", specialty: "Urology" },
+      { name: "Frances Obrero-Artajos, MD", specialty: "Endocrinology" },
+      { name: "Margarita Cobangco, MD", specialty: "General Surgery" },
+      { name: "Benjamin Tolentino III, MD", specialty: "General Surgery" },
+      { name: "Jonah Lyn Toribio, MD", specialty: "General Surgery" },
+      { name: "Xyrose Lex-Deo Andres, MD", specialty: "EENT" },
+      { name: "Domingo Cuanang III, MD", specialty: "Oncology" },
+      { name: "Marvin Riambon, MD", specialty: "Cardiology" }
     ];
 
-    const doctorsList = document.getElementById("doctorsList");
-    const specialtyFilter = document.getElementById("specialtyFilter");
-    const searchInput = document.getElementById("searchInput");
-    const doctorModal = document.getElementById("doctorModal");
-    const closeModal = document.getElementById("closeModal");
+    const doctors = doctorsList.map(doc => ({
+      ...doc,
+      diseases: diseaseMap[doc.specialty] || ["General Checkup"],
+      room: randomRoom(),
+      schedule: randomSchedule(),
+      image: "https://placehold.net/avatar.png"
+    }));
 
-    const modalImage = document.getElementById("modalImage");
+    const grid = document.getElementById("doctorsGrid");
+    const specialtyFilter = document.getElementById("specialtyFilter");
+    const searchBox = document.getElementById("searchBox");
+    const modal = document.getElementById("doctorModal");
     const modalName = document.getElementById("modalName");
     const modalSpecialty = document.getElementById("modalSpecialty");
+    const modalDiseases = document.getElementById("modalDiseases");
     const modalRoom = document.getElementById("modalRoom");
     const modalSchedule = document.getElementById("modalSchedule");
-    const modalDescription = document.getElementById("modalDescription");
+    const modalImage = document.getElementById("modalImage");
 
-    // Populate specialties
-    const specialties = [...new Set(doctors.map(doc => doc.specialty))];
-    specialties.forEach(spec => {
-      const option = document.createElement("option");
-      option.value = spec;
-      option.textContent = spec;
-      specialtyFilter.appendChild(option);
+    const loadMoreBtn = document.getElementById("loadMore");
+
+    // Populate Specialty Filter
+    const specialties = [...new Set(doctors.map(d => d.specialty))];
+    specialties.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      specialtyFilter.appendChild(opt);
     });
 
-    // Display doctors
-    function displayDoctors(list) {
-      doctorsList.innerHTML = list.map((doc, index) => `
-        <div class="bg-white rounded-lg shadow p-5 hover:shadow-lg transition cursor-pointer doctor-card" data-index="${index}">
-          <img src="${doc.image}" alt="${doc.name}" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-green-100">
-          <h3 class="text-xl font-bold text-green-700 text-center">${doc.name}</h3>
-          <p class="text-gray-600 text-center">${doc.specialty}</p>
-          <p class="text-sm mt-2"><strong>Room:</strong> ${doc.room}</p>
-          <p class="text-sm"><strong>Schedule:</strong> ${doc.schedule}</p>
-        </div>
-      `).join("");
+    // Pagination variables
+    let displayedCount = 0;
+    const increment = 20;
 
-      document.querySelectorAll(".doctor-card").forEach(card => {
-        card.addEventListener("click", () => {
-          const index = card.getAttribute("data-index");
-          openModal(index);
-        });
+    function renderDoctors(list, reset = false) {
+      if (reset) {
+        grid.innerHTML = "";
+        displayedCount = 0;
+      }
+      const slice = list.slice(displayedCount, displayedCount + increment);
+      slice.forEach(doc => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center";
+        card.innerHTML = `
+          <img src="${doc.image}" class="w-24 h-24 mx-auto rounded-full mb-3">
+          <h3 class="text-lg font-semibold">${doc.name}</h3>
+          <p class="text-green-600">${doc.specialty}</p>
+          <p class="text-sm text-gray-500 mt-2">${doc.room}</p>
+        `;
+        card.onclick = () => showModal(doc);
+        grid.appendChild(card);
       });
+      displayedCount += increment;
+      if (displayedCount >= list.length) {
+        loadMoreBtn.classList.add("hidden");
+      } else {
+        loadMoreBtn.classList.remove("hidden");
+      }
     }
 
-    // Open modal
-    function openModal(index) {
-      const doc = doctors[index];
-      modalImage.src = doc.image;
+    function showModal(doc) {
       modalName.textContent = doc.name;
       modalSpecialty.textContent = doc.specialty;
+      modalDiseases.textContent = "Treats: " + doc.diseases.join(", ");
       modalRoom.textContent = "Room: " + doc.room;
       modalSchedule.textContent = "Schedule: " + doc.schedule;
-      modalDescription.textContent = doc.description;
-      doctorModal.classList.remove("hidden");
+      modalImage.src = doc.image;
+      modal.classList.remove("hidden");
     }
 
-    // Close modal
-    closeModal.addEventListener("click", () => doctorModal.classList.add("hidden"));
-    doctorModal.addEventListener("click", (e) => { if (e.target === doctorModal) doctorModal.classList.add("hidden"); });
+    document.getElementById("closeModal").onclick = () => modal.classList.add("hidden");
 
-    // ESC key close modal
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") doctorModal.classList.add("hidden"); });
+    function filterDoctors() {
+      const search = searchBox.value.toLowerCase();
+      const specialty = specialtyFilter.value;
 
-    // Filter by specialty
-    specialtyFilter.addEventListener("change", () => {
-      const value = specialtyFilter.value;
-      const filtered = value === "all" ? doctors : doctors.filter(doc => doc.specialty === value);
-      displayDoctors(filtered);
-    });
-
-    // Search functionality
-    searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase();
       const filtered = doctors.filter(doc =>
-        doc.name.toLowerCase().includes(query) ||
-        doc.specialty.toLowerCase().includes(query) ||
-        doc.room.toLowerCase().includes(query) ||
-        doc.schedule.toLowerCase().includes(query) ||
-        doc.diseases.toLowerCase().includes(query)
+        (specialty === "all" || doc.specialty === specialty) &&
+        (doc.name.toLowerCase().includes(search) ||
+         doc.specialty.toLowerCase().includes(search) ||
+         doc.diseases.some(d => d.toLowerCase().includes(search)) ||
+         doc.room.toLowerCase().includes(search))
       );
-      displayDoctors(filtered);
-    });
 
-    // Initial display
-    displayDoctors(doctors);
+      currentList = filtered;
+      renderDoctors(filtered, true);
+    }
+
+    searchBox.addEventListener("input", filterDoctors);
+    specialtyFilter.addEventListener("change", filterDoctors);
+    loadMoreBtn.addEventListener("click", () => renderDoctors(currentList));
+
+    let currentList = doctors;
+    renderDoctors(doctors);
   </script>
 
 <!-- icons / css -->
