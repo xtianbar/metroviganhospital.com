@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Draggable Floor Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hotspot {
+      @apply absolute rounded-full bg-red-500 cursor-pointer flex items-center justify-center text-white text-xs font-bold;
+      width: 40px;
+      height: 40px;
+      user-select: none;
+    }
+    .tooltip {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      transform: translate(-50%, -125%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .hotspot:hover .tooltip,
+    .hotspot:focus .tooltip {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center">
+
+  <!-- Floor Selector -->
+  <div class="flex gap-2 my-4">
+    <button onclick="showFloor(1)" class="px-4 py-2 bg-blue-500 text-white rounded">Floor 1</button>
+    <button onclick="showFloor(2)" class="px-4 py-2 bg-blue-500 text-white rounded">Floor 2</button>
+    <button onclick="showFloor(3)" class="px-4 py-2 bg-blue-500 text-white rounded">Floor 3</button>
+    <button onclick="showFloor(4)" class="px-4 py-2 bg-blue-500 text-white rounded">Floor 4</button>
+    <button onclick="showFloor(5)" class="px-4 py-2 bg-blue-500 text-white rounded">Floor 5</button>
+    <button onclick="showFloor(6)" class="px-4 py-2 bg-blue-500 text-white rounded">Floor 6</button>
+    <button onclick="logHotspotPositions()" class="px-4 py-2 bg-green-600 text-white rounded">Log Positions</button>
+  </div>
+
+  <!-- Floor Plans -->
+  <div id="floorPlans" class="w-full max-w-5xl relative">
+    <!-- Floor 1 -->
+    <div id="floor-1" class="floor relative">
+      <img src="../img/floor_plan/1.png" class="w-full" alt="Floor 1">
+      <div class="hotspot" style="top:20%; left:30%;" data-name="ER" data-image="../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp">
+        <span class="tooltip">ER</span>
+      </div>
+      <div class="hotspot" style="top:40%; left:50%;" data-name="XRAY" data-image="../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp">
+        <span class="tooltip">XRAY</span>
+      </div>
+    </div>
+
+    <!-- Floor 2 -->
+    <div id="floor-2" class="floor hidden relative">
+      <img src="../img/floor_plan/2.png" class="w-full" alt="Floor 2">
+      <div class="hotspot" style="top:30%; left:40%;" data-name="LABORATORY" data-image="../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp">
+        <span class="tooltip">Laboratory</span>
+      </div>
+    </div>
+
+    <!-- Floor 3 -->
+    <div id="floor-3" class="floor hidden relative">
+      <img src="../img/floor_plan/3.png" class="w-full" alt="Floor 3">
+      <div class="hotspot" style="top:25%; left:60%;" data-name="PHARMACY" data-image="../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp">
+        <span class="tooltip">Pharmacy</span>
+      </div>
+    </div>
+
+    <!-- Add floors 4-6 similarly -->
+     <!-- Floor 3 -->
+    <div id="floor-4" class="floor hidden relative">
+        <img src="../img/floor_plan/3.png" class="w-full" alt="Floor 3">
+        <div class="hotspot" style="top:25%; left:60%;" data-name="PHARMACY" data-image="../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp">
+          <span class="tooltip">Pharmacy</span>
+        </div>
+      </div>
+      <!-- Floor 3 -->
+    <div id="floor-5" class="floor hidden relative">
+        <img src="../img/floor_plan/3.png" class="w-full" alt="Floor 3">
+        <div class="hotspot" style="top:25%; left:60%;" data-name="PHARMACY" data-image="../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp">
+          <span class="tooltip">Pharmacy</span>
+        </div>
+      </div>
+      <!-- Floor 3 -->
+    <div id="floor-6" class="floor hidden relative">
+        <img src="../img/floor_plan/3.png" class="w-full" alt="Floor 3">
+        <div class="hotspot" style="top:25%; left:60%;" data-name="PHARMACY" data-image="../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp">
+          <span class="tooltip">Pharmacy</span>
+        </div>
+      </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="facilityModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full relative">
+      <span class="absolute top-4 right-4 text-gray-600 cursor-pointer text-2xl" onclick="closeModal()">&times;</span>
+      <h2 id="modalFacilityName" class="text-xl font-semibold mb-3"></h2>
+      <img id="modalFacilityImage" src="" alt="" class="rounded mb-4 w-full">
+    </div>
+  </div>
+
+<script>
+  // Floor switching
+  function showFloor(floorNumber) {
+    document.querySelectorAll(".floor").forEach(f => f.classList.add("hidden"));
+    document.getElementById(`floor-${floorNumber}`).classList.remove("hidden");
+  }
+
+  // Modal
+  const hotspots = document.querySelectorAll('.hotspot');
+  const modal = document.getElementById('facilityModal');
+  const modalName = document.getElementById('modalFacilityName');
+  const modalImage = document.getElementById('modalFacilityImage');
+
+  hotspots.forEach(h => {
+    h.addEventListener('click', () => {
+      modalName.textContent = h.dataset.name;
+      modalImage.src = h.dataset.image;
+      modal.classList.remove('hidden');
+    });
+
+    // Make hotspots draggable
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    h.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.offsetX;
+      offsetY = e.offsetY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const parent = h.parentElement.getBoundingClientRect();
+      let x = ((e.clientX - parent.left - offsetX) / parent.width) * 100;
+      let y = ((e.clientY - parent.top - offsetY) / parent.height) * 100;
+      h.style.left = `${x}%`;
+      h.style.top = `${y}%`;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+  });
+
+  function closeModal() {
+    modal.classList.add('hidden');
+  }
+
+  // Log all hotspot positions
+  function logHotspotPositions() {
+    const positions = [];
+    document.querySelectorAll('.hotspot').forEach(h => {
+      positions.push({
+        name: h.dataset.name,
+        top: h.style.top,
+        left: h.style.left,
+        floor: h.closest('.floor').id
+      });
+    });
+    console.log(positions);
+    alert("Hotspot positions logged in console!");
+  }
+</script>
+
+</body>
+</html>

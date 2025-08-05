@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Multi-Floor Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    .hotspot {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: red;
+      border-radius: 50%;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+    .tooltip {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      transform: translate(-50%, -125%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .hotspot:hover .tooltip {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center">
+
+<!-- NAVBAR SECTION -->
+<nav class="fixed top-0 z-50 w-full bg-white border-b shadow-md sm:px-4 md:px-6 px-10 py-2" aria-label="Main navigation">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      
+      <!-- Logo -->
+      <a href="../../" class="flex items-center justify-center">
+        <img src="../img/logo/mvh_logo_optimized.avif" class="h-16 mr-3" alt="MVH Logo" fetchpriority="high" loading="eager"/>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap hidden xl:inline">Metro Vigan Hospital</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap inline xl:hidden">MVH</span>
+      </a>
+  
+      <!-- Toggle Button -->
+      <button id="menu-toggle" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg lg:hidden">
+        <span class="sr-only">Open main menu</span>
+        <svg id="menu-icon" class="w-6 h-6 text-green hover:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+  
+      <!-- Navbar Menu -->
+      <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
+        <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
+          <li><a href="../../" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Home</a></li>
+          <li><a href="#services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Services</a></li>
+          <li><a href="#facilities" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Facilities</a></li>
+          <li><a href="doctors.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Doctors</a></li>
+          <li><a href="" class="block py-2 font-bold hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700 decoration-green-700 underline underline-offset-[0.425rem]">About Us</a></li>
+          <li>
+            <a href="#contact" class="block w-full text-center bg-green-700 text-white rounded-md hover:bg-green-800 px-6 py-2">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- FACILITIES SECTION -->
+  <section id="facilities" class="py-16 bg-white mt-24">
+    <div class="max-w-screen-xl mx-auto px-4">
+  
+      <!-- Section Title -->
+      <h2 class="text-3xl font-bold text-center mb-8">Our Facilities</h2>
+  
+      <!-- Floor Selector -->
+      <div class="flex justify-center gap-2 mb-6">
+        <button class="floor-btn bg-green-600 text-white px-4 py-2 rounded" data-floor="1">Floor 1</button>
+        <button class="floor-btn bg-gray-300 px-4 py-2 rounded" data-floor="2">Floor 2</button>
+        <button class="floor-btn bg-gray-300 px-4 py-2 rounded" data-floor="3">Floor 3</button>
+        <button class="floor-btn bg-gray-300 px-4 py-2 rounded" data-floor="4">Floor 4</button>
+        <button class="floor-btn bg-gray-300 px-4 py-2 rounded" data-floor="5">Floor 5</button>
+        <button class="floor-btn bg-gray-300 px-4 py-2 rounded" data-floor="6">Floor 6</button>
+      </div>
+  
+      <!-- Floor Plan -->
+      <div id="floorContainer" class="relative w-full max-w-5xl mx-auto"></div>
+  
+    </div>
+  </section>
+  
+  <!-- Modal -->
+  <div id="facilityModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full relative">
+      <span class="absolute top-4 right-4 text-gray-600 cursor-pointer text-2xl" onclick="closeModal()">&times;</span>
+      <h2 id="modalFacilityName" class="text-xl font-semibold mb-3"></h2>
+      <img id="modalFacilityImage" src="" alt="" class="rounded mb-4 w-full">
+    </div>
+  </div>
+  
+
+  
+  <script>
+    const floors = {
+      1: { image: "../img/floor_plan/1.png", hotspots: [
+          { top: "30%", left: "25%", name: "ER", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+          { top: "50%", left: "50%", name: "X-Ray", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+          { top: "65%", left: "70%", name: "Laboratory", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+        ] },
+      2: { image: "../img/floor_plan/2.png", hotspots: [
+          { top: "40%", left: "35%", name: "ICU", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+          { top: "60%", left: "55%", name: "NICU", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+        ] },
+      3: { image: "../img/floor_plan/3.png", hotspots: [
+          { top: "45%", left: "40%", name: "OR", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+          { top: "65%", left: "60%", name: "Recovery Room", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+        ] },
+      4: { image: "../img/floor_plan/4.png", hotspots: [
+          { top: "35%", left: "45%", name: "Private Rooms", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+        ] },
+      5: { image: "../img/floor_plan/5.png", hotspots: [
+          { top: "50%", left: "50%", name: "Suite Room", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+        ] },
+      6: { image: "../img/floor_plan/6.png", hotspots: [
+          { top: "40%", left: "60%", name: "Board of Directors Office", image: "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp" },
+        ] }
+    };
+  
+    const floorContainer = document.getElementById('floorContainer');
+    const floorButtons = document.querySelectorAll('.floor-btn');
+  
+    const modal = document.getElementById('facilityModal');
+    const modalName = document.getElementById('modalFacilityName');
+    const modalImage = document.getElementById('modalFacilityImage');
+  
+    function loadFloor(floorNumber) {
+      const floor = floors[floorNumber];
+      floorContainer.innerHTML = `<img src="${floor.image}" class="w-full" alt="Floor ${floorNumber}">`;
+      floor.hotspots.forEach(h => {
+        const hotspot = document.createElement("div");
+        hotspot.className = "hotspot";
+        hotspot.style.top = h.top;
+        hotspot.style.left = h.left;
+        hotspot.innerHTML = `<span class="tooltip">${h.name}</span>`;
+        hotspot.addEventListener("click", () => {
+          modalName.textContent = h.name;
+          modalImage.src = h.image;
+          modal.classList.remove("hidden");
+        });
+        floorContainer.appendChild(hotspot);
+      });
+    }
+  
+    floorButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        floorButtons.forEach(b => b.classList.remove('bg-green-600', 'text-white'));
+        btn.classList.add('bg-green-600', 'text-white');
+        loadFloor(btn.dataset.floor);
+      });
+    });
+  
+    function closeModal() { modal.classList.add('hidden'); }
+  
+    // Load initial floor
+    loadFloor(1);
+  </script>
+  
+
+</body>
+</html>
