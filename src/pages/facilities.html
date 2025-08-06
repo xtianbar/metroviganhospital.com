@@ -138,18 +138,18 @@
     <p class="text-gray-800 px-4">Click or swipe the interactive map to move to a different floor</p>
   </div>
   
-  <section class="py-16 bg-white">
+  <section class="py-16 bg-white overflow-x-hidden">
 
 
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 overflow-x-hidden">
       <!-- Floor Selector -->
       <div class="flex justify-center space-x-2 mb-6">
-        <button class="floor-btn px-4 py-2 border rounded bg-green-600 text-white" data-floor="1">GROUND</button>
-        <button class="floor-btn px-4 py-2 border rounded" data-floor="2">2ND</button>
-        <button class="floor-btn px-4 py-2 border rounded" data-floor="3">3RD</button>
-        <button class="floor-btn px-4 py-2 border rounded" data-floor="4">4TH</button>
-        <button class="floor-btn px-4 py-2 border rounded" data-floor="5">5TH</button>
-        <button class="floor-btn px-4 py-2 border rounded" data-floor="6">6TH</button>
+        <button class="floor-btn px-4 py-2 border rounded bg-green-600 text-white" data-floor="1">GF</button>
+        <button class="floor-btn px-4 py-2 border rounded" data-floor="2">2F</button>
+        <button class="floor-btn px-4 py-2 border rounded" data-floor="3">3F</button>
+        <button class="floor-btn px-4 py-2 border rounded" data-floor="4">4F</button>
+        <button class="floor-btn px-4 py-2 border rounded" data-floor="5">5F</button>
+        <button class="floor-btn px-4 py-2 border rounded" data-floor="6">6F</button>
       </div>
   
       <!-- Floor Plan Container -->
@@ -277,7 +277,7 @@
   
     <script>
     const floors = {
-      1: { image: "../img/floor_plan/1.png", hotspots: [
+      1: { image: "../img/floor_plan/1.avif", hotspots: [
           { top: "30%", left: "25%", name: "ER", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Emergency Room: Immediate care for critical patients." },
@@ -288,7 +288,7 @@
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Laboratory: Blood tests, urinalysis, and more." },
         ] },
-      2: { image: "../img/floor_plan/2.png", hotspots: [
+      2: { image: "../img/floor_plan/2.avif", hotspots: [
           { top: "40%", left: "35%", name: "ICU", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Intensive Care Unit for critical patients." },
@@ -296,7 +296,7 @@
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Neonatal ICU for newborns needing special care." },
         ] },
-      3: { image: "../img/floor_plan/3.png", hotspots: [
+      3: { image: "../img/floor_plan/3.avif", hotspots: [
           { top: "45%", left: "40%", name: "OR", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Operating Room for surgeries." },
@@ -304,17 +304,17 @@
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Post-surgery patient recovery area." },
         ] },
-      4: { image: "../img/floor_plan/4.png", hotspots: [
+      4: { image: "../img/floor_plan/4.avif", hotspots: [
           { top: "35%", left: "45%", name: "Private Rooms", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Private patient rooms for in-patient care." },
         ] },
-      5: { image: "../img/floor_plan/5.png", hotspots: [
+      5: { image: "../img/floor_plan/5.avif", hotspots: [
           { top: "50%", left: "50%", name: "Suite Room", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Luxurious suite for VIP patients." },
         ] },
-      6: { image: "../img/floor_plan/6.png", hotspots: [
+      6: { image: "../img/floor_plan/6.avif", hotspots: [
           { top: "40%", left: "60%", name: "Board of Directors Office", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], description: "Administrative board meeting office." },
