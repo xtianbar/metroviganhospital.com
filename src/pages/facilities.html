@@ -77,6 +77,7 @@
     .hotspot {
     position: absolute;
     transform: translate(-50%, -50%);
+    opacity: 0.5;
   }
   .tooltip {
     visibility: hidden;
@@ -88,11 +89,31 @@
     visibility: visible;
     opacity: 1;
   }
+
+  #facilityModal .bg-white {
+  max-width: 900px; /* Bigger modal width */
+}
+
+#modalImageWrapper img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#prevImage, #nextImage {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#prevImage:hover, #nextImage:hover {
+  background: rgba(0,0,0,0.7);
+}
+
   </style>
 
 
 </head>
-<body class="bg-gray-100 overflow-x-hidden">
+<body class="overflow-x-hidden">
 
 <!-- NAVBAR SECTION -->
 <nav class="fixed top-0 z-50 w-full bg-white border-b shadow-md sm:px-4 md:px-6 px-10 py-2" aria-label="Main navigation">
@@ -135,7 +156,7 @@
       <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-10 text-center" data-aos="fade-up" data-aos-delay="100">
         Our <span class="text-green-700">Facilities</span>
     </h2>
-    <p class="text-gray-800 px-4">Click or swipe the interactive map to move to a different floor</p>
+    <p class="text-gray-800 p-4">Click the buttons or swipe the interactive map to move to a different floor</p>
   </div>
   
   <section class="py-16 bg-white overflow-x-hidden">
@@ -153,20 +174,39 @@
       </div>
   
       <!-- Floor Plan Container -->
-      <div id="floorContainer" class="relative w-full max-w-4xl mx-auto border rounded-lg overflow-hidden shadow">
+      <div id="floorContainer" class="relative w-full max-w-4xl mx-auto overflow-hidden">
         <!-- Floor image and hotspots are dynamically added here -->
+      </div>
+      <div class="text-center italic font-small text-gray-500">
+        <p>Tap each section to reveal room details.</p>
       </div>
     </div>
   
     <!-- Modal -->
     <div id="facilityModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
-      <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full mx-4 relative">
-        <button id="closeModal" class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl">&times;</button>
-        <h2 id="modalName" class="text-2xl font-bold mb-4"></h2>
-        <p id="modalDesc" class="text-gray-700 mb-4"></p>
-        <div id="modalImages" class="space-y-3"></div>
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-4xl w-full mx-4 relative">
+          <button id="closeModal" class="absolute top-2 right-2 text-gray-600 hover:text-black text-3xl">&times;</button>
+          <h2 id="modalName" class="text-3xl font-bold mb-4"></h2>
+          <div id="modalDesc" class="text-gray-700 mb-4 space-y-2"></div>
+      
+          <!-- Image Container -->
+          <div id="modalImageWrapper" class="relative mb-4">
+            <img 
+              id="currentImage" 
+              src="" 
+              class="w-full max-h-[60vh] object-contain rounded mx-auto"
+            />
+            <button id="prevImage" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-lg">&#10094;</button>
+            <button id="nextImage" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-lg">&#10095;</button>
+          </div>
+      
+          <!-- Thumbnails -->
+          <div id="thumbnailContainer" class="flex flex-wrap justify-center gap-2"></div>
+        </div>
       </div>
-    </div>
+      
+  
+
   </section>
   
 
@@ -278,163 +318,253 @@
     <script>
     const floors = {
       1: { image: "../img/floor_plan/1.avif", hotspots: [
-          { top: "30%", left: "25%", name: "ER", images: [
+          { top: "40%", left: "53%", name: "PHARMACY", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp", 
+            "../img/facility/72ba70_2f2a6a7c21ae4fc59db98014537562db_mv2_d_4320_3240_s_4_2.webp"
+          ], descriptions: [
+            "Emergency Room: Immediate care for critical patients.",
+            "Room Rate: 1000.00" ]},
+          { top: "47%", left: "78%", name: "X-Ray", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Emergency Room: Immediate care for critical patients." },
-          { top: "50%", left: "50%", name: "X-Ray", images: [
+          ], descriptions: "X-Ray Department: Diagnostic imaging services." },
+          { top: "80%", left: "75%", name: "Laboratory", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "X-Ray Department: Diagnostic imaging services." },
-          { top: "65%", left: "70%", name: "Laboratory", images: [
+          ], descriptions: "X-Ray Department: Diagnostic imaging services." },
+          { top: "65%", left: "92%", name: "ER", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Laboratory: Blood tests, urinalysis, and more." },
+          ], descriptions: "Laboratory: Blood tests, urinalysis, and more." },
         ] },
       2: { image: "../img/floor_plan/2.avif", hotspots: [
-          { top: "40%", left: "35%", name: "ICU", images: [
+          { top: "37%", left: "4%", name: "224", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Intensive Care Unit for critical patients." },
-          { top: "60%", left: "55%", name: "NICU", images: [
+          ], descriptions: "Regular Private | Php2200.00" },
+          { top: "37%", left: "9.5%", name: "222", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Neonatal ICU for newborns needing special care." },
+          ], descriptions: "Intensive Care Unit for critical patients." },
+          { top: "37%", left: "14.5%", name: "220", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
+          ], descriptions: "Intensive Care Unit for critical patients." },
+          { top: "37%", left: "23%", name: "218", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
+          ], descriptions: "Intensive Care Unit for critical patients." },
+          { top: "37%", left: "32.5%", name: "216", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
+          ], descriptions: "Intensive Care Unit for critical patients." },
+          { top: "37%", left: "37%", name: "214", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
+          ], descriptions: "Intensive Care Unit for critical patients." },
+          { top: "37%", left: "41.5%", name: "211", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
+          ], descriptions: "Intensive Care Unit for critical patients." },
+          { top: "37%", left: "46%", name: "209", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
+          ], descriptions: "Intensive Care Unit for critical patients." },
+          { top: "37%", left: "53%", name: "EDP/IT", images: [
+            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
+          ], descriptions: "SERVER!!!!!." },
         ] },
       3: { image: "../img/floor_plan/3.avif", hotspots: [
           { top: "45%", left: "40%", name: "OR", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Operating Room for surgeries." },
+          ], descriptions: "Operating Room for surgeries." },
           { top: "65%", left: "60%", name: "Recovery Room", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Post-surgery patient recovery area." },
+          ], descriptions: "Post-surgery patient recovery area." },
         ] },
       4: { image: "../img/floor_plan/4.avif", hotspots: [
           { top: "35%", left: "45%", name: "Private Rooms", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Private patient rooms for in-patient care." },
+          ], descriptions: "Private patient rooms for in-patient care." },
         ] },
       5: { image: "../img/floor_plan/5.avif", hotspots: [
           { top: "50%", left: "50%", name: "Suite Room", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Luxurious suite for VIP patients." },
+          ], descriptions: "Luxurious suite for VIP patients." },
         ] },
       6: { image: "../img/floor_plan/6.avif", hotspots: [
           { top: "40%", left: "60%", name: "Board of Directors Office", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
-          ], description: "Administrative board meeting office." },
+          ], descriptions: "Administrative board meeting office." },
         ] }
     };
     
-    // DOM elements
-    const floorButtons = document.querySelectorAll('.floor-btn');
-    const floorContainer = document.getElementById('floorContainer');
-    const modal = document.getElementById('facilityModal');
-    const modalName = document.getElementById('modalName');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalImages = document.getElementById('modalImages');
-    const closeModal = document.getElementById('closeModal');
-    let activeFloor = 1; // Default active floor
-    
-    // Fade-in animation helper
-    function fadeIn(element) {
-      element.style.opacity = 0;
-      element.style.transition = 'opacity 0.4s ease';
-      requestAnimationFrame(() => {
-        element.style.opacity = 1;
-      });
-    }
-    
-    // Load floor dynamically
-    function loadFloor(floorNumber) {
-      const floor = floors[floorNumber];
-      floorContainer.innerHTML = '';
-    
-      const floorWrapper = document.createElement('div');
-      floorWrapper.className = 'relative w-full';
-    
-      const floorImg = document.createElement('img');
-      floorImg.src = floor.image;
-      floorImg.alt = `Floor ${floorNumber}`;
-      floorImg.className = 'w-full h-auto';
-      floorWrapper.appendChild(floorImg);
-      floorContainer.appendChild(floorWrapper);
-      fadeIn(floorWrapper);
-    
-      // Add hotspots
-      floor.hotspots.forEach((h) => {
-        const hotspot = document.createElement("div");
-        hotspot.className = "hotspot absolute w-6 h-6 bg-green-600 rounded-full cursor-pointer";
-        hotspot.style.top = h.top;
-        hotspot.style.left = h.left;
-        hotspot.innerHTML = `<span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded">${h.name}</span>`;
-        
-        hotspot.addEventListener("click", () => openModal(h));
-        floorWrapper.appendChild(hotspot);
-      });
-    
-      // Highlight active floor button
-      floorButtons.forEach(b => b.classList.remove('bg-green-600', 'text-white'));
-      document.querySelector(`.floor-btn[data-floor="${floorNumber}"]`).classList.add('bg-green-600', 'text-white');
-      activeFloor = floorNumber;
-    }
-    
-    // Open modal with room details
-    function openModal(hotspot) {
-      modalName.textContent = hotspot.name;
-      modalDesc.textContent = hotspot.description;
-      modalImages.innerHTML = '';
-    
-      hotspot.images.forEach(img => {
-        const imageEl = document.createElement('img');
-        imageEl.src = img;
-        imageEl.className = 'w-full rounded';
-        modalImages.appendChild(imageEl);
-      });
-    
-      modal.classList.remove('hidden');
-    }
-    
-    // Close modal
-    closeModal.addEventListener('click', () => modal.classList.add('hidden'));
-    
-    // Floor button events
-    floorButtons.forEach(btn => {
-      btn.addEventListener('click', () => loadFloor(btn.dataset.floor));
+   // DOM elements
+   const floorButtons = document.querySelectorAll('.floor-btn');
+  const floorContainer = document.getElementById('floorContainer');
+  const modal = document.getElementById('facilityModal');
+  const modalName = document.getElementById('modalName');
+  const modalDesc = document.getElementById('modalDesc');
+  const closeModal = document.getElementById('closeModal');
+  const currentImageEl = document.getElementById('currentImage');
+  const thumbnailContainer = document.getElementById('thumbnailContainer'); // NEW
+  let activeFloor = 1;
+  
+  // Slideshow variables
+  let currentImageIndex = 0;
+  let currentImages = [];
+  
+  // Fade-in animation helper
+  function fadeIn(element) {
+    element.style.opacity = 0;
+    element.style.transition = 'opacity 0.4s ease';
+    requestAnimationFrame(() => {
+      element.style.opacity = 1;
     });
-    
-    // Initialize
-    loadFloor(activeFloor);
-    
-    // Responsive scaling: Reload hotspots on window resize
-    window.addEventListener('resize', () => loadFloor(activeFloor));
-    </script>    
+  }
+  
+  // Load floor dynamically
+  function loadFloor(floorNumber) {
+    const floor = floors[floorNumber];
+    floorContainer.innerHTML = '';
+  
+    const floorWrapper = document.createElement('div');
+    floorWrapper.className = 'relative w-full';
+  
+    const floorImg = document.createElement('img');
+    floorImg.src = floor.image;
+    floorImg.alt = `Floor ${floorNumber}`;
+    floorImg.className = 'w-full h-auto';
+    floorWrapper.appendChild(floorImg);
+    floorContainer.appendChild(floorWrapper);
+    fadeIn(floorWrapper);
+  
+    // Add hotspots
+    floor.hotspots.forEach((h) => {
+      const hotspot = document.createElement("div");
+      hotspot.className = "hotspot absolute w-6 h-6 bg-green-600 rounded-full cursor-pointer";
+      hotspot.style.top = h.top;
+      hotspot.style.left = h.left;
+      hotspot.innerHTML = `<span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded">${h.name}</span>`;
+      
+      hotspot.addEventListener("click", () => openModal(h));
+      floorWrapper.appendChild(hotspot);
+    });
+  
+    // Highlight active floor button
+    floorButtons.forEach(b => b.classList.remove('bg-green-600', 'text-white'));
+    document.querySelector(`.floor-btn[data-floor="${floorNumber}"]`).classList.add('bg-green-600', 'text-white');
+    activeFloor = floorNumber;
+  }
+  
+  // Open modal with room details
+  function openModal(hotspot) {
+    modalName.textContent = hotspot.name;
 
-<script>
-    // --- SWIPE NAVIGATION FOR MOBILE ---
-let touchStartX = 0;
-let touchEndX = 0;
-
-floorContainer.addEventListener('touchstart', (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-});
-
-floorContainer.addEventListener('touchend', (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-});
-
-function handleSwipe() {
-  const swipeThreshold = 50; // Min distance for swipe
-  if (touchEndX < touchStartX - swipeThreshold) {
-    // Swipe left: Next floor
-    if (activeFloor < Object.keys(floors).length) {
-      loadFloor(++activeFloor);
+    // Multiple descriptions
+    modalDesc.innerHTML = '';
+    if (Array.isArray(hotspot.descriptions)) {
+      hotspot.descriptions.forEach(desc => {
+        const p = document.createElement('p');
+        p.textContent = desc;
+        p.className = 'mb-2 text-gray-700';
+        modalDesc.appendChild(p);
+      });
+    } else {
+      modalDesc.textContent = hotspot.description || "";
     }
-  } 
-  if (touchEndX > touchStartX + swipeThreshold) {
-    // Swipe right: Previous floor
-    if (activeFloor > 1) {
-      loadFloor(--activeFloor);
+
+    // Setup image slideshow
+    currentImages = hotspot.images || [];
+    currentImageIndex = 0;
+    if (currentImages.length > 0) {
+      currentImageEl.src = currentImages[currentImageIndex];
+    }
+
+    // Generate thumbnails
+    generateThumbnails();
+
+    modal.classList.remove('hidden');
+  }
+
+  // Generate clickable thumbnails
+  function generateThumbnails() {
+    thumbnailContainer.innerHTML = '';
+    currentImages.forEach((img, index) => {
+      const thumb = document.createElement('img');
+      thumb.src = img;
+      thumb.className = `w-16 h-16 object-cover rounded cursor-pointer border ${index === currentImageIndex ? 'border-green-600' : 'border-gray-300'}`;
+      thumb.addEventListener('click', () => {
+        currentImageIndex = index;
+        updateImage();
+      });
+      thumbnailContainer.appendChild(thumb);
+    });
+  }
+
+  // Update main image and highlight selected thumbnail
+  function updateImage() {
+    currentImageEl.src = currentImages[currentImageIndex];
+    const thumbs = thumbnailContainer.querySelectorAll('img');
+    thumbs.forEach((thumb, idx) => {
+      thumb.classList.toggle('border-green-600', idx === currentImageIndex);
+      thumb.classList.toggle('border-gray-300', idx !== currentImageIndex);
+    });
+  }
+
+  // Close modal
+  closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+  
+  // Slideshow Functions
+  function showNextImage() {
+    if (currentImages.length > 0) {
+      currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+      updateImage();
     }
   }
-}
 
+  function showPrevImage() {
+    if (currentImages.length > 0) {
+      currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+      updateImage();
+    }
+  }
+
+  // Button events
+  document.getElementById('nextImage').addEventListener('click', showNextImage);
+  document.getElementById('prevImage').addEventListener('click', showPrevImage);
+
+  // Swipe gesture for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const modalImageWrapper = document.getElementById('modalImageWrapper');
+
+  modalImageWrapper.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  modalImageWrapper.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      showNextImage();
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      showPrevImage();
+    }
+  });
+
+  // Arrow keys for desktop
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('hidden')) {
+      if (e.key === 'ArrowRight') {
+        showNextImage();
+      } else if (e.key === 'ArrowLeft') {
+        showPrevImage();
+      } else if (e.key === 'Escape') {
+        modal.classList.add('hidden');
+      }
+    }
+  });
+
+  // Floor button events
+  floorButtons.forEach(btn => {
+    btn.addEventListener('click', () => loadFloor(btn.dataset.floor));
+  });
+
+  // Initialize
+  loadFloor(activeFloor);
+
+  // Responsive scaling: Reload hotspots on window resize
+  window.addEventListener('resize', () => loadFloor(activeFloor));
 </script>
   
   <!-- icons / css -->
