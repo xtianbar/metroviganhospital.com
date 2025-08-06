@@ -77,11 +77,10 @@
     .hotspot {
     position: absolute;
     transform: translate(-50%, -50%);
-    opacity: 0.5;
   }
+  
   .tooltip {
     visibility: hidden;
-    opacity: 0;
     transition: opacity 0.2s;
     white-space: nowrap;
   }
@@ -107,6 +106,76 @@
 }
 #prevImage:hover, #nextImage:hover {
   background: rgba(0,0,0,0.7);
+}
+
+/* Responsive scaling */
+.circle-pulse {
+  font-size: clamp(20px, 4vw, 36px); /* min 20px, scales with viewport, max 36px */
+  animation: pulse 1.5s infinite;
+  text-shadow: 0 0 6px rgba(22, 163, 74, 0.6); /* subtle glow */
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Pulsing circle */
+.circle-pulse {
+  font-size: clamp(20px, 4vw, 36px);
+  color: #16a34a;
+  line-height: 1;
+  animation: pulse 1.5s infinite;
+  text-shadow: 0 0 6px rgba(22, 163, 74, 0.6);
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Tooltip styling */
+.circle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circle-tooltip {
+  position: absolute;
+  bottom: 100%; /* Default: above */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 4px 8px;
+  font-size: clamp(10px, 2.5vw, 12px);
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.circle-wrapper:hover .circle-tooltip {
+  opacity: 1;
+}
+
+/* Tooltip arrow */
+.circle-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
 }
 
   </style>
@@ -156,7 +225,7 @@
       <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-10 text-center" data-aos="fade-up" data-aos-delay="100">
         Our <span class="text-green-700">Facilities</span>
     </h2>
-    <p class="text-gray-800 p-4">Click the buttons or swipe the interactive map to move to a different floor</p>
+    <p class="text-gray-800 pt-4">Click the buttons or swipe the interactive map to move to a different floor</p>
   </div>
   
   <section class="py-16 bg-white overflow-x-hidden">
@@ -177,9 +246,15 @@
       <div id="floorContainer" class="relative w-full max-w-4xl mx-auto overflow-hidden">
         <!-- Floor image and hotspots are dynamically added here -->
       </div>
-      <div class="text-center italic font-small text-gray-500">
-        <p>Tap each section to reveal room details.</p>
-      </div>
+      <p class="text-center gap-2">
+        Tap the 
+        <span class="circle-wrapper relative">
+            <span class="circle-pulse cursor-default text-4xl md:text-5xl text-green-600 leading-tight">&#9679;</span>
+            <span class="circle-tooltip">Hotspot Symbol</span>
+        </span>
+        symbol on each section to reveal room details.
+      </p>
+      
     </div>
   
     <!-- Modal -->
@@ -428,17 +503,75 @@
     floorContainer.appendChild(floorWrapper);
     fadeIn(floorWrapper);
   
-    // Add hotspots
-    floor.hotspots.forEach((h) => {
-      const hotspot = document.createElement("div");
-      hotspot.className = "hotspot absolute w-6 h-6 bg-green-600 rounded-full cursor-pointer";
-      hotspot.style.top = h.top;
-      hotspot.style.left = h.left;
-      hotspot.innerHTML = `<span class="tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded">${h.name}</span>`;
-      
-      hotspot.addEventListener("click", () => openModal(h));
-      floorWrapper.appendChild(hotspot);
-    });
+// Add hotspots
+floor.hotspots.forEach((h) => {
+  const hotspot = document.createElement("div");
+  hotspot.className = "hotspot absolute rounded-full cursor-pointer";
+  
+  // Dynamic hotspot size & tooltip font based on viewport
+  const viewportWidth = window.innerWidth;
+  let hotspotSize, tooltipFont;
+
+  if (viewportWidth < 480) {
+    hotspotSize = 12;     // Mobile
+    tooltipFont = "10px";
+  } else if (viewportWidth < 768) {
+    hotspotSize = 16;     // Tablet
+    tooltipFont = "11px";
+  } else {
+    hotspotSize = 24;     // Desktop
+    tooltipFont = "12px";
+  }
+
+  // Apply hotspot styling
+  hotspot.style.width = `${hotspotSize}px`;
+  hotspot.style.height = `${hotspotSize}px`;
+  hotspot.style.backgroundColor = "rgba(22, 163, 74, 0.3)"; // green-600 with slight opacity
+  hotspot.style.top = h.top;
+  hotspot.style.left = h.left;
+
+  // Tooltip creation
+  const tooltip = document.createElement("span");
+  tooltip.className = "tooltip absolute bg-black text-white px-2 py-1 rounded whitespace-nowrap";
+  tooltip.style.fontSize = tooltipFont;
+  tooltip.style.opacity = "1"; // Fully opaque
+  tooltip.textContent = h.name;
+
+  // Default position (above center)
+  tooltip.style.top = `-150%`;
+  tooltip.style.left = `50%`;
+  tooltip.style.transform = `translateX(-50%)`;
+
+  hotspot.appendChild(tooltip);
+  floorWrapper.appendChild(hotspot);
+
+  // Auto-position tooltip after rendering
+  requestAnimationFrame(() => {
+    const rect = tooltip.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+
+    // Flip below if too close to top
+    if (rect.top < 10) {
+      tooltip.style.top = `150%`; // move below
+    }
+
+    // Shift right if overflowing left edge
+    if (rect.left < 0) {
+      tooltip.style.left = `0`;
+      tooltip.style.transform = `translateX(0)`;
+    }
+
+    // Shift left if overflowing right edge
+    if (rect.right > viewportWidth) {
+      tooltip.style.left = `100%`;
+      tooltip.style.transform = `translateX(-100%)`;
+    }
+  });
+
+  // Click event for modal
+  hotspot.addEventListener("click", () => openModal(h));
+});
+
   
     // Highlight active floor button
     floorButtons.forEach(b => b.classList.remove('bg-green-600', 'text-white'));
@@ -563,10 +696,57 @@
   // Initialize
   loadFloor(activeFloor);
 
-  // Responsive scaling: Reload hotspots on window resize
-  window.addEventListener('resize', () => loadFloor(activeFloor));
+// Recalculate hotspot sizes dynamically on resize
+window.addEventListener('resize', () => {
+  loadFloor(activeFloor); // reload floor and reapply hotspot scaling
+});
 </script>
   
+
+<script>
+    const circleWrapper = document.querySelector(".circle-wrapper");
+    const circleTooltip = document.querySelector(".circle-tooltip");
+    
+    circleWrapper.addEventListener("mouseenter", () => {
+      requestAnimationFrame(() => {
+        const rect = circleTooltip.getBoundingClientRect();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+    
+        // Reset to default (above)
+        circleTooltip.style.bottom = "100%";
+        circleTooltip.style.top = "auto";
+        circleTooltip.style.left = "50%";
+        circleTooltip.style.transform = "translateX(-50%)";
+        circleTooltip.style.right = "auto";
+        circleTooltip.style.whiteSpace = "nowrap";
+        circleTooltip.style.maxWidth = "none";
+        circleTooltip.style.textAlign = "center";
+    
+        // Flip below if too close to top
+        if (rect.top < 10) {
+          circleTooltip.style.top = "100%";
+          circleTooltip.style.bottom = "auto";
+          circleTooltip.style.transform = "translateX(-50%)";
+        }
+    
+        // Shift right if overflowing left
+        if (rect.left < 0) {
+          circleTooltip.style.left = "0";
+          circleTooltip.style.transform = "translateX(0)";
+        }
+    
+        // Shift left if overflowing right
+        if (rect.right > vw) {
+          circleTooltip.style.left = "auto";
+          circleTooltip.style.right = "0";
+          circleTooltip.style.transform = "translateX(0)";
+        }
+      });
+    });
+    </script>
+
+
   <!-- icons / css -->
 <script>
   const toggleBtn = document.getElementById('menu-toggle');
