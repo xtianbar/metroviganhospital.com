@@ -231,7 +231,7 @@
   <section class="py-16 bg-white overflow-x-hidden">
 
 
-    <div class="container mx-auto px-4 overflow-x-hidden">
+    <div class="container mx-auto px-4 overflow-hidden">
       <!-- Floor Selector -->
       <div class="flex justify-center space-x-2 mb-6">
         <button class="floor-btn px-4 py-2 border rounded bg-green-600 text-white" data-floor="1">GF</button>
@@ -463,243 +463,219 @@
         ] }
     };
     
-   // DOM elements
-   const floorButtons = document.querySelectorAll('.floor-btn');
-  const floorContainer = document.getElementById('floorContainer');
-  const modal = document.getElementById('facilityModal');
-  const modalName = document.getElementById('modalName');
-  const modalDesc = document.getElementById('modalDesc');
-  const closeModal = document.getElementById('closeModal');
-  const currentImageEl = document.getElementById('currentImage');
-  const thumbnailContainer = document.getElementById('thumbnailContainer'); // NEW
-  let activeFloor = 1;
-  
-  // Slideshow variables
-  let currentImageIndex = 0;
-  let currentImages = [];
-  
-  // Fade-in animation helper
-  function fadeIn(element) {
-    element.style.opacity = 0;
-    element.style.transition = 'opacity 0.4s ease';
-    requestAnimationFrame(() => {
-      element.style.opacity = 1;
-    });
-  }
-  
-  // Load floor dynamically
-  function loadFloor(floorNumber) {
-    const floor = floors[floorNumber];
-    floorContainer.innerHTML = '';
-  
-    const floorWrapper = document.createElement('div');
-    floorWrapper.className = 'relative w-full';
-  
-    const floorImg = document.createElement('img');
-    floorImg.src = floor.image;
-    floorImg.alt = `Floor ${floorNumber}`;
-    floorImg.className = 'w-full h-auto';
-    floorWrapper.appendChild(floorImg);
-    floorContainer.appendChild(floorWrapper);
-    fadeIn(floorWrapper);
-  
-// Add hotspots
-floor.hotspots.forEach((h) => {
+// DOM elements
+const floorButtons = document.querySelectorAll('.floor-btn');
+const floorContainer = document.getElementById('floorContainer');
+const modal = document.getElementById('facilityModal');
+const modalName = document.getElementById('modalName');
+const modalDesc = document.getElementById('modalDesc');
+const closeModal = document.getElementById('closeModal');
+const currentImageEl = document.getElementById('currentImage');
+const thumbnailContainer = document.getElementById('thumbnailContainer');
+
+let activeFloor = 1;
+let currentImageIndex = 0;
+let currentImages = [];
+
+// Fade-in helper
+function fadeIn(element) {
+  element.style.opacity = 0;
+  element.style.transition = 'opacity 0.4s ease';
+  requestAnimationFrame(() => {
+    element.style.opacity = 1;
+  });
+}
+
+// Load floor dynamically
+function loadFloor(floorNumber) {
+  const floor = floors[floorNumber];
+  floorContainer.innerHTML = '';
+
+  const floorWrapper = document.createElement('div');
+  floorWrapper.className = 'relative w-full';
+
+  const floorImg = document.createElement('img');
+  floorImg.src = floor.image;
+  floorImg.alt = `Floor ${floorNumber}`;
+  floorImg.className = 'w-full h-auto';
+  floorWrapper.appendChild(floorImg);
+  floorContainer.appendChild(floorWrapper);
+  fadeIn(floorWrapper);
+
+  // Add hotspots
+  floor.hotspots.forEach((h) => createHotspot(h, floorWrapper));
+
+  // Update button highlight
+  floorButtons.forEach(b => b.classList.remove('bg-green-600', 'text-white'));
+  document.querySelector(`.floor-btn[data-floor="${floorNumber}"]`).classList.add('bg-green-600', 'text-white');
+  activeFloor = parseInt(floorNumber);
+}
+
+// Create hotspot with responsive tooltip
+function createHotspot(h, wrapper) {
   const hotspot = document.createElement("div");
   hotspot.className = "hotspot absolute rounded-full cursor-pointer";
-  
-  // Dynamic hotspot size & tooltip font based on viewport
+
   const viewportWidth = window.innerWidth;
   let hotspotSize, tooltipFont;
 
   if (viewportWidth < 480) {
-    hotspotSize = 12;     // Mobile
-    tooltipFont = "10px";
+    hotspotSize = 12; tooltipFont = "10px";
   } else if (viewportWidth < 768) {
-    hotspotSize = 16;     // Tablet
-    tooltipFont = "11px";
+    hotspotSize = 16; tooltipFont = "11px";
   } else {
-    hotspotSize = 24;     // Desktop
-    tooltipFont = "12px";
+    hotspotSize = 24; tooltipFont = "12px";
   }
 
-  // Apply hotspot styling
   hotspot.style.width = `${hotspotSize}px`;
   hotspot.style.height = `${hotspotSize}px`;
-  hotspot.style.backgroundColor = "rgba(22, 163, 74, 0.3)"; // green-600 with slight opacity
+  hotspot.style.backgroundColor = "rgba(22, 163, 74, 0.5)";
   hotspot.style.top = h.top;
   hotspot.style.left = h.left;
 
-  // Tooltip creation
   const tooltip = document.createElement("span");
   tooltip.className = "tooltip absolute bg-black text-white px-2 py-1 rounded whitespace-nowrap";
   tooltip.style.fontSize = tooltipFont;
-  tooltip.style.opacity = "1"; // Fully opaque
+  tooltip.style.opacity = "1";
   tooltip.textContent = h.name;
-
-  // Default position (above center)
   tooltip.style.top = `-150%`;
   tooltip.style.left = `50%`;
   tooltip.style.transform = `translateX(-50%)`;
 
   hotspot.appendChild(tooltip);
-  floorWrapper.appendChild(hotspot);
+  wrapper.appendChild(hotspot);
 
-  // Auto-position tooltip after rendering
-  requestAnimationFrame(() => {
-    const rect = tooltip.getBoundingClientRect();
-    const viewportWidth = window.innerWidth;
-
-    // Flip below if too close to top
-    if (rect.top < 10) {
-      tooltip.style.top = `150%`; // move below
-    }
-
-    // Shift right if overflowing left edge
-    if (rect.left < 0) {
-      tooltip.style.left = `0`;
-      tooltip.style.transform = `translateX(0)`;
-    }
-
-    // Shift left if overflowing right edge
-    if (rect.right > viewportWidth) {
-      tooltip.style.left = `100%`;
-      tooltip.style.transform = `translateX(-100%)`;
-    }
-  });
-
-  // Click event for modal
+  requestAnimationFrame(() => adjustTooltip(tooltip));
   hotspot.addEventListener("click", () => openModal(h));
+}
+
+function adjustTooltip(tooltip) {
+  const rect = tooltip.getBoundingClientRect();
+  const viewportWidth = window.innerWidth;
+
+  if (rect.top < 10) tooltip.style.top = `150%`;
+  if (rect.left < 0) {
+    tooltip.style.left = `0`;
+    tooltip.style.transform = `translateX(0)`;
+  }
+  if (rect.right > viewportWidth) {
+    tooltip.style.left = `100%`;
+    tooltip.style.transform = `translateX(-100%)`;
+  }
+}
+
+// Modal handling
+function openModal(hotspot) {
+  modalName.textContent = hotspot.name;
+  modalDesc.innerHTML = '';
+
+  if (Array.isArray(hotspot.descriptions)) {
+    hotspot.descriptions.forEach(desc => {
+      const p = document.createElement('p');
+      p.textContent = desc;
+      p.className = 'mb-2 text-gray-700';
+      modalDesc.appendChild(p);
+    });
+  } else {
+    modalDesc.textContent = hotspot.descriptions || "";
+  }
+
+  currentImages = hotspot.images || [];
+  currentImageIndex = 0;
+  if (currentImages.length > 0) currentImageEl.src = currentImages[currentImageIndex];
+
+  generateThumbnails();
+  modal.classList.remove('hidden');
+}
+
+function generateThumbnails() {
+  thumbnailContainer.innerHTML = '';
+  currentImages.forEach((img, index) => {
+    const thumb = document.createElement('img');
+    thumb.src = img;
+    thumb.className = `w-16 h-16 object-cover rounded cursor-pointer border ${index === currentImageIndex ? 'border-green-600' : 'border-gray-300'}`;
+    thumb.addEventListener('click', () => {
+      currentImageIndex = index;
+      updateImage();
+    });
+    thumbnailContainer.appendChild(thumb);
+  });
+}
+
+function updateImage() {
+  currentImageEl.src = currentImages[currentImageIndex];
+  const thumbs = thumbnailContainer.querySelectorAll('img');
+  thumbs.forEach((thumb, idx) => {
+    thumb.classList.toggle('border-green-600', idx === currentImageIndex);
+    thumb.classList.toggle('border-gray-300', idx !== currentImageIndex);
+  });
+}
+
+closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+
+// Image slideshow buttons
+document.getElementById('nextImage').addEventListener('click', () => showNextImage());
+document.getElementById('prevImage').addEventListener('click', () => showPrevImage());
+
+function showNextImage() {
+  if (currentImages.length > 0) {
+    currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+    updateImage();
+  }
+}
+
+function showPrevImage() {
+  if (currentImages.length > 0) {
+    currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+    updateImage();
+  }
+}
+
+// Modal swipe for images
+const modalImageWrapper = document.getElementById('modalImageWrapper');
+let touchStartX = 0, touchEndX = 0;
+
+modalImageWrapper.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+modalImageWrapper.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  if (touchEndX < touchStartX - 50) showNextImage();
+  else if (touchEndX > touchStartX + 50) showPrevImage();
 });
 
-  
-    // Highlight active floor button
-    floorButtons.forEach(b => b.classList.remove('bg-green-600', 'text-white'));
-    document.querySelector(`.floor-btn[data-floor="${floorNumber}"]`).classList.add('bg-green-600', 'text-white');
-    activeFloor = floorNumber;
+// Floor swipe navigation
+let floorTouchStartX = 0, floorTouchEndX = 0;
+floorContainer.addEventListener('touchstart', e => floorTouchStartX = e.changedTouches[0].screenX);
+floorContainer.addEventListener('touchend', e => {
+  floorTouchEndX = e.changedTouches[0].screenX;
+  const swipeThreshold = 50;
+  if (floorTouchEndX < floorTouchStartX - swipeThreshold && activeFloor < Object.keys(floors).length) {
+    loadFloor(activeFloor + 1); // Swipe left → Next floor
+  } 
+  else if (floorTouchEndX > floorTouchStartX + swipeThreshold && activeFloor > 1) {
+    loadFloor(activeFloor - 1); // Swipe right → Previous floor
   }
-  
-  // Open modal with room details
-  function openModal(hotspot) {
-    modalName.textContent = hotspot.name;
-
-    // Multiple descriptions
-    modalDesc.innerHTML = '';
-    if (Array.isArray(hotspot.descriptions)) {
-      hotspot.descriptions.forEach(desc => {
-        const p = document.createElement('p');
-        p.textContent = desc;
-        p.className = 'mb-2 text-gray-700';
-        modalDesc.appendChild(p);
-      });
-    } else {
-      modalDesc.textContent = hotspot.description || "";
-    }
-
-    // Setup image slideshow
-    currentImages = hotspot.images || [];
-    currentImageIndex = 0;
-    if (currentImages.length > 0) {
-      currentImageEl.src = currentImages[currentImageIndex];
-    }
-
-    // Generate thumbnails
-    generateThumbnails();
-
-    modal.classList.remove('hidden');
-  }
-
-  // Generate clickable thumbnails
-  function generateThumbnails() {
-    thumbnailContainer.innerHTML = '';
-    currentImages.forEach((img, index) => {
-      const thumb = document.createElement('img');
-      thumb.src = img;
-      thumb.className = `w-16 h-16 object-cover rounded cursor-pointer border ${index === currentImageIndex ? 'border-green-600' : 'border-gray-300'}`;
-      thumb.addEventListener('click', () => {
-        currentImageIndex = index;
-        updateImage();
-      });
-      thumbnailContainer.appendChild(thumb);
-    });
-  }
-
-  // Update main image and highlight selected thumbnail
-  function updateImage() {
-    currentImageEl.src = currentImages[currentImageIndex];
-    const thumbs = thumbnailContainer.querySelectorAll('img');
-    thumbs.forEach((thumb, idx) => {
-      thumb.classList.toggle('border-green-600', idx === currentImageIndex);
-      thumb.classList.toggle('border-gray-300', idx !== currentImageIndex);
-    });
-  }
-
-  // Close modal
-  closeModal.addEventListener('click', () => modal.classList.add('hidden'));
-  
-  // Slideshow Functions
-  function showNextImage() {
-    if (currentImages.length > 0) {
-      currentImageIndex = (currentImageIndex + 1) % currentImages.length;
-      updateImage();
-    }
-  }
-
-  function showPrevImage() {
-    if (currentImages.length > 0) {
-      currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
-      updateImage();
-    }
-  }
-
-  // Button events
-  document.getElementById('nextImage').addEventListener('click', showNextImage);
-  document.getElementById('prevImage').addEventListener('click', showPrevImage);
-
-  // Swipe gesture for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-  const modalImageWrapper = document.getElementById('modalImageWrapper');
-
-  modalImageWrapper.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  modalImageWrapper.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    const swipeThreshold = 50;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      showNextImage();
-    } else if (touchEndX > touchStartX + swipeThreshold) {
-      showPrevImage();
-    }
-  });
-
-  // Arrow keys for desktop
-  document.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('hidden')) {
-      if (e.key === 'ArrowRight') {
-        showNextImage();
-      } else if (e.key === 'ArrowLeft') {
-        showPrevImage();
-      } else if (e.key === 'Escape') {
-        modal.classList.add('hidden');
-      }
-    }
-  });
-
-  // Floor button events
-  floorButtons.forEach(btn => {
-    btn.addEventListener('click', () => loadFloor(btn.dataset.floor));
-  });
-
-  // Initialize
-  loadFloor(activeFloor);
-
-// Recalculate hotspot sizes dynamically on resize
-window.addEventListener('resize', () => {
-  loadFloor(activeFloor); // reload floor and reapply hotspot scaling
 });
+
+// Keyboard navigation (optional)
+document.addEventListener('keydown', (e) => {
+  if (!modal.classList.contains('hidden')) {
+    if (e.key === 'ArrowRight') showNextImage();
+    if (e.key === 'ArrowLeft') showPrevImage();
+    if (e.key === 'Escape') modal.classList.add('hidden');
+  } else {
+    if (e.key === 'ArrowUp' && activeFloor < Object.keys(floors).length) loadFloor(activeFloor + 1);
+    if (e.key === 'ArrowDown' && activeFloor > 1) loadFloor(activeFloor - 1);
+  }
+});
+
+// Floor buttons
+floorButtons.forEach(btn => btn.addEventListener('click', () => loadFloor(btn.dataset.floor)));
+
+// Initialize default floor
+loadFloor(activeFloor);
+
+// Recalculate hotspots on resize
+window.addEventListener('resize', () => loadFloor(activeFloor));
 </script>
   
 
