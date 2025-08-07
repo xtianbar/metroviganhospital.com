@@ -225,7 +225,8 @@
       <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-10 text-center" data-aos="fade-up" data-aos-delay="100">
         Our <span class="text-green-700">Facilities</span>
     </h2>
-    <p class="text-gray-800 pt-4">Click the buttons or swipe the interactive map to move to a different floor</p>
+    <p class="hidden xl:inline text-gray-800 pt-4 px-6 text-center">Click the buttons to move to a different floor</p>
+    <p class="flex xl:hidden text-gray-800 pt-4 px-6 text-center justify-center">Click the buttons or swipe the interactive map to move to a different floor</p>
   </div>
   
   <section class="py-16 bg-white overflow-x-hidden">
@@ -233,7 +234,7 @@
 
     <div class="container mx-auto px-4 overflow-hidden">
       <!-- Floor Selector -->
-      <div class="flex justify-center space-x-2 mb-6">
+      <div class="flex justify-center space-x-2 mb-2">
         <button class="floor-btn px-4 py-2 border rounded bg-green-600 text-white" data-floor="1">GF</button>
         <button class="floor-btn px-4 py-2 border rounded" data-floor="2">2F</button>
         <button class="floor-btn px-4 py-2 border rounded" data-floor="3">3F</button>
@@ -394,11 +395,11 @@
     const floors = {
       1: { image: "../img/floor_plan/1.avif", hotspots: [
           { top: "40%", left: "53%", name: "PHARMACY", images: [
-            "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp", 
-            "../img/facility/72ba70_2f2a6a7c21ae4fc59db98014537562db_mv2_d_4320_3240_s_4_2.webp"
+            "../img/facility/pharmacy.JPG", 
+            "../img/facility/pharmacy-2.JPG"
           ], descriptions: [
-            "Emergency Room: Immediate care for critical patients.",
-            "Room Rate: 1000.00" ]},
+            "Pharmacy: Dispensing medications and health products."
+            ] },
           { top: "47%", left: "78%", name: "X-Ray", images: [
             "../img/facility/72ba70_e5c14dfc5ea64ea8b2c0d360a5cd3868_mv2_d_3141_2303_s_2.webp"
           ], descriptions: "X-Ray Department: Diagnostic imaging services." },
@@ -587,6 +588,46 @@ function openModal(hotspot) {
   generateThumbnails();
   modal.classList.remove('hidden');
 }
+
+// Swipe to close modal on mobile
+let touchStartY = 0;
+let touchEndY = 0;
+
+// Close modal when tapping the background (click or tap)
+modal.addEventListener('click', (e) => {
+  // Only close if the background (not modal content) is clicked
+  if (e.target === modal) {
+    modal.classList.add('hidden');
+  }
+});
+
+// Swipe to close modal (up or down)
+modal.addEventListener('touchstart', (e) => {
+  if (e.target !== modal) return; // only swipe on background
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+modal.addEventListener('touchend', (e) => {
+  if (e.target !== modal) return; // only swipe on background
+  touchEndY = e.changedTouches[0].screenY;
+  handleSwipeGesture();
+});
+
+function handleSwipeGesture() {
+  const swipeDistance = touchEndY - touchStartY;
+
+  // Close only if swipe distance is significant (50px up/down)
+  if (Math.abs(swipeDistance) > 50) {
+    modal.classList.add('hidden');
+  }
+}
+
+// Close modal when clicking/tapping the background
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.add('hidden');
+  }
+});
 
 function generateThumbnails() {
   thumbnailContainer.innerHTML = '';
