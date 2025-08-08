@@ -155,9 +155,9 @@
         <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
           <li><a href="" class="block py-2 font-bold hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b] decoration-[#04813b] underline underline-offset-[0.425rem]">Home</a></li>
           <li><a href="#services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Services</a></li>
-          <li><a href="src/pages/facilities.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Facilities</a></li>
-          <li><a href="src/pages/doctors.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Doctors</a></li>
-          <li><a href="src/pages/about-us.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">About Us</a></li>
+          <li><a href="facilities.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Facilities</a></li>
+          <li><a href="doctors.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Doctors</a></li>
+          <li><a href="about-us.html" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">About Us</a></li>
           <li>
             <a href="#contact" class="block w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">Contact Us</a>
           </li>
@@ -184,7 +184,7 @@
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-800">
         <a href="" class="hover:text-[#04813b]">Home</a>
         <a href="#services" class="hover:text-[#04813b]">Services</a>
-        <a href="src/pages/facilities.html" class="hover:text-[#04813b]">Facilities</a>
+        <a href="/facilities.html" class="hover:text-[#04813b]">Facilities</a>
         <a href="#doctors" class="hover:text-[#04813b]">Doctors</a>
         <a href="#about" class="hover:text-[#04813b]">About Us</a>
       </nav>
@@ -209,7 +209,7 @@
   <nav id="mobile-menu" class="hidden flex-col bg-white/95 shadow-md backdrop-blur px-6 py-4 md:hidden">
     <a href="" class="py-2 border-b hover:text-[#04813b] transition">Home</a>
     <a href="#services" class="py-2 border-b hover:text-[#04813b] transition">Services</a>
-    <a href="src/pages/facilities.html" class="py-2 border-b hover:text-[#04813b] transition">Facilities</a>
+    <a href="/facilities.html" class="py-2 border-b hover:text-[#04813b] transition">Facilities</a>
     <a href="#doctors" class="py-2 border-b hover:text-[#04813b] transition">Doctors</a>
     <a href="#about" class="py-2 border-b hover:text-[#04813b] transition">About Us</a>
     <button class="mt-4 bg-[#16a94c] text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-[#04813b] w-full">
@@ -1052,7 +1052,7 @@
       
       <!-- See More Button -->
     <div class="mt-10">
-      <a href="src/pages/doctors.html" class="inline-block px-6 py-3 bg-[#04813b] text-white text-lg font-medium rounded-lg shadow hover:bg-green-800 transition duration-300">
+      <a href="/doctors.html" class="inline-block px-6 py-3 bg-[#04813b] text-white text-lg font-medium rounded-lg shadow hover:bg-green-800 transition duration-300">
         See More Doctors
       </a>
     </div>
@@ -1150,7 +1150,7 @@
 </section>
 
 <!-- CONTACT US -->    
-<section class="py-16 bg-gray-50">
+<section id="contact" class="py-16 bg-gray-50">
   <div class="max-w-7xl mx-auto px-6 md:px-12">
     <!-- Accreditation Row -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center items-center mb-16" data-aos="fade-up" data-aos-delay="100">
@@ -1193,32 +1193,41 @@
 
       <!-- Right: Contact Us Form -->
       <div data-aos="fade-right" data-aos-delay="200">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Contact Us</h2>
-        <p class="text-gray-600 mb-6">
-          Have questions or need assistance? Send us a message, and our team will respond as soon as possible.
-        </p>
-        <form action="#" method="POST" class="space-y-4">
-          <div>
-            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-            <input type="text" id="name" name="name" required 
-                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-            <input type="email" id="email" name="email" required 
-                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-            <textarea id="message" name="message" rows="4" required 
-                      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"></textarea>
-          </div>
-          <button type="submit" 
-                  class="w-full hover:bg-[#16a94c] text-white font-medium py-2 px-4 rounded-md bg-[#04813b] transition">
-            Send Message
-          </button>
-        </form>
-      </div>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">Contact Us</h2>
+  <p class="text-gray-600 mb-6">
+    Have questions or need assistance? Send us a message, and our team will respond as soon as possible.
+  </p>
+
+  <!-- ✅ Replace the action URL with your Formspree endpoint -->
+  <form action="https://formspree.io/f/xnnzoyqq" method="POST" class="space-y-4">
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+      <input type="text" id="name" name="name" required 
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+      <input type="email" id="email" name="email" required 
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+      <textarea id="message" name="message" rows="4" required 
+                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"></textarea>
+    </div>
+
+    <!-- Optional: Add a hidden input to redirect after submission -->
+    <input type="hidden" name="_redirect" value="https://metroviganhospital.com/thank-you" />
+
+    <button type="submit" 
+            class="w-full hover:bg-[#16a94c] text-white font-medium py-2 px-4 rounded-md bg-[#04813b] transition">
+      Send Message
+    </button>
+  </form>
+</div>
+
     </div>
   </div>
 </section>
@@ -1309,10 +1318,10 @@
         <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
         <ul class="space-y-2 text-gray-600 text-sm">
           <li><a href="#services" class="hover:text-[#04813b] transition">Our Services</a></li>
-          <li><a href="src/pages/facilities.html" class="hover:text-[#04813b] transition">Our Facilities</a></li>
-          <li><a href="src/pages/doctors.html" class="hover:text-[#04813b] transition">Our Doctors</a></li>
-          <li><a href="src/pages/about-us.html" class="hover:text-[#04813b] transition">About Us</a></li>
-          <li><a href="src/pages/careers.html" class="hover:text-[#04813b] transition">Careers</a></li>
+          <li><a href="facilities.html" class="hover:text-[#04813b] transition">Our Facilities</a></li>
+          <li><a href="doctors.html" class="hover:text-[#04813b] transition">Our Doctors</a></li>
+          <li><a href="about-us.html" class="hover:text-[#04813b] transition">About Us</a></li>
+          <li><a href="careers.html" class="hover:text-[#04813b] transition">Careers</a></li>
         </ul>
       </div>
 
@@ -1384,8 +1393,8 @@
 <span class="p-2 text-[0.5rem] opacity-80 flex flex-wrap items-center gap-1 justify-center">website created and maintained by <a href="https://xtianbar.vercel.app/" target="_blank"><img src="src/img/logo/xtianbar-logo.avif" alt="Metro Vigan Hospital Logo" class="h-2 w-auto"></a></span>
         <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
         <div class="space-x-4 mt-2 md:mt-0">
-          <a href="src/pages/privacy-policy.html" class="hover:text-[#04813b] transition">Privacy Policy</a>
-          <a href="src/pages/terms-of-service.html" class="hover:text-[#04813b] transition">Terms of Service</a>
+          <a href="privacy-policy.html" class="hover:text-[#04813b] transition">Privacy Policy</a>
+          <a href="terms-of-service.html" class="hover:text-[#04813b] transition">Terms of Service</a>
         </div>
       </div>
     </div>
