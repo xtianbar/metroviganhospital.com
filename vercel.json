@@ -2,7 +2,7 @@
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/about", "destination": "/about.html" },
+    { "source": "/about", "destination": "/about-us.html" },
     { "source": "/services", "destination": "/services.html" },
     { "source": "/thank-you", "destination": "/thank-you.html" },
     { "source": "/doctors", "destination": "/doctors.html" },
