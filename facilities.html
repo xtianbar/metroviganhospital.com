@@ -154,7 +154,7 @@
       <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
         <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
           <li><a href="/" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Home</a></li>
-          <li><a href="#services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Services</a></li>
+          <li><a href="/services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Services</a></li>
           <li><a href="/facilities" class="block py-2 font-bold hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700 decoration-green-700 underline underline-offset-[0.425rem]">Facilities</a></li>
           <li><a href="/doctors" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Doctors</a></li>
           <li><a href="/about-us" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">About Us</a></li>
@@ -255,7 +255,7 @@
       <div>
         <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
         <ul class="space-y-2 text-gray-600 text-sm">
-          <li><a href="#services" class="hover:text-green-600 transition">Our Services</a></li>
+          <li><a href="/services" class="hover:text-green-600 transition">Our Services</a></li>
           <li><a href="/facilities" class="hover:text-green-600 transition">Our Facilities</a></li>
           <li><a href="/doctors" class="hover:text-green-600 transition">Our Doctors</a></li>
           <li><a href="/about-us" class="hover:text-green-600 transition">About Us</a></li>
@@ -340,22 +340,24 @@
   
     <script>
     const floors = {
-      1: { image: "src/img/floor_plan/1.avif", hotspots: [
+      1: { image: "../img/floor_plan/1.avif", hotspots: [
           { top: "40%", left: "53%", name: "PHARMACY", images: [
-            "src/img/facility/pharmacy.JPG", 
-            "src/img/facility/pharmacy-2.JPG"
+            "../img/facility/pharmacy.JPG", 
+            "../img/facility/pharmacy-2.JPG"
           ], descriptions: [
             "Pharmacy: Dispensing medications and health products."
             ] },
           { top: "47%", left: "78%", name: "X-Ray", images: [
-            "src/img/facility/or.webp"
+            "../img/facility/or.webp"
           ], descriptions: "X-Ray Department: Diagnostic imaging services." },
           { top: "80%", left: "75%", name: "Laboratory", images: [
-            "src/img/facility/lab_1.webp", "src/img/facility/lab_2.webp"
-          ], descriptions: "X-Ray Department: Diagnostic imaging services." },
+            "../img/facility/lab_1.webp", 
+            "../img/facility/lab_2.webp"
+          ], descriptions: "These laboratories analyze patient samples like blood, urine, and tissue to help doctors diagnose, treat, and monitor diseases. They are equipped with advanced technology and staffed by skilled professionals who perform a wide range of tests." },
           { top: "65%", left: "92%", name: "ER", images: [
-            "src/img/facility/er.webp"
-          ], descriptions: "Laboratory: Blood tests, urinalysis, and more." },
+            "../img/facility/er.webp",
+            "../img/facility/er_2.webp",
+          ], descriptions: "The Emergency Room (ER), also known as the Emergency Department (ED) or Accident and Emergency (A&E), is a critical component of a hospital, providing immediate medical care to patients with urgent or life-threatening conditions. It is the first point of contact for individuals experiencing illnesses or injuries requiring prompt attention, often serving as a vital access point for those in crisis. " },
         ] },
       2: { image: "src/img/floor_plan/2.avif", hotspots: [
           { top: "37%", left: "4%", name: "224", images: [
