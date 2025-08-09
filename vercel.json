@@ -9,6 +9,7 @@
     { "source": "/facilities", "destination": "/facilities.html" },
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
     { "source": "/terms-of-service", "destination": "/terms-of-service.html" },
-    { "source": "/#contact", "destination": "/index.html#contact"}
+    { "source": "/#contact", "destination": "/index.html#contact"},
+    { "source": "/careers", "destination": "/careers.html"}
   ]
 }
