@@ -343,61 +343,448 @@
   
     <script>
     const floors = {
-      1: { image: "../img/floor_plan/1.avif", hotspots: [
+      1: { image: "src/img/floor_plan/1.avif", hotspots: [
           { top: "40%", left: "53%", name: "PHARMACY", images: [
-            "../img/facility/pharmacy.JPG", 
-            "../img/facility/pharmacy-2.JPG"
+            "src/img/facility/pharmacy.JPG", 
+            "src/img/facility/pharmacy-2.JPG"
           ], descriptions: [
             "Pharmacy: Dispensing medications and health products."
             ] },
           { top: "47%", left: "78%", name: "X-Ray", images: [
-            "../img/facility/or.webp"
+            "src/img/facility/or.webp"
           ], descriptions: "X-Ray Department: Diagnostic imaging services." },
           { top: "80%", left: "75%", name: "Laboratory", images: [
-            "../img/facility/lab_1.webp", 
-            "../img/facility/lab_2.webp"
+            "src/img/facility/lab_1.webp", 
+            "src/img/facility/lab_2.webp"
           ], descriptions: "These laboratories analyze patient samples like blood, urine, and tissue to help doctors diagnose, treat, and monitor diseases. They are equipped with advanced technology and staffed by skilled professionals who perform a wide range of tests." },
           { top: "65%", left: "92%", name: "ER", images: [
-            "../img/facility/er.webp",
-            "../img/facility/er_2.webp",
+            "src/img/facility/er.webp",
+            "src/img/facility/er_2.webp",
           ], descriptions: "The Emergency Room (ER), also known as the Emergency Department (ED) or Accident and Emergency (A&E), is a critical component of a hospital, providing immediate medical care to patients with urgent or life-threatening conditions. It is the first point of contact for individuals experiencing illnesses or injuries requiring prompt attention, often serving as a vital access point for those in crisis. " },
         ] },
       2: { image: "src/img/floor_plan/2.avif", hotspots: [
-          { top: "37%", left: "4%", name: "224", images: [
+          { top: "37%", left: "4%", name: "Room 224", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Regular Private | Php2200.00" },
-          { top: "37%", left: "9.5%", name: "222", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "9.5%", name: "Room 222", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Intensive Care Unit for critical patients." },
-          { top: "37%", left: "14.5%", name: "220", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "14.5%", name: "Room 220", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Intensive Care Unit for critical patients." },
-          { top: "37%", left: "23%", name: "218", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "23%", name: "Room 218", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Intensive Care Unit for critical patients." },
-          { top: "37%", left: "32.5%", name: "216", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "37%", left: "27.6%", name: "Isolation Room", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Intensive Care Unit for critical patients." },
-          { top: "37%", left: "37%", name: "214", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "32.5%", name: "Room 216", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Intensive Care Unit for critical patients." },
-          { top: "37%", left: "41.5%", name: "211", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "37%", name: "Room 214", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Intensive Care Unit for critical patients." },
-          { top: "37%", left: "46%", name: "209", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "41.5%", name: "Room 211", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Intensive Care Unit for critical patients." },
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "46%", name: "Room 209", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
           { top: "37%", left: "53%", name: "EDP/IT", images: [
             "src/img/facility/or.webp"
           ], descriptions: "SERVER!!!!!." },
+
+          { top: "44%", left: "62%", name: "Lithotripsy", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "44%", left: "75%", name: "NICU", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "62%", left: "66%", name: "Recovery Room", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "62%", left: "83%", name: "Operating Room", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "56%", left: "4%", name: "Room 225", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "9.5%", name: "Room 223", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "14.5%", name: "Room 221", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "23%", name: "Room 219", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "56%", left: "27.6%", name: "Room 217", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "32.5%", name: "Room 215", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "37%", name: "Room 212", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "41.5%", name: "Room 210", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "46%", name: "Room 208", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "53%", left: "50.3%", name: "Nurse Station 2", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "63%", left: "51%", name: "Nursing Service Office", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "77%", left: "10%", name: "Heart Station", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "77%", left: "23%", name: "Phaeco Room 227", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "77%", left: "27.6%", name: "Phaeco Room 228", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "77%", left: "32.5%", name: "Phaeco Room 229", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "77%", left: "37%", name: "Phaeco Room 230", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+
+            { top: "80.5%", left: "68%", name: "Room 205", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "73%", name: "Room 204", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "77.5%", name: "Room 203", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "82.5%", name: "Room 202", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "87%", name: "Room 201", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+
         ] },
       3: { image: "src/img/floor_plan/3.avif", hotspots: [
-          { top: "45%", left: "40%", name: "OR", images: [
+          { top: "37%", left: "4%", name: "Room 224", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Operating Room for surgeries." },
-          { top: "65%", left: "60%", name: "Recovery Room", images: [
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "9.5%", name: "Room 222", images: [
             "src/img/facility/or.webp"
-          ], descriptions: "Post-surgery patient recovery area." },
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "14.5%", name: "Room 220", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "23%", name: "Room 218", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "37%", left: "27.6%", name: "Isolation Room", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "32.5%", name: "Room 216", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "37%", name: "Room 214", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "41.5%", name: "Room 211", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "46%", name: "Room 209", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "37%", left: "53%", name: "EDP/IT", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: "SERVER!!!!!." },
+
+          { top: "44%", left: "62%", name: "Lithotripsy", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "44%", left: "75%", name: "NICU", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "62%", left: "66%", name: "Recovery Room", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "62%", left: "83%", name: "Operating Room", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "56%", left: "4%", name: "Room 225", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "9.5%", name: "Room 223", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "14.5%", name: "Room 221", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "23%", name: "Room 219", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "56%", left: "27.6%", name: "Room 217", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "32.5%", name: "Room 215", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "37%", name: "Room 212", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "41.5%", name: "Room 210", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "56%", left: "46%", name: "Room 208", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "53%", left: "50.3%", name: "Nurse Station 2", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "63%", left: "51%", name: "Nursing Service Office", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "77%", left: "10%", name: "Heart Station", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "77%", left: "23%", name: "Phaeco Room 227", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "77%", left: "27.6%", name: "Phaeco Room 228", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "77%", left: "32.5%", name: "Phaeco Room 229", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+          { top: "77%", left: "37%", name: "Phaeco Room 230", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+
+            { top: "80.5%", left: "68%", name: "Room 205", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "73%", name: "Room 204", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "77.5%", name: "Room 203", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "82.5%", name: "Room 202", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+            { top: "80.5%", left: "87%", name: "Room 201", images: [
+            "src/img/facility/or.webp"
+          ], descriptions: [
+            "Room Details: Regular Private",
+            "Room Rate: Php2000.00/Day"
+            ] },
+
         ] },
       4: { image: "src/img/floor_plan/4.avif", hotspots: [
           { top: "35%", left: "45%", name: "Private Rooms", images: [
