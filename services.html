@@ -170,13 +170,13 @@
 <section class="relative w-full h-[70vh] flex items-center justify-center bg-gray-100">
     <picture>
       <!-- Mobile -->
-      <source srcset="src/img/hero/IMG_9508.avif" media="(max-width: 768px)" type="image/avif">
-      <source srcset="src/img/hero/services-hero-mobile.avif" media="(max-width: 768px)" type="image/jpeg">
+      <source srcset="src/img/hero/IMG_9508.avif" fetchpriority="low" loading="lazy" media="(max-width: 768px)" type="image/avif">
+      <source srcset="src/img/hero/services-hero-mobile.avif" fetchpriority="low" loading="lazy" media="(max-width: 768px)" type="image/jpeg">
       <!-- Desktop -->
-      <source srcset="src/img/hero/IMG_9508.avif" type="image/avif">
-      <source srcset="src/img/hero/services-hero-desktop.avif" type="image/jpeg">
+      <source srcset="src/img/hero/IMG_9508.avif" fetchpriority="low" loading="lazy" type="image/avif">
+      <source srcset="src/img/hero/services-hero-desktop.avif" fetchpriority="low" loading="lazy" type="image/jpeg">
       <!-- Fallback -->
-      <img src="src/img/hero/IMG_9508.avif" alt="Metro Vigan Hospital Services" 
+      <img src="src/img/hero/IMG_9508.avif" fetchpriority="low" loading="lazy" alt="Metro Vigan Hospital Services" 
            class="w-full h-full object-cover">
     </picture>
   
@@ -437,7 +437,7 @@
     <!-- Bottom Bar -->
     <div class="border-t border-gray-200 mt-8">
       <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-        <span class="p-2 text-[0.5rem] opacity-80 flex flex-wrap items-center gap-1 justify-center">website created and maintained by <a href="https://xtianbar.vercel.app/" target="_blank"><img src="src/img/logo/xtianbar-logo.avif" alt="Metro Vigan Hospital Logo" class="h-2 w-auto"></a></span>
+        <span class="p-2 text-[0.5rem] opacity-80 flex flex-wrap items-center gap-1 justify-center">website created and maintained by <a href="https://xtianbar.vercel.app/" target="_blank"><img src="src/img/logo/xtianbar-logo.avif" fetchpriority="low" loading="lazy" alt="Metro Vigan Hospital Logo" class="h-2 w-auto"></a></span>
         <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
         <div class="space-x-4 mt-2 md:mt-0">
           <a href="/privacy-policy" class="hover:text-green-600 transition">Privacy Policy</a>
