@@ -3,33 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found | Metro Vigan Hospital</title>
+  <title>Looks like you're lost | Metro Vigan Hospital</title>
+
+  <link rel="icon" href="src/img/logo/favicon.ico" type="image/x-icon">
+
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 flex place-items-center items-center text-center justify-center min-h-screen">
+<body>
 
-  <div class="text-center px-6">
-    <!-- 404 Title -->
-    <h1 class="text-8xl font-extrabold text-green-700">404</h1>
-    <h2 class="mt-4 text-2xl font-semibold text-gray-800">Oops! Page Not Found</h2>
-    <p class="mt-2 text-gray-600">
-      The page you're looking for doesn't exist or has been moved.
-    </p>
-
-    <!-- SVG Icon -->
-    <div class="mt-6 grid justify-center items-center text-center place-items-center">
-      <img src="src/img/logo/mvh_logo-wht.avif" class="h-48">
-      <p class="my-4 text-2xl font-semibold text-gray-800">Metro Vigan Hospital</p>
+<section class="py-6 bg-white font-serif overflow-hidden">
+  <div class="max-w-4xl mx-auto text-center px-4">
+    <!-- Background section -->
+    <div class="bg-center bg-no-repeat bg-cover h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px]" 
+         style="background-image: url('src/img/hero/bg.gif');">
+      <div class="flex items-start justify-center h-full pt-6">
+        <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-[80px] font-bold text-[#04813b] drop-shadow-lg">
+          404
+        </h1>
+      </div>
     </div>
 
-    <!-- Back to Home Button -->
-    <div class="mt-6">
-      <a href="index.html" class="bg-green-700 text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-green-800 transition">
-        Go Back Home
+    <!-- Content -->
+    <div class="-mt-10 sm:-mt-12">
+      <h3 class="text-xl sm:text-2xl font-semibold">Looks like you're lost</h3>
+      <p class="text-gray-800 mt-2">The page you are looking for is not available!</p>
+
+      <a href="/" 
+         class="text-white px-5 py-2 bg-[#04813b] mt-5 inline-block rounded hover:opacity-90 transition">
+        Go to Home
       </a>
     </div>
   </div>
+</section>
+
+
+
 
 </body>
 </html>
