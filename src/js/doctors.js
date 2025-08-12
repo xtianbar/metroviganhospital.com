@@ -36,7 +36,7 @@
   { name: "Steve S. Arellano", specialty: "Neurology", hmo: [], room: "", schedule: "" },
   { name: "Godard E. Artajos", specialty: "Neurology", hmo: [], room: "", schedule: "" },
   { name: "Abraham Auberon B. Austria", specialty: "Pulmonology", hmo: [], room: "", schedule: "" },
-  { name: "NijelL Bangasan-Pizarro", specialty: "Internal Medicine", hmo: [], room: "OPD Extension", schedule: "Fri: 2PM-4PM" },
+  { name: "Nijell Bangasan-Pizarro", specialty: "Internal Medicine", hmo: [], room: "OPD Extension", schedule: "Fri: 2PM-4PM" },
   { name: "Vida Margarette A. Bueno", specialty: "Neurology", hmo: [], room: "", schedule: "" },
   { name: "Maria Chrisma Rodessa B. Burgos", specialty: "Child and Adolescent Psychiatry", hmo: [], room: "", schedule: "" },
   { name: "Max Geronimo T. Butardo", specialty: "Cardiology", hmo: [], room: "", schedule: "" },
