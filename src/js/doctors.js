@@ -110,11 +110,55 @@
   { name: "Marvin Riambon, MD", specialty: "Cardiology", room: "Room 106", schedule: "Tue & Fri: 9AM-12NN" }
 ];
 
-const doctors = doctorsList.map(doc => ({
-    ...doc,
-    image: "https://placehold.net/avatar.png"
-  }));
 
+//https://placehold.net/avatar.png
+
+
+// ========================
+// Image Handling
+// ========================
+const imageFolder = "src/img/doctors/"; // relative path to images
+
+// Extract first name from full name
+function getFirstName(fullName) {
+  return fullName
+    .trim()
+    .split(" ")[0]        // take the first word
+    .replace(/[^a-zA-Z]/g, "") // remove punctuation
+    .toLowerCase();
+}
+
+// Check if image exists
+function checkImageExists(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
+
+// Assign images to doctors
+async function assignDoctorImages() {
+  for (let doc of doctorsList) {
+    const firstName = getFirstName(doc.name);
+    const imagePath = `${imageFolder}dr_${firstName}.avif`; // Match your naming pattern
+    const exists = await checkImageExists(imagePath);
+    doc.image = exists ? imagePath : "https://placehold.net/avatar.png";
+  }
+
+  doctors = doctorsList.map(doc => ({ ...doc }));
+  currentList = doctors;
+  initPage();
+}
+
+// ========================
+// Page Logic
+// ========================
+let doctors = [];
+let currentList = [];
+
+function initPage() {
   const grid = document.getElementById("doctorsGrid");
   const specialtyFilter = document.getElementById("specialtyFilter");
   const searchBox = document.getElementById("searchBox");
@@ -135,7 +179,7 @@ const doctors = doctorsList.map(doc => ({
     specialtyFilter.appendChild(opt);
   });
 
-  // Pagination variables
+  // Pagination
   let displayedCount = 0;
   const increment = 20;
 
@@ -149,7 +193,7 @@ const doctors = doctorsList.map(doc => ({
       const card = document.createElement("div");
       card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center";
       card.innerHTML = `
-        <img src="${doc.image}" class="w-24 h-24 mx-auto rounded-full mb-3">
+        <img src="${doc.image}" class="w-28 h-28 mx-auto rounded-full mb-3 object-cover">
         <h3 class="text-lg font-semibold">${doc.name}</h3>
         <p class="text-green-600">${doc.specialty}</p>
         <p class="text-sm text-gray-500 mt-2">${doc.room}</p>
@@ -158,11 +202,7 @@ const doctors = doctorsList.map(doc => ({
       grid.appendChild(card);
     });
     displayedCount += increment;
-    if (displayedCount >= list.length) {
-      loadMoreBtn.classList.add("hidden");
-    } else {
-      loadMoreBtn.classList.remove("hidden");
-    }
+    loadMoreBtn.classList.toggle("hidden", displayedCount >= list.length);
   }
 
   function showModal(doc) {
@@ -195,5 +235,10 @@ const doctors = doctorsList.map(doc => ({
   specialtyFilter.addEventListener("change", filterDoctors);
   loadMoreBtn.addEventListener("click", () => renderDoctors(currentList));
 
-  let currentList = doctors;
   renderDoctors(doctors);
+}
+
+// ========================
+// Start
+// ========================
+assignDoctorImages();
