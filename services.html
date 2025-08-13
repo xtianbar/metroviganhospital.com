@@ -33,7 +33,8 @@
 
   <link rel="icon" href="src/img/logo/favicon.ico" type="image/x-icon">
 
-
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -167,178 +168,256 @@
   </nav>
 
 <!-- Hero Section -->
-<section class="relative w-full h-[70vh] flex items-center justify-center bg-gray-100">
-    <picture>
-      <!-- Mobile -->
-      <source srcset="src/img/hero/IMG_9508.avif" fetchpriority="low" loading="lazy" media="(max-width: 768px)" type="image/avif">
-      <source srcset="src/img/hero/services-hero-mobile.avif" fetchpriority="low" loading="lazy" media="(max-width: 768px)" type="image/jpeg">
-      <!-- Desktop -->
-      <source srcset="src/img/hero/IMG_9508.avif" fetchpriority="low" loading="lazy" type="image/avif">
-      <source srcset="src/img/hero/services-hero-desktop.avif" fetchpriority="low" loading="lazy" type="image/jpeg">
-      <!-- Fallback -->
-      <img src="src/img/hero/IMG_9508.avif" fetchpriority="low" loading="lazy" alt="Metro Vigan Hospital Services" 
-           class="w-full h-full object-cover">
-    </picture>
-  
-    <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-  
-    <!-- Hero text -->
-    <div class="absolute z-10 text-center px-6 text-white" data-aos="fade-up">
-      <h1 class="text-4xl sm:text-5xl font-bold mb-4">Our Medical Services</h1>
-      <p class="max-w-2xl mx-auto text-lg sm:text-xl">
-        Compassionate care with modern medical expertise — serving Ilocos Sur and beyond.
+<section class="relative w-full h-[70vh] flex items-center justify-center bg-gray-100 pt-24">
+  <img src="src/img/hero/IMG_9508.avif" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover opacity-80">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
+  <div class="relative z-10 text-center text-white px-4">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Welcome to Our Services</h1>
+    <p class="text-lg sm:text-xl max-w-2xl mx-auto">Specialized Care, Personalized for You.</p>
+  </div>
+</section>
+
+<section class="relative w-full bg-pink-50 py-16 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    
+    <!-- Image -->
+    <div class="relative">
+      <img src="src/img/hero/mammo.svg" alt="Mammography Machine" class="rounded-2xl shadow-lg object-cover w-full h-full">
+      <span class="absolute top-4 left-4 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+        New Service
+      </span>
+    </div>
+
+    <!-- Text Content -->
+    <div class="text-center md:text-left">
+      <span class="inline-block bg-pink-500 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+        Health Update
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-pink-800 mb-4">
+        Mammography Screening Now Available
+      </h2>
+      <p class="text-lg sm:text-xl text-gray-700 mb-8">
+        We are proud to introduce the <strong>only mammography service in Ilocos Sur</strong>, 
+        delivering advanced breast cancer screening with the latest imaging technology 
+        for early detection and better health outcomes.
       </p>
+      <a href="index.html#contact" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300">
+        Book Your Screening Today
+      </a>
     </div>
-  </section>
+
+  </div>
+</section>
+
   
-  <!-- Services Section -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800">Comprehensive Healthcare</h2>
-        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-          Our hospital offers a wide range of specialized and general services to ensure quality care for every patient.
+<section class="relative w-full bg-blue-50 py-16 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- First Two Sections: Stroke Info + Image -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+      
+      <!-- Stroke Info -->
+      <div class="text-center md:text-left">
+        <span class="inline-block bg-blue-600 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+          Emergency & Critical Care
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">
+          Stroke-Ready Hospital — Saving Lives, Every Second Counts
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-700 mb-6">
+          We are equipped and ready to deliver rapid stroke care, including 
+          <strong>thrombolysis for qualified stroke patients</strong>. Our dedicated stroke team ensures fast diagnosis, 
+          immediate intervention, and improved recovery outcomes.
         </p>
+        <div class="bg-blue-100 border-l-4 border-blue-600 p-4 rounded-lg">
+          <p class="text-blue-800 font-semibold">
+            Awarded <strong>Diamond Status</strong> in Excellence in Patient Care by the World Stroke Organization — Q2 2025.
+          </p>
+        </div>
       </div>
-  
-      <!-- Services Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Service Cards -->
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Trauma, General Surgery & Laparoscopic Surgery</h3>
-          <p class="text-gray-600 text-sm">Advanced surgical care with minimally invasive options for faster recovery.</p>
+
+      <!-- Image -->
+      <div class="relative">
+        <img src="src/img/news/2025/wso-angels/WSO_Social Media Template-Diamond.avif" alt="Stroke Care Team" class="rounded-2xl shadow-lg object-cover w-full h-full">
+        <span class="absolute bottom-4 right-4 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+          Diamond Status 2025
+        </span>
+      </div>
+
+    </div>
+
+    <!-- F.A.S.T. Infographic -->
+    <div class="mt-16 bg-green-50 rounded-2xl shadow-md p-8">
+      <div class="text-center mb-10">
+        <h3 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-2">
+          Know the Signs of Stroke: <span class="text-blue-600">F.A.S.T.</span>
+        </h3>
+        <p class="text-lg text-gray-700">Quick action can save lives. Recognize these signs and act immediately.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
+        <!-- Face -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6 flex flex-col items-center">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-white text-2xl font-bold mb-4">F</div>
+          <h4 class="text-lg font-semibold mb-2">Face Drooping</h4>
+          <p class="text-gray-600 text-sm">One side of the face droops or feels numb. Ask them to smile.</p>
         </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Urology / Neurosurgery / Thora-cardiovascular Surgery</h3>
-          <p class="text-gray-600 text-sm">Expert treatment for complex urological, neurological, and cardiovascular cases.</p>
+
+        <!-- Arms -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6 flex flex-col items-center">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-white text-2xl font-bold mb-4">A</div>
+          <h4 class="text-lg font-semibold mb-2">Arm Weakness</h4>
+          <p class="text-gray-600 text-sm">One arm is weak or numb. Ask them to raise both arms.</p>
         </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Orthopedics and Rehabilitation Medicine</h3>
-          <p class="text-gray-600 text-sm">Specialized bone, joint, and rehabilitation therapies for improved mobility.</p>
+
+        <!-- Speech -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6 flex flex-col items-center">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-white text-2xl font-bold mb-4">S</div>
+          <h4 class="text-lg font-semibold mb-2">Speech Difficulty</h4>
+          <p class="text-gray-600 text-sm">Speech is slurred or strange. Ask them to repeat a simple phrase.</p>
         </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Internal Medicine and Cardiology</h3>
-          <p class="text-gray-600 text-sm">Comprehensive heart and internal health management.</p>
+
+        <!-- Time -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6 flex flex-col items-center">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-500 text-white text-2xl font-bold mb-4">T</div>
+          <h4 class="text-lg font-semibold mb-2">Time to Call</h4>
+          <p class="text-gray-600 text-sm">If you see any of these signs, call emergency services immediately.</p>
         </div>
+      </div>
+
+  </div>
+</section>
+
+<!-- Medical Services Section -->
+<section class="py-12 my-6">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-14">
+      Our <span class="text-green-800">Medical Specialties</span> & <span class="text-green-800">Services</span>
+    </h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Surgical Specialties -->
+      <div class="bg-gray-50 rounded-2xl shadow-lg p-6 transition transform hover:-translate-y-2 hover:shadow-xl">
+        <h3 class="text-xl font-semibold text-green-800 mb-4">
+          <i class="fa-solid fa-syringe mr-2 text-green-600"></i> Surgical Specialties
+        </h3>
+        <ul class="space-y-2 text-gray-700 list-disc list-inside">
+          <li>Trauma, General Surgery & Laparoscopic Surgery</li>
+          <li>Urology / Neurosurgery / Thoracocardiovascular Surgery</li>
+          <li>Orthopedics and Rehabilitation Medicine</li>
+          <li>Obstetrics and Operative Gynecology</li>
+          <li>Eye, Ear, Nose, and Throat Medicine</li>
+          <li>Dental Services</li>
+        </ul>
+      </div>
+
+      <!-- Internal Medicine & Subspecialties -->
+      <div class="bg-gray-50 rounded-2xl shadow-lg p-6 transition transform hover:-translate-y-2 hover:shadow-xl">
+        <h3 class="text-xl font-semibold text-green-800 mb-4">
+          <i class="fa-solid fa-stethoscope mr-2 text-green-600"></i> Internal Medicine & Subspecialties
+        </h3>
+        <ul class="space-y-2 text-gray-700 list-disc list-inside">
+          <li>Internal Medicine and Cardiology</li>
+          <li>Neurology / Endocrinology / Gastroenterology / Dermatology / Hematology / Pulmonology</li>
+          <li>Diabetes Clinic</li>
+          <li>Cancer Treatment (Oncology) - Medical & Gynecologic</li>
+          <li>Mental Health Clinic</li>
+        </ul>
+      </div>
+
+      <!-- Pediatrics & Child Health -->
+      <div class="bg-gray-50 rounded-2xl shadow-lg p-6 transition transform hover:-translate-y-2 hover:shadow-xl">
+        <h3 class="text-xl font-semibold text-green-800 mb-4">
+          <i class="fa-solid fa-baby mr-2 text-green-600"></i> Pediatrics & Child Health
+        </h3>
+        <ul class="space-y-2 text-gray-700 list-disc list-inside">
+          <li>Child Health and Well Baby Clinics</li>
+          <li>General Pediatrics / Pediatric Neurology / Neonatology</li>
+          <li>Newborn Hearing Screening</li>
+        </ul>
+      </div>
+
+      <!-- Diagnostics & Imaging -->
+      <div class="bg-gray-50 rounded-2xl shadow-lg p-6 transition transform hover:-translate-y-2 hover:shadow-xl">
+        <h3 class="text-xl font-semibold text-green-800 mb-4">
+          <i class="fa-solid fa-x-ray mr-2 text-green-600"></i> Diagnostics & Imaging
+        </h3>
+        <ul class="space-y-2 text-gray-700 list-disc list-inside">
+          <li>Radiology / 3D-4D Ultrasound / 2D Echo</li>
+          <li>Pathology / Clinical Laboratory Medicine / Drug Testing</li>
+          <li>CT Scan</li>
+          <li>Endoscopy, Colonoscopy & Bronchoscopy</li>
+          <li>Stress Test / 24-Hour Holter Monitoring</li>
+          <li>Audiometry / Spirometry</li>
+        </ul>
+      </div>
+
+      <!-- Critical & Emergency Care -->
+      <div class="bg-gray-50 rounded-2xl shadow-lg p-6 transition transform hover:-translate-y-2 hover:shadow-xl">
+        <h3 class="text-xl font-semibold text-green-800 mb-4">
+          <i class="fa-solid fa-truck-medical mr-2 text-green-600"></i> Critical & Emergency Care
+        </h3>
+        <ul class="space-y-2 text-gray-700 list-disc list-inside">
+          <li>Intensive Care Unit</li>
+          <li>Ambulance Service</li>
+        </ul>
+      </div>
+
+      <!-- Supportive & Preventive Care -->
+      <div class="bg-gray-50 rounded-2xl shadow-lg p-6 transition transform hover:-translate-y-2 hover:shadow-xl">
+        <h3 class="text-xl font-semibold text-green-800 mb-4">
+          <i class="fa-solid fa-heart-pulse mr-2 text-green-600"></i> Supportive & Preventive Care
+        </h3>
+        <ul class="space-y-2 text-gray-700 list-disc list-inside">
+          <li>Anesthesiology / Pain Management Clinic</li>
+          <li>Dialysis</li>
+          <li>Eye Center</li>
+          <li>Pharmacy</li>
+          <li>Executive Check-up Services</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
   
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Neurology / Endocrinology / Gastroenterology / Dermatology / Hematology / Pulmonology</h3>
-          <p class="text-gray-600 text-sm">Full-spectrum care across multiple medical specialties.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Diabetes Clinic</h3>
-          <p class="text-gray-600 text-sm">Comprehensive care and education for diabetes management.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Obstetrics and Operative Gynecology</h3>
-          <p class="text-gray-600 text-sm">Specialized care for women’s health and safe childbirth.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Child Health and Well Baby Clinics</h3>
-          <p class="text-gray-600 text-sm">Preventive and wellness care for infants and children.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">General Pediatrics / Pediatric Neurology / Neonatology</h3>
-          <p class="text-gray-600 text-sm">Specialized medical care for children and newborns.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Eye, Ear, Nose, and Throat Medicine</h3>
-          <p class="text-gray-600 text-sm">Complete ENT services for diagnosis and treatment.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Anesthesiology / Pain Management Clinic</h3>
-          <p class="text-gray-600 text-sm">Safe anesthesia services and chronic pain management solutions.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Pharmacy</h3>
-          <p class="text-gray-600 text-sm">Fully stocked with essential and specialty medications.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Radiology / 3D-4D Ultrasound / 2D Echo</h3>
-          <p class="text-gray-600 text-sm">Advanced imaging and diagnostic technologies.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Pathology / Clinical Laboratory Medicine / Drug Testing</h3>
-          <p class="text-gray-600 text-sm">Comprehensive laboratory testing and diagnostics.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Cancer Treatment (Oncology) - Medical, Gynecologic</h3>
-          <p class="text-gray-600 text-sm">Specialized cancer care with a multidisciplinary approach.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Intensive Care Unit</h3>
-          <p class="text-gray-600 text-sm">Round-the-clock monitoring and critical care services.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Stress Test, 24 Hour Holter Monitoring</h3>
-          <p class="text-gray-600 text-sm">Advanced cardiac monitoring and evaluation tools.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Eye Center</h3>
-          <p class="text-gray-600 text-sm">Comprehensive eye care and vision services.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Audiometry / Spirometry</h3>
-          <p class="text-gray-600 text-sm">Hearing and lung function testing services.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">CT Scan / Dialysis</h3>
-          <p class="text-gray-600 text-sm">State-of-the-art imaging and kidney treatment services.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Ambulance Service</h3>
-          <p class="text-gray-600 text-sm">24/7 emergency transport for critical patients.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Dental Services</h3>
-          <p class="text-gray-600 text-sm">General and specialized dental care.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Executive Check-up Services</h3>
-          <p class="text-gray-600 text-sm">Comprehensive health screening packages.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Mental Health Clinic</h3>
-          <p class="text-gray-600 text-sm">Confidential and compassionate mental health support.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Endoscopy, Colonoscopy & Bronchoscopy</h3>
-          <p class="text-gray-600 text-sm">Minimally invasive internal examinations and procedures.</p>
-        </div>
-  
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">Newborn Hearing Screening</h3>
-          <p class="text-gray-600 text-sm">Early detection and intervention for hearing issues in newborns.</p>
-        </div>
+<!-- PhilHealth & HMO Accreditation Section -->
+<section class="py-12 bg-gray-50 bg-white mb-10">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-green-800 mb-8">
+      <i class="fa-solid fa-id-card-clip text-green-600 mr-2"></i> We Are PhilHealth Konsulta Accredited
+    </h2>
+    <p class="text-gray-700 max-w-3xl mx-auto mb-10">
+      As a PhilHealth Konsulta accredited healthcare provider, we ensure that our patients can access essential
+      healthcare services with minimal out-of-pocket costs. We also partner with major Health Maintenance Organizations (HMOs) for your convenience.
+    </p>
+
+    <!-- Logos Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+      <!-- HMO -->
+      <div class="flex justify-center items-center rounded-xl p-4 transition">
+        <img src="src/img/hmo/intellicare.avif" alt="Intellicare" class="h-16 object-contain">
+      </div>
+      <!-- HMO 1 -->
+      <div class="flex justify-center items-center rounded-xl p-4 transition">
+        <img src="src/img/hmo/maxicare.avif" alt="Maxicare" class="h-16 object-contain">
+      </div>
+      <!-- HMO 2 -->
+      <div class="flex justify-center items-center rounded-xl p-4 transition">
+        <img src="src/img/hmo/Med.avif" alt="Medicard" class="h-16 object-contain">
+      </div>
+      <!-- HMO 3 -->
+      <div class="flex justify-center items-center rounded-xl p-4 transition">
+        <img src="src/img/hmo/kaiser.avif" alt="Kaiser" class="h-16 object-contain">
       </div>
     </div>
-  </section>
-  
-  
+
+    <!-- Note -->
+    <p class="mt-8 text-sm text-gray-500">
+      *We accept other accredited HMOs. Please contact us for the complete list.
+    </p>
+  </div>
+</section>
 
   <!-- FOOTER -->
   <footer class="bg-gray-50 text-gray-800">
