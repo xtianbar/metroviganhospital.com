@@ -29,7 +29,7 @@ const floors = {
       "Comfort Rooms for patients and visitors."
       ] },
             
-    { top: "77%", left: "23%", name: "CT-Scan", images: [
+    { top: "77%", left: "25%", name: "CT-Scan", images: [
       "img/facility/ct-scan.avif"
       ], descriptions: [
       "CT-Scan Department: Advanced imaging services for detailed internal views."
