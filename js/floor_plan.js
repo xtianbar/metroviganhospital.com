@@ -260,7 +260,7 @@ const floors = {
             ] },
             { top: "53%", left: "51.5%", name: "Nurse Station 2", images: [
             "img/facility/ns2_2.avif",
-            "img/facility/regular_private2.avif",
+            "img/facility/ns2.avif",
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
