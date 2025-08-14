@@ -23,7 +23,3 @@ This is the official website of **Metro Vigan Hospital**, designed to provide in
 - **JavaScript (Vanilla JS)**
 - **Google Maps Embed API**
 - **AOS (Animate on Scroll)** for smooth animations
-
----
-
-## 📂 Project Structure

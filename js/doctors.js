@@ -1,5 +1,5 @@
-    // Full doctors list (Manual room and schedule fields added)
-    const doctorsList = [
+// Full doctors list (Manual room and schedule fields added)
+const doctorsList = [
       
   //NEWLY UPDATED DOCTORS LIST
   { name: "Frances Elaine F. Abelañes", specialty: "Anesthesiology", hmo: [], room: "", schedule: "" },
@@ -205,7 +205,7 @@
 // ========================
 // Image Handling
 // ========================
-const imageFolder = "src/img/doctors/"; // relative path to images
+const imageFolder = "img/doctors/"; // relative path to images
 
 // Extract first and last name (supports multi-word last names)
 function getFirstAndLastName(fullName) {
