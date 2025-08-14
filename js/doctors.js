@@ -198,9 +198,7 @@ const doctorsList = [
 
 ];
 
-
 //https://placehold.net/avatar.png
-
 
 // ========================
 // Image Handling
@@ -249,7 +247,6 @@ async function assignDoctorImages() {
   currentList = doctors;
   initPage();
 }
-
 
 // ========================
 // Page Logic
@@ -306,25 +303,25 @@ function initPage() {
   }
 
 function safeText(value) {
-    if (!value) return "N/A";
+  if (!value) return "N/A";
     const trimmed = value.trim();
     if (trimmed === "" || trimmed === "-" || trimmed.toUpperCase() === "TBA") {
-        return "N/A";
+      return "N/A";
     }
-    return trimmed;
+  return trimmed;
 }
 
 function setModalField(element, label, value) {
-    const safeValue = safeText(value);
+  const safeValue = safeText(value);
 
     // Clear the element before adding content
     element.textContent = "";
 
     // Add the label (normal style)
     if (label) {
-        const labelSpan = document.createElement("span");
-        labelSpan.textContent = label + " ";
-        element.appendChild(labelSpan);
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = label + " ";
+      element.appendChild(labelSpan);
     }
 
     // Add the value (special style if N/A)
@@ -332,23 +329,22 @@ function setModalField(element, label, value) {
     valueSpan.textContent = safeValue;
 
     if (safeValue === "N/A") {
-        valueSpan.style.color = "#888";       // gray
-        valueSpan.style.fontStyle = "italic"; // italic
+      valueSpan.style.color = "#888";       // gray
+      valueSpan.style.fontStyle = "italic"; // italic
     }
 
-    element.appendChild(valueSpan);
+  element.appendChild(valueSpan);
 }
 
 function showModal(doc) {
-    setModalField(modalName, "Dr.", doc.name);
-    setModalField(modalSpecialty, "", doc.specialty);
-    setModalField(modalRoom, "Clinic:", doc.room);
-    setModalField(modalSchedule, "Schedule:", doc.schedule);
-    setModalField(modalHmo, "HMO Accreditation:", doc.hmo && doc.hmo.length ? doc.hmo.join(", ") : "");
-    modalImage.src = doc.image;
-    modal.classList.remove("hidden");
+  setModalField(modalName, "Dr.", doc.name);
+  setModalField(modalSpecialty, "", doc.specialty);
+  setModalField(modalRoom, "Clinic:", doc.room);
+  setModalField(modalSchedule, "Schedule:", doc.schedule);
+  setModalField(modalHmo, "HMO Accreditation:", doc.hmo && doc.hmo.length ? doc.hmo.join(", ") : "");
+  modalImage.src = doc.image;
+  modal.classList.remove("hidden");
 }
-
 
   document.getElementById("closeModal").onclick = () => modal.classList.add("hidden");
 

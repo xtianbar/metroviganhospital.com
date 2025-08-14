@@ -1,98 +1,128 @@
-    const floors = {
-      1: { image: "img/floor_plan/1.avif", hotspots: [
-          { top: "40%", left: "53%", name: "Pharmacy", images: [
-            "img/facility/pharmacy.avif", 
-            "img/facility/pharmacy-2.avif"
-          ], descriptions: [
-            "Pharmacy: Dispensing medications and health products."
-            ] },
-            { top: "40%", left: "42%", name: "Chief Executive Officer", images: [
-            "img/facility/ceo_1.avif", 
-            "img/facility/ceo_2.avif"
-          ], descriptions: [
-            "Chief Executive Officer (CEO): Hospital's top executive responsible for overall management and strategic direction."
-            ] },
-            { top: "40%", left: "30.6%", name: "Social Worker", images: [
-            "img/facility/sw_1.avif", 
-            "img/facility/sw_2.avif"
-          ], descriptions: [
-            "Social Worker Office."
-            ] },
-             { top: "40%", left: "47.2%", name: "Comfort Rooms", images: [
-            "img/facility/pharmacy.avif", 
-            "img/facility/pharmacy-2.avif"
-          ], descriptions: [
-            "Comfort Rooms for patients and visitors."
-            ] },
-            { top: "77%", left: "23%", name: "CT-Scan", images: [
-            "img/facility/ct-scan.avif"
-          ], descriptions: [
-            "CT-Scan Department: Advanced imaging services for detailed internal views."
-            ] },
-          { top: "64%", left: "65.5%", name: "Ultrasound", images: [
-            "img/facility/ultrasound_2.avif",
-            "img/facility/ultrasound_1.avif"
-          ], descriptions: "Ultrasound Department: Diagnostic imaging services." },
-           { top: "64%", left: "69%", name: "Konsulta", images: [
-            "img/facility/konsulta.avif",
-            "img/facility/konsulta_1.avif",
-          ], descriptions: "PhilHealth Konsultasyong Sulit Tama (Konsulta) is a comprehensive outpatient benefits as mandated by the Universal Health Care Law." },
-          { top: "64%", left: "60%", name: "OPD Room 105", images: [
-            "img/facility/opd_1.avif",
-          ], descriptions: "Out-patient Department" },
-          { top: "47%", left: "59.5%", name: "OPD Room 106", images: [
-            "img/facility/opd_2.avif",
-          ], descriptions: "Out-patient Department" },
-          { top: "47%", left: "63.6%", name: "OPD Room 104", images: [
-            "img/facility/opd_1.avif",
-          ], descriptions: "X-Ray Department: Diagnostic imaging services." },
-          { top: "47%", left: "68%", name: "OPD Room 102", images: [
-            "img/facility/opd_2.avif",
-          ], descriptions: "X-Ray Department: Diagnostic imaging services." },
-          { top: "64%", left: "51.5%", name: "Information", images: [
-            "img/facility/info_1.avif",
-            "img/facility/info_2.avif",
-          ], descriptions: [
-             "Provides assistance and information to patients and visitors.",
-             "Don't forget to present your Metro Card for smooth transaction." 
-      ]         },
-          { top: "64%", left: "46%", name: "Business Office", images: [
-            "img/facility/xray_1.avif",
-            "img/facility/xray_2.avif",
-          ], descriptions: [
-            "This office handles administrative tasks.",
-            "This is where you can find information about HMO, Account Receivables and Billing.",
-          ]},
-          { top: "56%", left: "45.5%", name: "Main Cashier", images: [
-            "img/facility/cashier_1.avif",
-            "img/facility/cashier_2.avif",
-          ], descriptions: [
-            "Cashier: Handles patient billing and financial transactions.",
-            "Mode of Payment: Cash & Credit/Debit Card",
-          ]},
-          { top: "54.8%", left: "40.5%", name: "Cashier 2", images: [
-            "img/facility/xray_1.avif",
-            "img/facility/xray_2.avif",
-          ], descriptions: [
-            "Cashier: Professional fees and other charges.",
-            "Mode of Payment: Cash only.",
-          ]},
-          { top: "54.8%", left: "36%", name: "Philhealth", images: [
-            "img/facility/xray_1.avif",
-            "img/facility/xray_2.avif",
-          ], descriptions: [
-            "PhilHealth Office: Assists with health insurance claims and inquiries.",
-          ]},
-          { top: "58%", left: "20%", name: "OPD Room 115", images: [
-            "img/facility/dr-lim_2.avif",
-            "img/facility/dr-lim_1.avif",
-          "img/facility/dr-lim_3.avif",
-          ], descriptions: [
-            "Dr. Robert Q. Lim OPD Room",
-            "Schedule: Mon-Sat: 9AM-5PM.",
-          ]},
-          { top: "58%", left: "13.5%", name: "Medical Records", images: [
-            "img/facility/records_1.avif",
+const floors = {
+  1: { image: "img/floor_plan/1.avif", hotspots: [
+    
+    { top: "40%", left: "53%", name: "Pharmacy", images: [
+      "img/facility/pharmacy.avif", 
+      "img/facility/pharmacy-2.avif"
+      ], descriptions: [
+      "Pharmacy: Dispensing medications and health products."
+      ] },
+
+    { top: "40%", left: "42%", name: "Chief Executive Officer", images: [
+      "img/facility/ceo_1.avif", 
+      "img/facility/ceo_2.avif"
+      ], descriptions: [
+      "Chief Executive Officer (CEO): Hospital's top executive responsible for overall management and strategic direction."
+      ] },
+            
+    { top: "40%", left: "30.6%", name: "Social Worker", images: [
+      "img/facility/sw_1.avif", 
+      "img/facility/sw_2.avif"
+      ], descriptions: [
+      "Social Worker Office."
+      ] },
+             
+    { top: "40%", left: "47.2%", name: "Comfort Rooms", images: [
+      "img/facility/pharmacy.avif", 
+      "img/facility/pharmacy-2.avif"
+      ], descriptions: [
+      "Comfort Rooms for patients and visitors."
+      ] },
+            
+    { top: "77%", left: "23%", name: "CT-Scan", images: [
+      "img/facility/ct-scan.avif"
+      ], descriptions: [
+      "CT-Scan Department: Advanced imaging services for detailed internal views."
+      ] },
+          
+    { top: "64%", left: "65.5%", name: "Ultrasound", images: [
+      "img/facility/ultrasound_2.avif",
+      "img/facility/ultrasound_1.avif"
+      ], descriptions: [
+      "Ultrasound Department: Diagnostic imaging services."
+      ] },
+           
+    { top: "64%", left: "69%", name: "Konsulta", images: [
+      "img/facility/konsulta.avif",
+      "img/facility/konsulta_1.avif",
+      ], descriptions: 
+      "PhilHealth Konsultasyong Sulit Tama (Konsulta) is a comprehensive outpatient benefits as mandated by the Universal Health Care Law." 
+      },
+
+    { top: "64%", left: "60%", name: "OPD Room 105", images: [
+      "img/facility/opd_1.avif",
+      ], descriptions: 
+      "Out-patient Department" 
+      },
+          
+    { top: "47%", left: "59.5%", name: "OPD Room 106", images: [
+      "img/facility/opd_2.avif",
+      ], descriptions: 
+      "Out-patient Department" 
+      },
+
+    { top: "47%", left: "63.6%", name: "OPD Room 104", images: [
+      "img/facility/opd_1.avif",
+      ], descriptions: 
+      "Out-patient Department." 
+      },
+          
+    { top: "47%", left: "68%", name: "OPD Room 102", images: [
+      "img/facility/opd_2.avif",
+      ], descriptions: 
+      "Out-patient Department." 
+      },
+
+    { top: "64%", left: "51.5%", name: "Information", images: [
+      "img/facility/info_1.avif",
+      "img/facility/info_2.avif",
+      ], descriptions: [
+      "Provides assistance and information to patients and visitors.",
+      "Don't forget to present your Metro Card for smooth transaction." 
+      ] },
+          
+    { top: "64%", left: "46%", name: "Business Office", images: [
+      "img/facility/xray_1.avif",
+      "img/facility/xray_2.avif",
+      ], descriptions: [
+      "This office handles administrative tasks.",
+      "This is where you can find information about HMO, Account Receivables and Billing.",
+      ]},
+
+    { top: "56%", left: "45.5%", name: "Main Cashier", images: [
+      "img/facility/cashier_1.avif",
+      "img/facility/cashier_2.avif",
+      ], descriptions: [
+      "Cashier: Handles patient billing and financial transactions.",
+      "Mode of Payment: Cash & Credit/Debit Card",
+      ]},
+
+    { top: "54.8%", left: "40.5%", name: "Cashier 2", images: [
+      "img/facility/xray_1.avif",
+      "img/facility/xray_2.avif",
+      ], descriptions: [
+      "Cashier: Professional fees and other charges.",
+      "Mode of Payment: Cash only.",
+      ]},
+
+    { top: "54.8%", left: "36%", name: "Philhealth", images: [
+      "img/facility/xray_1.avif",
+      "img/facility/xray_2.avif",
+      ], descriptions: [
+      "PhilHealth Office: Assists with health insurance claims and inquiries.",
+      ]},
+
+    { top: "58%", left: "20%", name: "OPD Room 115", images: [
+      "img/facility/dr-lim_2.avif",
+      "img/facility/dr-lim_1.avif",
+      "img/facility/dr-lim_3.avif",
+      ], descriptions: [
+      "Dr. Robert Q. Lim OPD Room",
+      "Schedule: Mon-Sat: 9AM-5PM.",
+      ]},
+          
+    { top: "58%", left: "13.5%", name: "Medical Records", images: [
+      "img/facility/records_1.avif",
             "img/facility/records_2.avif",
           "img/facility/records_3.avif",
           ], descriptions: [
@@ -119,7 +149,7 @@
             "For emergency cases, the Emergency Room (ER) is available 24/7 to provide immediate medical attention.",
             "For emergency calls, you can reach the ER at 0917-123-4567.",
           ] },
-        ] },
+        ] },  
       2: { image: "img/floor_plan/2.avif", hotspots: [
           { top: "37%", left: "5.2%", name: "Room 224", images: [
             "img/facility/regular_private.avif"
