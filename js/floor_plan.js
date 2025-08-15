@@ -23,8 +23,7 @@ const floors = {
       ] },
              
     { top: "40%", left: "47.2%", name: "Comfort Rooms", images: [
-      "img/facility/pharmacy.avif", 
-      "img/facility/pharmacy-2.avif"
+      "https://placehold.net/8.png", 
       ], descriptions: [
       "Comfort Rooms for patients and visitors."
       ] },
@@ -98,16 +97,14 @@ const floors = {
       ]},
 
     { top: "54.8%", left: "40.5%", name: "Cashier 2", images: [
-      "img/facility/xray_1.avif",
-      "img/facility/xray_2.avif",
+      "https://placehold.net/7.png",
       ], descriptions: [
       "Cashier: Professional fees and other charges.",
       "Mode of Payment: Cash only.",
       ]},
 
     { top: "54.8%", left: "36%", name: "Philhealth", images: [
-      "img/facility/xray_1.avif",
-      "img/facility/xray_2.avif",
+      "https://placehold.net/7.png",
       ], descriptions: [
       "PhilHealth Office: Assists with health insurance claims and inquiries.",
       ]},
@@ -349,7 +346,7 @@ const floors = {
             "Room Details: Regular Private"
             ] },
           { top: "37%", left: "25%", name: "Ward A", images: [
-            "img/facility/small_private.avif"
+            "https://placehold.net/6.png"
           ], descriptions: [
             "Room for ICU Relatives"
             ] },
@@ -384,14 +381,14 @@ const floors = {
             "Room Details: Regular Private"
             ] },
           { top: "44%", left: "60%", name: "Marketing", images: [
-            "img/facility/regular_private.avif"
+            "https://placehold.net/5.png"
           ], descriptions: [
-            "Room Details: Regular Private"
+            "Marketing Office: Handles hospital promotions and community outreach.",
             ] },
             { top: "44%", left: "65.3%", name: "TB Dots", images: [
-            "img/facility/regular_private.avif"
+            "https://placehold.net/5.png"
           ], descriptions: [
-            "Room Details: Regular Private"
+            "TB Dots: Tuberculosis Directly Observed Treatment, Short-course (DOTS) program for TB patients.",
             ] },
             { top: "44%", left: "74%", name: "Room 312", images: [
             "img/facility/regular_private.avif"
@@ -425,17 +422,17 @@ const floors = {
             "Room Details: Regular Private",
             ] },
             { top: "62%", left: "84%", name: "ICU 1", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Private ICU"
             ] },
             { top: "62%", left: "88.5%", name: "ICU 2", images: [
-            "img/facility/or.avif"
+            "ihttps://placehold.net/1.png"
           ], descriptions: [
             "Private ICU"
             ] },
             { top: "44%", left: "91%", name: "Main ICU", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Intensive Care Unit (ICU): Critical care for seriously ill patients.",
             ] },
@@ -455,7 +452,7 @@ const floors = {
             "Room Details: Regular Private"
             ] },
             { top: "56%", left: "25%", name: "Ward B", images: [
-            "img/facility/small_private-2.avif"
+            "https://placehold.net/6.png"
           ], descriptions: [
             "Room for Indigent Patient"
             ] },
@@ -480,7 +477,7 @@ const floors = {
             "Room Details: Regular Private"
             ] },
             { top: "61%", left: "51%", name: "Nurse Station 3", images: [
-            "img/facility/regular_private3.avif"
+            "img/facility/ns3.avif"
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
@@ -577,7 +574,7 @@ const floors = {
             { top: "37%", left: "53.5%", name: "NS4", images: [
             "img/facility/ns4_1.avif",
             "img/facility/ns4_2.avif",
-            "img/facility/regular_private4_3.avif"
+            "img/facility/ns4_3.avif"
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
@@ -641,7 +638,13 @@ const floors = {
         ] },
         
       5: { image: "img/floor_plan/5.avif", hotspots: [
-          { top: "50%", left: "50%", name: "Suite Room", images: [
+         { top: "42.5%", left: "24%", name: "Nurse Station 5", images: [
+            "img/facility/ns5_1.avif",
+            "img/facility/ns5_2.avif"
+          ], descriptions: [
+            "Nurse Station 5: Central hub for nursing staff on this floor."
+            ] },  
+        { top: "50%", left: "50%", name: "Suite Room", images: [
             "img/facility/or.avif"
           ], descriptions: "Luxurious suite for VIP patients." },
         ] },
