@@ -143,10 +143,36 @@
     </div>
   </nav>
 
-  <main class="mt-[10rem] md:mt-[14rem] mb-24">
-  
+  <main class="mt-[6rem] md:mt-[8rem] mb-24">
+
+  <!-- HERO SECTION -->
+  <section class="relative w-full h-[80vh] md:h-screen flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+
+    <!-- Background Image -->
+    <img src="img/hero/doctors_hero.avif" alt="Metro Vigan Hospital Doctors" class="absolute inset-0 w-full h-full object-cover">
+    
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    
+    <!-- Top Text Content -->
+    <div class="relative text-center text-white px-8 max-w-4xl mx-auto mt-20">
+      <h3 class="flex flex-wrap text-center gap-4 justify-center text-4xl md:text-6xl font-bold mb-6">
+        <span>Meet Our </span><span class="underline underline-offset-[1rem] decoration-green-500">Medical Experts</span>
+      </h3>
+      <p class="text-lg md:text-xl text-gray-200">
+        A trusted team of specialists delivering expert care, advanced treatments, 
+      and a personal touch for every patient.
+      </p>
+    </div>
+
+    <!-- Bottom Button -->
+    <div class="relative flex justify-center mb-16">
+      <a href="ourDoctors" class="text-xl block text-center text-white rounded-md bg-green-700 hover:bg-green-600 px-6 py-2">Find a Doctor</a>
+    </div>
+  </section>
+
     <!-- HEADER -->
-    <h2 class="text-4xl md:text-6xl font-bold text-gray-800 mb-[5rem] text-center" data-aos="fade-up" data-aos-delay="100">
+    <h2 id="ourDoctors" class="mt-16 text-4xl md:text-5xl font-bold text-gray-800 mb-[5rem] text-center" data-aos="fade-up" data-aos-delay="100">
       Our <span class="text-green-700">Doctors</span>
     </h2>
 
@@ -173,9 +199,9 @@
 
     <!-- MODAL -->
     <div id="doctorModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-      <div class="bg-white rounded-lg p-6 w-96 relative shadow-lg">
+      <div class="bg-gray-50 rounded-lg p-6 w-96 relative shadow-lg">
         <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">&times;</button>
-        <img id="modalImage" src="" alt="" class="w-32 h-32 rounded-full mx-auto mb-4">
+        <img id="modalImage" fetchpriority="high" src="" alt="doctor_img" class="w-32 h-32 rounded-full mx-auto mb-4">
         <h2 id="modalName" class="text-xl font-semibold text-center"></h2>
         <p id="modalSpecialty" class="text-green-600 font-medium text-center"></p>
         <p id="modalRoom" class="mt-3 font-semibold text-center"></p>
