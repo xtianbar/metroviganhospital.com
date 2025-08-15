@@ -240,7 +240,7 @@ async function assignDoctorImages() {
     const nameKey = getFirstAndLastName(doc.name);
     const imagePath = `${imageFolder}dr_${nameKey}.avif`; // Match naming pattern
     const exists = await checkImageExists(imagePath);
-    doc.image = exists ? imagePath : "https://placehold.net/avatar.png";
+    doc.image = exists ? imagePath : "img/doctors/avatar.avif";
   }
 
   doctors = doctorsList.map(doc => ({ ...doc }));
