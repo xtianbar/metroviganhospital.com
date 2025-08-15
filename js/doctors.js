@@ -1,19 +1,19 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//   const doctorsSection = document.getElementById("doctors-section");
-//   doctorsSection.style.opacity = "1"; // show immediately
+document.addEventListener("DOMContentLoaded", function() {
+  const doctorsSection = document.getElementById("doctors-section");
+  doctorsSection.style.opacity = "1"; // show immediately
 
-//   // Then start loading data
-//   renderDoctors(doctorsList);
-// });
+  // Then start loading data
+  renderDoctors(doctorsList);
+});
 
-// function renderDoctors(list) {
-//   const container = document.getElementById("doctors-list");
-//   let html = "";
-//   list.forEach(doc => {
-//     html += `<div class="doctor-card">${doc.name}</div>`;
-//   });
-//   container.innerHTML = html;
-// }
+function renderDoctors(list) {
+  const container = document.getElementById("doctors-list");
+  let html = "";
+  list.forEach(doc => {
+    html += `<div class="doctor-card">${doc.name}</div>`;
+  });
+  container.innerHTML = html;
+}
 
 // Full doctors list (Manual room and schedule fields added)
 const doctorsList = [
