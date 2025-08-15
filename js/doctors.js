@@ -1,3 +1,20 @@
+// document.addEventListener("DOMContentLoaded", function() {
+//   const doctorsSection = document.getElementById("doctors-section");
+//   doctorsSection.style.opacity = "1"; // show immediately
+
+//   // Then start loading data
+//   renderDoctors(doctorsList);
+// });
+
+// function renderDoctors(list) {
+//   const container = document.getElementById("doctors-list");
+//   let html = "";
+//   list.forEach(doc => {
+//     html += `<div class="doctor-card">${doc.name}</div>`;
+//   });
+//   container.innerHTML = html;
+// }
+
 // Full doctors list (Manual room and schedule fields added)
 const doctorsList = [
       
@@ -198,6 +215,30 @@ const doctorsList = [
 
 ];
 
+const doctorsGrid = document.getElementById("doctorsGrid");
+
+  function createDoctorCard(doctor) {
+    const card = document.createElement("div");
+    card.className = "bg-white shadow rounded-lg p-4 cursor-pointer hover:shadow-lg transition";
+    card.innerHTML = `
+      <img src="${doctor.image}" alt="${doctor.name}" class="w-full h-48 object-cover rounded-md">
+      <h3 class="mt-2 font-semibold">${doctor.name}</h3>
+      <p class="text-green-600">${doctor.specialty}</p>
+    `;
+    card.addEventListener("click", () => openModal(doctor));
+    return card;
+  }
+
+  function renderDoctorsIncrementally(list) {
+    list.forEach((doctor, i) => {
+      // Append one at a time so browser paints them immediately
+      setTimeout(() => {
+        doctorsGrid.appendChild(createDoctorCard(doctor));
+      }, i * 0); // change 0 to e.g., 50 for a staggered animation
+    });
+  }
+
+   
 //https://placehold.net/avatar.png
 
 // ========================
@@ -247,6 +288,7 @@ async function assignDoctorImages() {
   currentList = doctors;
   initPage();
 }
+
 
 // ========================
 // Page Logic
