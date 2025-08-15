@@ -1,0 +1,30 @@
+<div x-data="{ open: false }" class="bg-green-700 text-white w-full shadow-md relative z-40">
+  <!-- Top Bar -->
+  <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+    <span class="font-semibold text-sm md:text-base">
+      We are pleased to announce that our Laboratory Results are now available online.
+    </span>
+    <button @click="open = true" class="underline text-sm hover:text-gray-200">
+      View Details
+    </button>
+  </div>
+
+  <!-- Fullscreen Overlay for Mobile -->
+  <div 
+    x-show="open" 
+    x-transition 
+    class="fixed inset-0 bg-white z-[9999] flex flex-col items-center justify-center md:justify-start md:pt-20 text-center">
+    
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="text-2xl md:text-xl font-bold mb-4 text-green-700">Laboratory Results Online</h2>
+      <p class="mb-6 text-gray-700">
+        You can now conveniently access your lab test results anytime, anywhere through our secure online portal.
+      </p>
+      <a href="/labresults" 
+         class="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold mb-4 block">
+        Go to Online Results
+      </a>
+      <button @click="open = false" class="text-green-700 underline">Close</button>
+    </div>
+  </div>
+</div>

@@ -262,19 +262,19 @@ const floors = {
             "Room Details: Regular Private"
             ] },
             { top: "63%", left: "52%", name: "Nursing Service Office", images: [
-            "img/facility/regular_private.avif"
+            "https://placehold.net/5.png"
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
             { top: "77%", left: "11.5%", name: "Heart Station", images: [
             "img/facility/heart_station-1.avif",
-            "img/facility/regular_privateart_station-2.avif",
+            "img/facility/heart_station-2.avif",
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
             { top: "77%", left: "24%", name: "PHACO Room 227", images: [
             "img/facility/small_private.avif",
-          "img/facility/small_private-2.avif"
+            "img/facility/small_private-2.avif"
           ], descriptions: [
             "Room Details: Small Private"
             ] },
