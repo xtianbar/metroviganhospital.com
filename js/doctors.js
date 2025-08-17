@@ -74,7 +74,7 @@ const doctorsList = [
   { name: "Gerardo R. Lahoz", specialty: "Family Medicine", hmo: [], room: "", schedule: "" },
   { name: "Gloria R. Lahoz", specialty: "Cardiology", hmo: [], room: "", schedule: "" },
   { name: "Jeanne Zherluck Z. Lapira", specialty: "Nephrology", hmo: [], room: "", schedule: "" },
-  { name: "Robert Q. Lim", specialty: "Cardiology", hmo: [], room: "", schedule: "" },
+  { name: "Robert Q. Lim", specialty: "Cardiology", hmo: ["Asianlife/Etiqa", "Cocolife", "Valucare", "Intellicare", "Maxicare", "Medicard"], room: "", schedule: "" },
   { name: "Oliver Nicolas P. Mabanag", specialty: "Nephrology", hmo: [], room: "", schedule: "" },
   { name: "Joel Malixi", specialty: "Dermatology", hmo: [], room: "", schedule: "" },
   { name: "Kristal F. Mendoza", specialty: "Clinical Nutrition", hmo: [], room: "", schedule: "" },
@@ -100,7 +100,7 @@ const doctorsList = [
   { name: "Stephen A. Ujano", specialty: "Internal Medicine", hmo: [], room: "", schedule: "" },
   { name: "Annalyn Q. Urbano", specialty: "Rheumatology", hmo: [], room: "", schedule: "" },
   { name: "Jeremiah R. Vallente", specialty: "Hematology", hmo: [], room: "", schedule: "" },
-  { name: "Luz Gregoria L. Velasco", specialty: "Internal Medicine", hmo: [], room: "", schedule: "" },
+  { name: "Luz Gregoria L. Velasco", specialty: "Internal Medicine", hmo: ["Asianlife/Etiqa", "Cocolife", "Insular", "IMS Wellthcare", "Valucare", "Maxicare", "Medicard"], room: "", schedule: "" },
   { name: "Leslie R. Viado", specialty: "Cardiology/Vascular", hmo: [], room: "", schedule: "" },
   { name: "Johann D. Yee", specialty: "Psychiatry", hmo: [], room: "", schedule: "" },
   { name: "Roland L. Zara", specialty: "Infectious Disease Specialty", hmo: [], room: "", schedule: "" },
@@ -114,9 +114,9 @@ const doctorsList = [
   { name: "Cheryl A. Cabebe", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Mae Ramos Cadacio", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Shara Antonette Z. Cañero", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
-  { name: "Marifel Gertrude A. Cortez", specialty: "OB-GYNE Ultrasound", hmo: [], room: "", schedule: "" },
-  { name: "Ruth Judith Gay V. Cristobal", specialty: "OB-GYNE-ONCOLOGY", hmo: [], room: "", schedule: "" },
-  { name: "Evangeline A. De Vera", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
+  { name: "Marifel Gertrude A. Cortez", specialty: "OB-GYNE - Ultrasound", hmo: [], room: "", schedule: "" },
+  { name: "Ruth Judith Gay V. Cristobal", specialty: "OB-GYNE - ONCOLOGY", hmo: [], room: "", schedule: "" },
+  { name: "Evangeline A. De Vera", specialty: "OB-GYNE", hmo: ["Asianlife/Etiqa", "Cocolife", "Intellicare", "Maxicare", "Medicard"], room: "", schedule: "" },
   { name: "Humbeline R. Galut", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Florely Joy E. Gregorio", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Rachel D. Jalog", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
@@ -129,11 +129,11 @@ const doctorsList = [
   { name: "Glenda P. Rabino", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Maria Katherine A. Ranches", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Lerida G. Rosario", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
-  { name: "Alda Gene P. Tremor", specialty: "OB-GYNE- Perinatology", hmo: [], room: "", schedule: "" },
+  { name: "Alda Gene P. Tremor", specialty: "OB-GYNE - Perinatology", hmo: ["Intellicare"], room: "", schedule: "" },
   { name: "Antonio G. Uclusin", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Asela Pearl Llane V. Vera Cruz", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Frances B. Vera Cruz", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
-  { name: "Domingo A. Cuanang III", specialty: "Radiaton Oncologist", hmo: [], room: "", schedule: "" },
+  { name: "Domingo A. Cuanang III", specialty: "Radiation Oncologist", hmo: [], room: "", schedule: "" },
   { name: "Gretchen G. Agdamag-Calderon", specialty: "Ophthalmology", hmo: [], room: "", schedule: "" },
   { name: "Simeon Emmanuel J. Aquino II", specialty: "Ophthalmology", hmo: [], room: "", schedule: "" },
   { name: "Karen R. Cabrera", specialty: "Ophthalmology", hmo: [], room: "", schedule: "" },
@@ -181,19 +181,19 @@ const doctorsList = [
   { name: "Marc Dominic G. Rosario", specialty: "Radiology", hmo: [], room: "", schedule: "" },
   { name: "Hannah Regina V. Tabali", specialty: "Radiology", hmo: [], room: "", schedule: "" },
   { name: "Anthony R. Vera Cruz", specialty: "Radiologist", hmo: [], room: "", schedule: "" },
-  { name: "Camelot C. Agdeppa", specialty: "Surgery -Hepatobiliary and Pancreatic", hmo: [], room: "", schedule: "" },
+  { name: "Camelot C. Agdeppa", specialty: "Surgery - Hepatobiliary and Pancreatic", hmo: ["Intellicare"], room: "", schedule: "" },
   { name: "Vivien Marie P. Abitong-Bolislish", specialty: "General Surgery", hmo: [], room: "", schedule: "" },
-  { name: "Conrado M. Andal", specialty: "Surgery", hmo: [], room: "", schedule: "" },
+  { name: "Conrado M. Andal", specialty: "Surgery", hmo: ["Asianlife/Etiqa", "Cocolife", "Eastwest", "HPPI", "Insular", "IMS Wellthcare", "Valucare", "Intellicare", "Medicard"], room: "", schedule: "" },
   { name: "Michael Martin C. Baccay", specialty: "Surgery - Thoracic and Cardiovascular", hmo: [], room: "", schedule: "" },
   { name: "Jobelle Joyce Anne R. Baldonado", specialty: "Surgery - Thoracic and Cardiovascular", hmo: [], room: "", schedule: "" },
   { name: "Modesto David A. Bolislis", specialty: "Surgery-Orthopedic", hmo: [], room: "", schedule: "" },
   { name: "Laurence Owen R. Bundal", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Manuel D. Cajigal", specialty: "Surgery", hmo: [], room: "", schedule: "" },
-  { name: "Claro G. Cauton", specialty: "Surgery -Orthopedic", hmo: [], room: "", schedule: "" },
+  { name: "Claro G. Cauton", specialty: "Surgery - Orthopedic", hmo: ["Intellicare"], room: "", schedule: "" },
   { name: "Margarita Jai B. Cobangco", specialty: "Surgery", hmo: [], room: "OPD Extension, Room 5", schedule: "Wed: 2PM-4PM" },
-  { name: "Ana Patricia V. De Grano", specialty: "Surgery -Plastic", hmo: [], room: "", schedule: "" },
-  { name: "John Clemente A. De Leon", specialty: "Surgery-Neuro", hmo: [], room: "", schedule: "" },
-  { name: "Marcelino D. De Peralta", specialty: "Surgery -Orthopedic", hmo: [], room: "", schedule: "" },
+  { name: "Ana Patricia V. De Grano", specialty: "Surgery - Plastic", hmo: [], room: "", schedule: "" },
+  { name: "John Clemente A. De Leon", specialty: "Surgery - Neuro", hmo: [], room: "", schedule: "" },
+  { name: "Marcelino D. De Peralta", specialty: "Surgery - Orthopedic", hmo: ["Cocolife", "Medicard"], room: "", schedule: "" },
   { name: "Maureen Elvira V. Dumlao", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Christian Dale R. Feri", specialty: "Surgery -Urology", hmo: [], room: "", schedule: "" },
   { name: "Miguel Carlo R. Galut", specialty: "Urology", hmo: [], room: "Ground Flr, Room 106", schedule: "Tue: 1PM-3PM & Wed: 10AM-12NN" },
@@ -201,10 +201,10 @@ const doctorsList = [
   { name: "Esperanza R. Lahoz", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Reynaldo P. Paz", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Leslie V. Rafanan", specialty: "Surgery -Urology", hmo: [], room: "", schedule: "" },
-  { name: "Digna R. Ragasa", specialty: "Surgery", hmo: ["KAISER"], room: "Room 106", schedule: "Mon-Sat: 8AM-12NN" },
+  { name: "Digna R. Ragasa", specialty: "Surgery", hmo: ["Asianlife/Etiqa", "Cocolife", "Eastwest", "HMI", "HPPI", "Insular", "IMS Wellthcare", "Philcare", "Valucare", "Generali", "Kaizer", "Intellicare", "Maxicare", "Medicard", "Medasia", "Amaphil"], room: "Room 106", schedule: "Mon-Sat: 8AM-12NN" },
   { name: "Vivencio R. Refuerzo", specialty: "Surgery-Colorectal", hmo: [], room: "", schedule: "" },
   { name: "Marjorie B. Sierra", specialty: "Orthopedic-Oncology", hmo: [], room: "", schedule: "" },
-  { name: "Ernesto R. Tagorda Jr.", specialty: "Surgery", hmo: [], room: "", schedule: "" },
+  { name: "Ernesto R. Tagorda Jr.", specialty: "Surgery", hmo: ["Cocolife", "Eastwest", "HMI", "HPPI", "Insular", "IMS Wellthcare", "Intellicare", "Maxicare"], room: "", schedule: "" },
   { name: "Benjamin Q. Tolentino III", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Jonah Lyn P. Toribio", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Porfirio Tugas", specialty: "Surgery", hmo: [], room: "", schedule: "" },
@@ -337,7 +337,7 @@ function initPage() {
         
         slice.forEach(doc => {
             const card = document.createElement("div");
-            card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center";
+            card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center py-6";
             
             // Add a `data-name` attribute to the img tag. This is crucial for the
             // background image update function to find and update the correct image.
@@ -345,7 +345,6 @@ function initPage() {
                 <img src="${doc.image}" data-name="${doc.name}" class="w-28 h-28 mx-auto rounded-full mb-3 object-cover">
                 <h3 class="text-lg font-semibold">Dr. ${doc.name}</h3>
                 <p class="text-green-600">${doc.specialty || 'N/A'}</p>
-                <p class="text-sm text-gray-500 mt-2">${doc.room || ''}</p>
             `;
             card.onclick = () => showModal(doc);
             grid.appendChild(card);
@@ -395,7 +394,7 @@ function initPage() {
         setModalField(modalSchedule, "Schedule:", doc.schedule);
         
         const hmoList = doc.hmo && doc.hmo.length ? doc.hmo.join(", ") : "";
-        setModalField(modalHmo, "HMO Accreditation:", hmoList);
+        setModalField(modalHmo, "HMO Accreditations:", hmoList);
         
         modalImage.src = doc.image;
         modal.classList.remove("hidden");
@@ -426,10 +425,10 @@ function filterDoctors() {
         const nameMatch = normalizeString(doc.name).includes(search);
         const specialtyMatch = normalizeString(doc.specialty).includes(search);
         const roomMatch = normalizeString(doc.room).includes(search);
-
+        const hmoMatch = doc.hmo && doc.hmo.some(hmo => normalizeString(hmo).includes(search));
         const specialtyFilterMatch = (specialty === "all" || doc.specialty === specialty);
         
-        return specialtyFilterMatch && (nameMatch || specialtyMatch || roomMatch);
+        return specialtyFilterMatch && (nameMatch || specialtyMatch || roomMatch || hmoMatch);
     });
 
     renderDoctors(currentList, true); // Re-render the list from scratch
