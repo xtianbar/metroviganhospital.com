@@ -156,7 +156,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                             <i class="fas fa-user"></i>
                             </span>
-                            <input type="text" id="name" name="name" required 
+                            <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz"
                                 class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
                         </div>
                         </div>
@@ -166,13 +166,14 @@
                         
                         <!-- Phone -->
                         <div class="relative ">
-                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Cellphone Number</label>
                             <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                                 <i class="fas fa-phone"></i>
                             </span>
                             <input type="tel" id="phone" name="phone"
-                                    pattern="^(09|\+639)\d{9}$"
+                                    pattern="^(09|\+639)\d{9}$" maxlength="15"
+                                    placeholder="09 or +639"
                                     title="Enter a valid PH number: starts with 09 or +639"
                                     required
                                     class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
@@ -186,7 +187,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                                 <i class="fas fa-envelope"></i>
                             </span>
-                            <input type="email" id="email" name="email" required
+                            <input type="email" id="email" name="email" required placeholder="name@email.com"
                                     class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
                             </div>
                         </div>
@@ -199,7 +200,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                             <i class="fas fa-location-dot"></i>
                             </span>
-                            <input type="text" id="address" name="address" required 
+                            <input type="text" id="address" name="address" required placeholder="Rizal St., Brgy. IV (Poblacion), Bantay, Philippines"
                                 class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
                         </div>
                         </div>
@@ -207,7 +208,7 @@
                         <!-- Message -->
                         <div class="relative">
                         <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea id="message" name="message" rows="4" required 
+                        <textarea id="message" name="message" rows="4" required placeholder="Enter your message here..."
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"></textarea>
                         </div>
 
