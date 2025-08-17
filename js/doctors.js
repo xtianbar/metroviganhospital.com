@@ -1,19 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const doctorsSection = document.getElementById("doctors-section");
-  doctorsSection.style.opacity = "1"; // show immediately
+    // 1. Give every doctor a default avatar image to start.
+    // This ensures the page loads instantly without waiting for image checks.
+    doctors = doctorsList.map(doc => ({ ...doc, image: "img/doctors/avatar.avif" }));
+    currentList = doctors;
 
-  // Then start loading data
-  renderDoctors(doctorsList);
+    // 2. Render the page immediately with the default data.
+    initPage();
+
+    // 3. Start checking for real images in the background without blocking the page.
+    updateImagesInBackground();
 });
 
-function renderDoctors(list) {
-  const container = document.getElementById("doctors-list");
-  let html = "";
-  list.forEach(doc => {
-    html += `<div class="doctor-card">${doc.name}</div>`;
-  });
-  container.innerHTML = html;
-}
+// ========================
+// DATA
+// ========================
+
 
 // Full doctors list (Manual room and schedule fields added)
 const doctorsList = [
@@ -132,7 +133,7 @@ const doctorsList = [
   { name: "Antonio G. Uclusin", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Asela Pearl Llane V. Vera Cruz", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
   { name: "Frances B. Vera Cruz", specialty: "OB-GYNE", hmo: [], room: "", schedule: "" },
-  { name: "Domingo Agustin Cuanang III", specialty: "Radiaton Oncologist", hmo: [], room: "", schedule: "" },
+  { name: "Domingo A. Cuanang III", specialty: "Radiaton Oncologist", hmo: [], room: "", schedule: "" },
   { name: "Gretchen G. Agdamag-Calderon", specialty: "Ophthalmology", hmo: [], room: "", schedule: "" },
   { name: "Simeon Emmanuel J. Aquino II", specialty: "Ophthalmology", hmo: [], room: "", schedule: "" },
   { name: "Karen R. Cabrera", specialty: "Ophthalmology", hmo: [], room: "", schedule: "" },
@@ -204,7 +205,7 @@ const doctorsList = [
   { name: "Vivencio R. Refuerzo", specialty: "Surgery-Colorectal", hmo: [], room: "", schedule: "" },
   { name: "Marjorie B. Sierra", specialty: "Orthopedic-Oncology", hmo: [], room: "", schedule: "" },
   { name: "Ernesto R. Tagorda Jr.", specialty: "Surgery", hmo: [], room: "", schedule: "" },
-  { name: "Benjamin III Q. Tolentino", specialty: "Surgery", hmo: [], room: "", schedule: "" },
+  { name: "Benjamin Q. Tolentino III", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Jonah Lyn P. Toribio", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Porfirio Tugas", specialty: "Surgery", hmo: [], room: "", schedule: "" },
   { name: "Ria Jane U. Uclaray", specialty: "Surgery/Pediatrics", hmo: [], room: "", schedule: "" },
@@ -214,58 +215,46 @@ const doctorsList = [
   { name: "Faustino L. Unabia Jr.", specialty: "", hmo: [], room: "", schedule: "" },
 
 ];
+// ========================
+// IMAGE HANDLING (OPTIMIZED)
+// ========================
+const imageFolder = "img/doctors/"; // Relative path to your images folder
 
-const doctorsGrid = document.getElementById("doctorsGrid");
+/**
+ * Checks for all doctor images in the background and updates them on the page.
+ */
+async function updateImagesInBackground() {
+    // Create an array of promises. Each promise will check if one doctor's image exists.
+    // This allows all checks to run in parallel, which is much faster.
+    const promises = doctors.map(async (doc, index) => {
+        const nameKey = getFirstAndLastName(doc.name);
+        const imagePath = `${imageFolder}dr_${nameKey}.avif`;
+        
+        const exists = await checkImageExists(imagePath);
 
-  function createDoctorCard(doctor) {
-    const card = document.createElement("div");
-    card.className = "bg-white shadow rounded-lg p-4 cursor-pointer hover:shadow-lg transition";
-    card.innerHTML = `
-      <img src="${doctor.image}" alt="${doctor.name}" class="w-full h-48 object-cover rounded-md">
-      <h3 class="mt-2 font-semibold">${doctor.name}</h3>
-      <p class="text-green-600">${doctor.specialty}</p>
-    `;
-    card.addEventListener("click", () => openModal(doctor));
-    return card;
-  }
-
-  function renderDoctorsIncrementally(list) {
-    list.forEach((doctor, i) => {
-      // Append one at a time so browser paints them immediately
-      setTimeout(() => {
-        doctorsGrid.appendChild(createDoctorCard(doctor));
-      }, i * 0); // change 0 to e.g., 50 for a staggered animation
+        if (exists) {
+            // If the image is found, update the path in our main data array.
+            doctors[index].image = imagePath;
+            
+            // Also, find the corresponding <img> element on the page and update its 'src'.
+            // We use a data-attribute to easily find the correct image.
+            const imgElement = document.querySelector(`img[data-name="${doc.name}"]`);
+            if (imgElement) {
+                imgElement.src = imagePath;
+            }
+        }
     });
-  }
 
-   
-//https://placehold.net/avatar.png
-
-// ========================
-// Image Handling
-// ========================
-const imageFolder = "img/doctors/"; // relative path to images
-
-// Extract first and last name (supports multi-word last names)
-function getFirstAndLastName(fullName) {
-  const parts = fullName.trim().split(/\s+/);
-  const firstName = parts[0]
-    .replace(/[^a-zA-Z]/g, "")
-    .toLowerCase();
-
-  // Last name is everything after the last initial (detect suffix after middle name/initial)
-  const lastNameParts = parts.slice( parts.findIndex(p => p.includes(".")) + 1 );
-  
-  // Fallback: if no middle initial found, take last word(s)
-  const lastName = (lastNameParts.length ? lastNameParts : parts.slice(-1))
-    .join("-") // join with dash
-    .replace(/[^a-zA-Z-]/g, "") // keep letters & dashes only
-    .toLowerCase();
-
-  return `${firstName}_${lastName}`;
+    // Wait for all the background checks to complete.
+    await Promise.all(promises);
+    console.log("All image checks are complete.");
 }
 
-// Check if image exists
+/**
+ * Checks if a single image file exists at a given URL.
+ * @param {string} url - The path to the image file.
+ * @returns {Promise<boolean>} - True if the image loads, false if it fails.
+ */
 function checkImageExists(url) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -275,144 +264,183 @@ function checkImageExists(url) {
   });
 }
 
-// Assign images to doctors
-async function assignDoctorImages() {
-  for (let doc of doctorsList) {
-    const nameKey = getFirstAndLastName(doc.name);
-    const imagePath = `${imageFolder}dr_${nameKey}.avif`; // Match naming pattern
-    const exists = await checkImageExists(imagePath);
-    doc.image = exists ? imagePath : "img/doctors/avatar.avif";
-  }
+/**
+ * Creates a filename-friendly string from a doctor's full name.
+ * @param {string} fullName - The doctor's full name.
+ * @returns {string} - A formatted string like "firstname_lastname".
+ */
+function getFirstAndLastName(fullName) {
+    // UPDATED LINE: Made the comma and space optional to handle both cases
+    const cleanName = fullName.replace(/,? ?(Jr|Sr|I|II|III|IV|V)\.?$/i, '');
 
-  doctors = doctorsList.map(doc => ({ ...doc }));
-  currentList = doctors;
-  initPage();
+    // The rest of the function remains the same
+    const parts = cleanName.trim().split(/\s+/);
+    const firstName = parts[0]
+        .replace(/[^a-zA-Z]/g, "")
+        .toLowerCase();
+
+    const lastNameParts = parts.slice(parts.findIndex(p => p.includes(".")) + 1);
+    
+    const lastName = (lastNameParts.length ? lastNameParts : parts.slice(-1))
+        .join("-")
+        .replace(/[^a-zA-Z-]/g, "")
+        .toLowerCase();
+
+    return `${firstName}_${lastName}`;
 }
 
-
 // ========================
-// Page Logic
+// PAGE INITIALIZATION & LOGIC
 // ========================
-let doctors = [];
-let currentList = [];
 
 function initPage() {
-  const grid = document.getElementById("doctorsGrid");
-  const specialtyFilter = document.getElementById("specialtyFilter");
-  const searchBox = document.getElementById("searchBox");
-  const modal = document.getElementById("doctorModal");
-  const modalName = document.getElementById("modalName");
-  const modalSpecialty = document.getElementById("modalSpecialty");
-  const modalRoom = document.getElementById("modalRoom");
-  const modalSchedule = document.getElementById("modalSchedule");
-  const modalImage = document.getElementById("modalImage");
-  const modalHmo = document.getElementById("modalHmo");
-  const loadMoreBtn = document.getElementById("loadMore");
+    // Get references to all necessary DOM elements
+    const grid = document.getElementById("doctorsGrid");
+    const specialtyFilter = document.getElementById("specialtyFilter");
+    const searchBox = document.getElementById("searchBox");
+    const modal = document.getElementById("doctorModal");
+    const modalName = document.getElementById("modalName");
+    const modalSpecialty = document.getElementById("modalSpecialty");
+    const modalRoom = document.getElementById("modalRoom");
+    const modalSchedule = document.getElementById("modalSchedule");
+    const modalImage = document.getElementById("modalImage");
+    const modalHmo = document.getElementById("modalHmo");
+    const loadMoreBtn = document.getElementById("loadMore");
+    const closeModalBtn = document.getElementById("closeModal");
 
-  // Populate Specialty Filter
-  const specialties = [...new Set(doctors.map(d => d.specialty))];
-  specialties.forEach(s => {
-    const opt = document.createElement("option");
-    opt.value = s;
-    opt.textContent = s;
-    specialtyFilter.appendChild(opt);
-  });
-
-  // Pagination
-  let displayedCount = 0;
-  const increment = 20;
-
-  function renderDoctors(list, reset = false) {
-    if (reset) {
-      grid.innerHTML = "";
-      displayedCount = 0;
-    }
-    const slice = list.slice(displayedCount, displayedCount + increment);
-    slice.forEach(doc => {
-      const card = document.createElement("div");
-      card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center";
-      card.innerHTML = `
-        <img src="${doc.image}" class="w-28 h-28 mx-auto rounded-full mb-3 object-cover">
-        <h3 class="text-lg font-semibold">Dr. ${doc.name}</h3>
-        <p class="text-green-600">${doc.specialty}</p>
-        <p class="text-sm text-gray-500 mt-2">${doc.room}</p>
-      `;
-      card.onclick = () => showModal(doc);
-      grid.appendChild(card);
+    // Populate the specialty dropdown filter
+    // Use a Set to automatically get unique specialty values
+    const specialties = [...new Set(doctors.map(d => d.specialty).filter(s => s))].sort();
+    specialties.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s;
+        opt.textContent = s;
+        specialtyFilter.appendChild(opt);
     });
-    displayedCount += increment;
-    loadMoreBtn.classList.toggle("hidden", displayedCount >= list.length);
-  }
 
-function safeText(value) {
-  if (!value) return "N/A";
-    const trimmed = value.trim();
-    if (trimmed === "" || trimmed === "-" || trimmed.toUpperCase() === "TBA") {
-      return "N/A";
+    // --- Pagination Logic ---
+    let displayedCount = 0;
+    const increment = 20; // Number of doctors to show per click
+
+    /**
+     * Renders a batch of doctor cards to the grid.
+     * @param {Array} list - The list of doctors to render from.
+     * @param {boolean} reset - If true, clears the grid before rendering.
+     */
+    function renderDoctors(list, reset = false) {
+        if (reset) {
+            grid.innerHTML = "";
+            displayedCount = 0;
+        }
+        
+        const slice = list.slice(displayedCount, displayedCount + increment);
+        
+        slice.forEach(doc => {
+            const card = document.createElement("div");
+            card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center";
+            
+            // Add a `data-name` attribute to the img tag. This is crucial for the
+            // background image update function to find and update the correct image.
+            card.innerHTML = `
+                <img src="${doc.image}" data-name="${doc.name}" class="w-28 h-28 mx-auto rounded-full mb-3 object-cover">
+                <h3 class="text-lg font-semibold">Dr. ${doc.name}</h3>
+                <p class="text-green-600">${doc.specialty || 'N/A'}</p>
+                <p class="text-sm text-gray-500 mt-2">${doc.room || ''}</p>
+            `;
+            card.onclick = () => showModal(doc);
+            grid.appendChild(card);
+        });
+        
+        displayedCount += slice.length;
+        
+        // Show or hide the "Load More" button
+        loadMoreBtn.classList.toggle("hidden", displayedCount >= list.length);
     }
-  return trimmed;
+
+    // --- Modal Logic ---
+
+    function safeText(value) {
+        if (!value) return "N/A";
+        const trimmed = typeof value === 'string' ? value.trim() : '';
+        if (trimmed === "" || trimmed === "-" || trimmed.toUpperCase() === "TBA") {
+            return "N/A";
+        }
+        return trimmed;
+    }
+
+    function setModalField(element, label, value) {
+        const safeValue = safeText(value);
+        element.textContent = ""; // Clear previous content
+
+        if (label) {
+            const labelSpan = document.createElement("span");
+            labelSpan.textContent = label + " ";
+            element.appendChild(labelSpan);
+        }
+
+        const valueSpan = document.createElement("span");
+        valueSpan.textContent = safeValue;
+
+        if (safeValue === "N/A") {
+            valueSpan.style.color = "#888";
+            valueSpan.style.fontStyle = "italic";
+        }
+        element.appendChild(valueSpan);
+    }
+
+    function showModal(doc) {
+        setModalField(modalName, "Dr.", doc.name);
+        setModalField(modalSpecialty, "", doc.specialty);
+        setModalField(modalRoom, "Clinic:", doc.room);
+        setModalField(modalSchedule, "Schedule:", doc.schedule);
+        
+        const hmoList = doc.hmo && doc.hmo.length ? doc.hmo.join(", ") : "";
+        setModalField(modalHmo, "HMO Accreditation:", hmoList);
+        
+        modalImage.src = doc.image;
+        modal.classList.remove("hidden");
+    }
+
+    // --- Filtering Logic ---
+/**
+ * Converts a string to a basic, accent-free, lowercase version.
+ * e.g., "Abelañes" becomes "abelanes"
+ * @param {string} str The string to normalize.
+ * @returns {string} The normalized string.
+ */
+function normalizeString(str) {
+  if (!str) return "";
+  return str
+    .toLowerCase()
+    .normalize("NFD") // Decomposes characters (e.g., ñ -> n + ~)
+    .replace(/[\u0300-\u036f]/g, ""); // Removes the accent marks (e.g., ~)
 }
 
-function setModalField(element, label, value) {
-  const safeValue = safeText(value);
-
-    // Clear the element before adding content
-    element.textContent = "";
-
-    // Add the label (normal style)
-    if (label) {
-      const labelSpan = document.createElement("span");
-      labelSpan.textContent = label + " ";
-      element.appendChild(labelSpan);
-    }
-
-    // Add the value (special style if N/A)
-    const valueSpan = document.createElement("span");
-    valueSpan.textContent = safeValue;
-
-    if (safeValue === "N/A") {
-      valueSpan.style.color = "#888";       // gray
-      valueSpan.style.fontStyle = "italic"; // italic
-    }
-
-  element.appendChild(valueSpan);
-}
-
-function showModal(doc) {
-  setModalField(modalName, "Dr.", doc.name);
-  setModalField(modalSpecialty, "", doc.specialty);
-  setModalField(modalRoom, "Clinic:", doc.room);
-  setModalField(modalSchedule, "Schedule:", doc.schedule);
-  setModalField(modalHmo, "HMO Accreditation:", doc.hmo && doc.hmo.length ? doc.hmo.join(", ") : "");
-  modalImage.src = doc.image;
-  modal.classList.remove("hidden");
-}
-
-  document.getElementById("closeModal").onclick = () => modal.classList.add("hidden");
-
-  function filterDoctors() {
-    const search = searchBox.value.toLowerCase();
+function filterDoctors() {
+    // Use the helper to normalize the user's search input
+    const search = normalizeString(searchBox.value); 
     const specialty = specialtyFilter.value;
 
-    const filtered = doctors.filter(doc =>
-      (specialty === "all" || doc.specialty === specialty) &&
-      (doc.name.toLowerCase().includes(search) ||
-       doc.specialty.toLowerCase().includes(search) ||
-       doc.room.toLowerCase().includes(search))
-    );
+    currentList = doctors.filter(doc => {
+        // Normalize the doctor's data before checking for a match
+        const nameMatch = normalizeString(doc.name).includes(search);
+        const specialtyMatch = normalizeString(doc.specialty).includes(search);
+        const roomMatch = normalizeString(doc.room).includes(search);
 
-    currentList = filtered;
-    renderDoctors(filtered, true);
-  }
+        const specialtyFilterMatch = (specialty === "all" || doc.specialty === specialty);
+        
+        return specialtyFilterMatch && (nameMatch || specialtyMatch || roomMatch);
+    });
 
-  searchBox.addEventListener("input", filterDoctors);
-  specialtyFilter.addEventListener("change", filterDoctors);
-  loadMoreBtn.addEventListener("click", () => renderDoctors(currentList));
-
-  renderDoctors(doctors);
+    renderDoctors(currentList, true); // Re-render the list from scratch
 }
 
-// ========================
-// Start
-// ========================
-assignDoctorImages();
+    // --- Event Listeners ---
+    searchBox.addEventListener("input", filterDoctors);
+    specialtyFilter.addEventListener("change", filterDoctors);
+    loadMoreBtn.addEventListener("click", () => renderDoctors(currentList));
+    closeModalBtn.onclick = () => modal.classList.add("hidden");
+
+    // Initial render of the first batch of doctors
+    renderDoctors(doctors);
+}
