@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates - Metro Vigan Hospital</title>
+    <meta name="author" content="Metro Vigan Hospital">
+    <meta name="description" content="Stay updated with the latest news, events, and health advisories from Metro Vigan Hospital.">
+    <meta name="keywords" content="Metro Vigan Hospital news, hospital updates, health news Philippines, Vigan hospital events">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS (if any) -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo/favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-gray-100 font-roboto">
+
+    <!-- NAVBAR SECTION -->
+    <nav id="main-navbar" class="fixed top-0 z-30 w-full bg-white border-b shadow-md sm:px-4 md:px-6 px-10 py-2" aria-label="Main navigation">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center justify-center">
+        <img src="img/logo/mvh_logo_optimized.avif" class="h-16 mr-3" alt="MVH Logo" fetchpriority="high" loading="eager"/>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap hidden xl:inline">Metro Vigan Hospital</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap inline xl:hidden">MVH</span>
+      </a>
+  
+      <!-- Toggle Button (Mobile) -->
+      <button id="menu-toggle" type="button" 
+              class="inline-flex items-center p-2 text-xl text-green-700 hover:text-black transition justify-center rounded-lg lg:hidden">
+        <span class="sr-only">Open main menu</span>
+        <i class="fa-solid fa-bars"></i>
+      </button>
+  
+      <!-- Navbar Menu -->
+      <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
+        <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
+          <li><a href="/" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Home</a></li>
+          <li><a href="/services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Services</a></li>
+          <li><a href="/facilities" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Facilities</a></li>
+          <li><a href="/doctors" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Doctors</a></li>
+          <li><a href="/about-us" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">About Us</a></li>
+          <li class="flex flex-col md:flex-row gap-4">
+            <a href="https://labresult.metroviganhospital.com/" target="_blank" class="block w-full md:w-1/2 lg:w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
+                Lab Results
+            </a>
+            <a href="/contact-us" class="block w-full md:w-1/2 lg:hidden text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
+                Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    </nav>
+
+    <main class="pt-32">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">News & Updates</h1>
+            <p class="text-gray-600 mb-12 text-center max-w-3xl mx-auto">The latest announcements, health tips, and stories from Metro Vigan Hospital.</p>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="text-center py-12">
+                <i class="fas fa-spinner fa-spin text-4xl text-green-600"></i>
+                <p class="mt-2 text-gray-600">Loading Articles...</p>
+            </div>
+
+            <!-- Featured Article Section -->
+            <div id="featured-article-container" class="hidden mb-16">
+                <!-- Featured article will be injected here by JavaScript -->
+            </div>
+
+            <!-- Articles Grid -->
+            <div id="articles-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Other articles will be injected here by JavaScript -->
+            </div>
+             <p id="no-articles" class="hidden text-center text-gray-500 py-12">No articles found. Please check back later.</p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 text-gray-800">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Logo & About -->
+      <div>
+        <div class="flex items-center space-x-3">
+          <img src="img/logo/mvh_logo_optimized.avif" loading="lazy" fetchpriority="low" alt="Metro Vigan Hospital Logo" class="h-12 w-auto">
+          <span class="text-lg font-semibold">Metro Vigan Hospital</span>
+        </div>
+        <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+          Entrust your health to us!
+        </p>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          We Care, We Cure, We Can.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-gray-600 text-sm">
+          <li><a href="/services" class="hover:text-[#04813b] transition">Our Services</a></li>
+          <li><a href="/facilities" class="hover:text-[#04813b] transition">Our Facilities</a></li>
+          <li><a href="/doctors" class="hover:text-[#04813b] transition">Our Doctors</a></li>
+          <li><a href="/about-us" class="hover:text-[#04813b] transition">About Us</a></li>
+          <li><a href="/careers" class="hover:text-[#04813b] transition">Careers</a></li>
+          <li><a href="https://labresult.metroviganhospital.com/" target="_blank" class="hover:text-[#04813b] transition">Lab Results</a></li>
+          <li><a href="/contact-us" class="hover:text-[#04813b] transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <ul class="space-y-3 text-gray-600 text-sm">
+          <li class="flex items-center space-x-2">
+            <i class="fa-solid fa-envelope text-green-700"></i>
+            <span>
+              <a href="mailto:info@metroviganhospital.com?cc=marketing@metroviganhospital.com" target="_blank" class="hover:underline hover:underline-offset-2">
+                info@metroviganhospital.com
+              </a>
+            </span>
+          </li>
+
+          <li class="flex items-center space-x-2">
+            <i class="fa-solid fa-phone text-green-700"></i>
+            <span>
+              <a href="tel:(077) 674 0587" class="hover:underline hover:underline-offset-2">
+                (077) 674 0587
+              </a>
+            </span>
+          </li>
+
+          <li class="flex items-center space-x-2">
+            <i class="fa-solid fa-map-pin text-green-700"></i>
+            <span>
+              <a href="https://maps.app.goo.gl/acCeWcUGXqfhwvtcA" target="_blank" class="hover:underline hover:underline-offset-2">
+                Rizal St., Brgy. IV (Poblacion), Bantay, Philippines
+              </a>
+            </span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Social Media -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+        <div class="flex space-x-4">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/metroviganhospital" target="_blank" class="hover:text-[#04813b] transition" aria-label="Facebook">
+            <i class="fa-brands fa-facebook text-gray-600 hover:text-[#04813b] transition text-2xl"></i>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/metroviganhospital/" target="_blank" class="hover:text-[#04813b] transition" aria-label="Instagram">
+            <i class="fa-brands fa-instagram text-gray-600 hover:text-[#04813b] transition text-2xl"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-200 mt-8">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <span class="p-2 text-[0.5rem] opacity-80 flex flex-wrap items-center gap-1 justify-center">website created and maintained by <a href="https://xtianbar.vercel.app/" target="_blank"><img src="img/logo/xtianbar-logo.avif" fetchpriority="low" loading="lazy" alt="Metro Vigan Hospital Logo" class="h-2 w-auto"></a></span>
+        <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
+        <div class="space-x-4 mt-2 md:mt-0">
+          <a href="/privacy-policy" class="hover:text-[#04813b] transition">Privacy Policy</a>
+          <a href="/terms-of-service" class="hover:text-[#04813b] transition">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    </footer>
+
+    <script src="js/script.js"> </script>
+    <script src="js/go-top-button.js"></script>
+    
+    <!-- Firebase -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAG_4ZJS6PhL1m95j0KSKNVOH6vM_erxg8",
+            authDomain: "metroviganhospit-1754712078671.firebaseapp.com",
+            projectId: "metroviganhospit-1754712078671",
+            storageBucket: "metroviganhospit-1754712078671.firebasestorage.app",
+            messagingSenderId: "751450211377",
+            appId: "1:751450211377:web:b0765182c55f0ead268110",
+            measurementId: "G-SKFD2L78KJ"
+        };
+
+        const appId = firebaseConfig.appId;
+
+        // --- Firebase Initialization ---
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const loadingEl = document.getElementById('loading');
+        const featuredContainer = document.getElementById('featured-article-container');
+        const articlesGrid = document.getElementById('articles-grid');
+        const noArticlesEl = document.getElementById('no-articles');
+
+        async function fetchArticles() {
+            try {
+                const articlesRef = collection(db, `/artifacts/${appId}/public/data/articles`);
+                const q = query(articlesRef);
+                const querySnapshot = await getDocs(q);
+                
+                loadingEl.classList.add('hidden');
+
+                if (querySnapshot.empty) {
+                    noArticlesEl.classList.remove('hidden');
+                    return;
+                }
+
+                let articles = [];
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.date && typeof data.date.toDate === 'function') {
+                        articles.push({ id: doc.id, ...data });
+                    } else {
+                        console.warn(`Skipping article ${doc.id}: missing or invalid date.`);
+                    }
+                });
+
+                if (articles.length === 0) {
+                    noArticlesEl.classList.remove('hidden');
+                    return;
+                }
+
+                articles.sort((a, b) => b.date.toDate() - a.date.toDate());
+
+                const featuredArticle = articles.find(a => a.featured) || articles[0];
+                const otherArticles = articles.filter(a => a.id !== featuredArticle.id);
+
+                if (featuredArticle) {
+                    featuredContainer.innerHTML = createFeaturedArticleHTML(featuredArticle);
+                    featuredContainer.classList.remove('hidden');
+                }
+
+                if (otherArticles.length > 0) {
+                    articlesGrid.innerHTML = otherArticles.map(createArticleCardHTML).join('');
+                    articlesGrid.classList.remove('hidden');
+                }
+                
+            } catch (error) {
+                console.error("Error fetching articles: ", error);
+                loadingEl.classList.remove('hidden');
+                loadingEl.innerHTML = '<p class="text-red-500">Failed to load articles. Please check your Firestore rules and configuration.</p>';
+            }
+        }
+
+        function createFeaturedArticleHTML(article) {
+            const articleDate = article.date.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            return `
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden md:flex" data-aos="fade-up">
+                    <div class="md:w-1/2">
+                        <img src="${article.imageUrl}" alt="${article.title}" class="h-64 w-full object-cover md:h-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                    </div>
+                    <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                        <p class="text-sm text-gray-500 mb-2">${article.author} &bull; ${articleDate}</p>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">${article.title}</h2>
+                        <div class="text-gray-700 leading-relaxed mb-6">${truncate(article.content, 200)}</div>
+                        <a href="article.html?id=${article.id}" class="text-green-600 font-semibold hover:underline">Read More &rarr;</a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function createArticleCardHTML(article) {
+             const articleDate = article.date.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            return `
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <img src="${article.imageUrl}" alt="${article.title}" class="h-48 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <p class="text-sm text-gray-500 mb-2">${article.author} &bull; ${articleDate}</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">${article.title}</h3>
+                        <div class="text-gray-700 leading-relaxed mb-4 flex-grow">${truncate(article.content, 100)}</div>
+                        <a href="article.html?id=${article.id}" class="text-green-600 font-semibold hover:underline mt-auto">Read More &rarr;</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function truncate(str, maxLength) {
+            if (!str) return '';
+            const strippedString = str.replace(/<[^>]+>/g, '');
+            if (strippedString.length <= maxLength) return strippedString;
+            return strippedString.substring(0, maxLength) + '...';
+        }
+
+        async function initializePage() {
+            try {
+                console.log("Attempting to sign in anonymously...");
+                await signInAnonymously(auth);
+                console.log("Sign in successful. User:", auth.currentUser);
+                await fetchArticles();
+            } catch (error) {
+                console.error("Initialization error:", error);
+                loadingEl.innerHTML = '<p class="text-red-500">Could not connect to the database. Please check console for details.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializePage();
+            const toggleBtn = document.getElementById('menu-toggle');
+            const menu = document.getElementById('navbar-menu');
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        });
+    </script>
+    
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
