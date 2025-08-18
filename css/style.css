@@ -253,3 +253,34 @@ body.modal-open {
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
 }
+
+        /* Styles for the article content area */
+        .article-content h1, .article-content h2, .article-content h3 {
+            font-weight: bold;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .article-content h1 { font-size: 2.25rem; }
+        .article-content h2 { font-size: 1.875rem; }
+        .article-content h3 { font-size: 1.5rem; }
+        .article-content p {
+            margin-bottom: 1em;
+            line-height: 1.75;
+        }
+        .article-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1em;
+        }
+        .article-content ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1em;
+        }
+        .article-content blockquote {
+            border-left: 4px solid #16a94c;
+            padding-left: 1rem;
+            margin: 1.5em 0;
+            font-style: italic;
+            color: #4b5563;
+        }

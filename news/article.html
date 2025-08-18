@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Article - Metro Vigan Hospital</title>
+    <title>News Article | Metro Vigan Hospital</title>
     <meta name="author" content="Metro Vigan Hospital">
+    <meta name="description" content="Stay updated with the latest news, events, and health advisories from Metro Vigan Hospital.">
+    <meta name="keywords" content="Metro Vigan Hospital news, hospital updates, health news Philippines, Vigan hospital events">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,69 +15,48 @@
     <!-- Custom CSS (if any) -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon">
-    <style>
-        /* Styles for the article content area */
-        .article-content h1, .article-content h2, .article-content h3 {
-            font-weight: bold;
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-        }
-        .article-content h1 { font-size: 2.25rem; }
-        .article-content h2 { font-size: 1.875rem; }
-        .article-content h3 { font-size: 1.5rem; }
-        .article-content p {
-            margin-bottom: 1em;
-            line-height: 1.75;
-        }
-        .article-content ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            margin-bottom: 1em;
-        }
-        .article-content ol {
-            list-style-type: decimal;
-            margin-left: 1.5rem;
-            margin-bottom: 1em;
-        }
-        .article-content blockquote {
-            border-left: 4px solid #16a94c;
-            padding-left: 1rem;
-            margin: 1.5em 0;
-            font-style: italic;
-            color: #4b5563;
-        }
-    </style>
+
 </head>
 <body class="bg-gray-100 font-roboto">
 
-    <!-- NAVIGATION BAR -->
-    <nav class="fixed top-0 z-50 w-full bg-white border-b shadow-md sm:px-4 md:px-6 px-10 py-2" aria-label="Main navigation">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="/" class="flex items-center justify-center">
-                <img src="../img/logo/mvh_logo_optimized.avif" class="h-16 mr-3" alt="MVH Logo"/>
-                <span class="self-center text-2xl font-semibold whitespace-nowrap hidden xl:inline">Metro Vigan Hospital</span>
-                <span class="self-center text-2xl font-semibold whitespace-nowrap inline xl:hidden">MVH</span>
+    <!-- NAVBAR SECTION -->
+    <nav id="main-navbar" class="fixed top-0 z-30 w-full bg-white border-b shadow-md sm:px-4 md:px-6 px-10 py-2" aria-label="Main navigation">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      
+      <!-- Logo -->
+      <a href="../" class="flex items-center justify-center">
+        <img src="../img/logo/mvh_logo_optimized.avif" class="h-16 mr-3" alt="MVH Logo" fetchpriority="high" loading="eager"/>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap hidden xl:inline">Metro Vigan Hospital</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap inline xl:hidden">MVH</span>
+      </a>
+  
+      <!-- Toggle Button (Mobile) -->
+      <button id="menu-toggle" type="button" 
+              class="inline-flex items-center p-2 text-xl text-green-700 hover:text-black transition justify-center rounded-lg lg:hidden">
+        <span class="sr-only">Open main menu</span>
+        <i class="fa-solid fa-bars"></i>
+      </button>
+  
+      <!-- Navbar Menu -->
+      <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
+        <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
+          <li><a href="../" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Home</a></li>
+          <li><a href="../services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Services</a></li>
+          <li><a href="../facilities" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Facilities</a></li>
+          <li><a href="../doctors" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Doctors</a></li>
+          <li><a href="../about-us" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">About Us</a></li>
+          <li class="flex flex-col md:flex-row gap-4">
+            <a href="https://labresult.metroviganhospital.com/" target="_blank" class="block w-full md:w-1/2 lg:w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
+                Lab Results
             </a>
-            <button id="menu-toggle" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg lg:hidden">
-                <span class="sr-only">Open main menu</span>
-                <svg id="menu-icon" class="w-6 h-6 text-green-700 hover:text-black transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-            <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
-                <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
-                    <li><a href="/" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Home</a></li>
-                    <li><a href="/services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Services</a></li>
-                    <li><a href="/facilities" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Facilities</a></li>
-                    <li><a href="/doctors" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">Doctors</a></li>
-                    <li><a href="/about-us" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">About Us</a></li>
-                    <li class="flex flex-wrap gap-4">
-                        <a href="https://labresult.metroviganhospital.com/" target="_blank" class="block w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">Lab Results</a>
-                        <a href="/contact-us.html" class="lg:hidden block w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <a href="../contact-us" class="block w-full md:w-1/2 lg:hidden text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
+                Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
     </nav>
 
     <main class="pt-32">
@@ -88,71 +69,117 @@
                 </div>
                 <!-- Article content will be injected here -->
             </div>
+
+            <!-- Related News Section -->
+            <div class="max-w-4xl mx-auto mt-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Related News</h2>
+                <div id="related-news-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <!-- Related articles will be injected here -->
+                </div>
+            </div>
         </div>
     </main>
 
     <!-- FOOTER -->
     <footer class="bg-gray-50 text-gray-800">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-            <div>
-                <div class="flex items-center space-x-3">
-                    <img src="../img/logo/mvh_logo_optimized.avif" alt="Metro Vigan Hospital Logo" class="h-12 w-auto">
-                    <span class="text-lg font-semibold">Metro Vigan Hospital</span>
-                </div>
-                <p class="mt-4 text-gray-600 text-sm leading-relaxed">Entrust your health to us!</p>
-                <p class="text-gray-600 text-sm leading-relaxed">We Care, We Cure, We Can.</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                <ul class="space-y-2 text-gray-600 text-sm">
-                    <li><a href="/services" class="hover:text-green-600 transition">Our Services</a></li>
-                    <li><a href="/facilities" class="hover:text-green-600 transition">Our Facilities</a></li>
-                    <li><a href="/doctors" class="hover:text-green-600 transition">Our Doctors</a></li>
-                    <li><a href="/about-us" class="hover:text-green-600 transition">About Us</a></li>
-                    <li><a href="/careers" class="hover:text-green-600 transition">Careers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-                <ul class="space-y-3 text-gray-600 text-sm">
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-envelope text-green-600"></i>
-                        <span><a href="mailto:info@metroviganhospital.com" class="hover:underline">info@metroviganhospital.com</a></span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-phone text-green-600"></i>
-                        <span><a href="tel:(077) 674 0587" class="hover:underline">(077) 674 0587</a></span>
-                    </li>
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-map-marker-alt text-green-600"></i>
-                        <span>Rizal St., Brgy. IV (Poblacion), Bantay, Philippines</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
-                <div class="flex space-x-4">
-                    <a href="https://www.facebook.com/metroviganhospital" target="_blank" class="text-gray-600 hover:text-green-600"><i class="fab fa-facebook-f fa-lg"></i></a>
-                    <a href="https://www.instagram.com/metroviganhospital/" target="_blank" class="text-gray-600 hover:text-green-600"><i class="fab fa-instagram fa-lg"></i></a>
-                </div>
-            </div>
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Logo & About -->
+      <div>
+        <div class="flex items-center space-x-3">
+          <img src="../img/logo/mvh_logo_optimized.avif" loading="lazy" fetchpriority="low" alt="Metro Vigan Hospital Logo" class="h-12 w-auto">
+          <span class="text-lg font-semibold">Metro Vigan Hospital</span>
         </div>
-        <div class="border-t border-gray-200 mt-8">
-            <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                <span class="p-2 text-[0.5rem] opacity-80">website created and maintained by xtianbar</span>
-                <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
-                <div>
-                    <a href="/privacy-policy" class="hover:text-green-600 transition">Privacy Policy</a>
-                    <a href="/terms-of-service" class="hover:text-green-600 transition ml-4">Terms of Service</a>
-                </div>
-            </div>
+        <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+          Entrust your health to us!
+        </p>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          We Care, We Cure, We Can.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-gray-600 text-sm">
+          <li><a href="../services" class="hover:text-[#04813b] transition">Our Services</a></li>
+          <li><a href="../facilities" class="hover:text-[#04813b] transition">Our Facilities</a></li>
+          <li><a href="../doctors" class="hover:text-[#04813b] transition">Our Doctors</a></li>
+          <li><a href="../about-us" class="hover:text-[#04813b] transition">About Us</a></li>
+          <li><a href="../careers" class="hover:text-[#04813b] transition">Careers</a></li>
+          <li><a href="https://labresult.metroviganhospital.com/" target="_blank" class="hover:text-[#04813b] transition">Lab Results</a></li>
+          <li><a href="../contact-us" class="hover:text-[#04813b] transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <ul class="space-y-3 text-gray-600 text-sm">
+          <li class="flex items-center space-x-2">
+            <i class="fa-solid fa-envelope text-green-700"></i>
+            <span>
+              <a href="mailto:info@metroviganhospital.com?cc=marketing@metroviganhospital.com" target="_blank" class="hover:underline hover:underline-offset-2">
+                info@metroviganhospital.com
+              </a>
+            </span>
+          </li>
+
+          <li class="flex items-center space-x-2">
+            <i class="fa-solid fa-phone text-green-700"></i>
+            <span>
+              <a href="tel:(077) 674 0587" class="hover:underline hover:underline-offset-2">
+                (077) 674 0587
+              </a>
+            </span>
+          </li>
+
+          <li class="flex items-center space-x-2">
+            <i class="fa-solid fa-map-pin text-green-700"></i>
+            <span>
+              <a href="https://maps.app.goo.gl/acCeWcUGXqfhwvtcA" target="_blank" class="hover:underline hover:underline-offset-2">
+                Rizal St., Brgy. IV (Poblacion), Bantay, Philippines
+              </a>
+            </span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Social Media -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+        <div class="flex space-x-4">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/metroviganhospital" target="_blank" class="hover:text-[#04813b] transition" aria-label="Facebook">
+            <i class="fa-brands fa-facebook text-gray-600 hover:text-[#04813b] transition text-2xl"></i>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/metroviganhospital/" target="_blank" class="hover:text-[#04813b] transition" aria-label="Instagram">
+            <i class="fa-brands fa-instagram text-gray-600 hover:text-[#04813b] transition text-2xl"></i>
+          </a>
         </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-200 mt-8">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <span class="p-2 text-[0.5rem] opacity-80 flex flex-wrap items-center gap-1 justify-center">website created and maintained by <a href="https://xtianbar.vercel.app/" target="_blank"><img src="../img/logo/xtianbar-logo.avif" fetchpriority="low" loading="lazy" alt="Metro Vigan Hospital Logo" class="h-2 w-auto"></a></span>
+        <p>&copy; 2025 Metro Vigan Hospital. All rights reserved.</p>
+        <div class="space-x-4 mt-2 md:mt-0">
+          <a href="../privacy-policy" class="hover:text-[#04813b] transition">Privacy Policy</a>
+          <a href="../terms-of-service" class="hover:text-[#04813b] transition">Terms of Service</a>
+        </div>
+      </div>
+    </div>
     </footer>
 
     <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
         
         const firebaseConfig = {
@@ -172,6 +199,7 @@
 
         const articleContainer = document.getElementById('article-container');
         const loadingEl = document.getElementById('loading');
+        const relatedNewsGrid = document.getElementById('related-news-grid');
 
         async function fetchAndDisplayArticle() {
             const params = new URLSearchParams(window.location.search);
@@ -192,6 +220,7 @@
                 if (docSnap.exists()) {
                     const article = docSnap.data();
                     renderArticle(article);
+                    fetchAndDisplayRelatedArticles(articleId); // Fetch related articles
                 } else {
                     articleContainer.innerHTML = `<p class="text-red-500 text-center">Error: Article not found.</p>`;
                 }
@@ -206,18 +235,23 @@
             document.title = `${article.title} - Metro Vigan Hospital`;
 
             const articleDate = article.date.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            const mainImage = article.imageUrls && article.imageUrls.length > 0 ? article.imageUrls[0] : 'https://placehold.co/1200x600/cccccc/ffffff?text=Image+Not+Available';
             
-            // Generate HTML for other images, if they exist
+            let mainImage = 'https://placehold.co/1200x600/cccccc/ffffff?text=Image+Not+Available';
             let otherImagesHTML = '';
-            if (article.imageUrls && article.imageUrls.length > 1) {
-                otherImagesHTML = article.imageUrls.slice(1).map(url => `
-                    <img src="${url}" alt="Article image" class="my-8 rounded-lg shadow-md" onerror="this.style.display='none'">
-                `).join('');
+
+            if (article.imageUrls && Array.isArray(article.imageUrls) && article.imageUrls.length > 0) {
+                mainImage = article.imageUrls[0];
+                if (article.imageUrls.length > 1) {
+                    otherImagesHTML = article.imageUrls.slice(1).map(url => `
+                        <img src="${url}" alt="Article image" class="my-8 rounded-lg shadow-md" onerror="this.style.display='none'">
+                    `).join('');
+                }
+            } else if (article.imageUrl && typeof article.imageUrl === 'string') {
+                mainImage = article.imageUrl;
             }
 
             articleContainer.innerHTML = `
-                <a href="news.html" class="text-green-600 font-medium hover:underline mb-8 inline-block">&larr; Back to News</a>
+                <a href="../news" class="text-green-600 font-medium hover:underline mb-8 inline-block">&larr; Back to News</a>
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">${article.title}</h1>
                 <p class="text-gray-500 mb-6">${article.author} &bull; ${articleDate}</p>
                 <img src="${mainImage}" alt="${article.title}" class="w-full h-auto rounded-lg shadow-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/cccccc/ffffff?text=Image+Not+Found';">
@@ -226,6 +260,57 @@
                     ${otherImagesHTML}
                 </div>
             `;
+        }
+
+        async function fetchAndDisplayRelatedArticles(currentArticleId) {
+            try {
+                const articlesRef = collection(db, `/artifacts/${appId}/public/data/articles`);
+                const querySnapshot = await getDocs(query(articlesRef));
+
+                let allArticles = [];
+                querySnapshot.forEach(doc => {
+                    allArticles.push({ id: doc.id, ...doc.data() });
+                });
+
+                // Filter out the current article and shuffle the rest
+                let relatedArticles = allArticles.filter(article => article.id !== currentArticleId);
+                shuffleArray(relatedArticles);
+
+                // Take the first 3
+                const articlesToDisplay = relatedArticles.slice(0, 3);
+
+                if (articlesToDisplay.length > 0) {
+                    relatedNewsGrid.innerHTML = articlesToDisplay.map(createRelatedArticleCardHTML).join('');
+                } else {
+                    relatedNewsGrid.innerHTML = '<p class="col-span-3 text-center text-gray-500">No other news available.</p>';
+                }
+
+            } catch (error) {
+                console.error("Error fetching related articles:", error);
+                relatedNewsGrid.innerHTML = '<p class="col-span-3 text-center text-red-500">Could not load related news.</p>';
+            }
+        }
+
+        function createRelatedArticleCardHTML(article) {
+            const thumbnailUrl = (article.imageUrls && article.imageUrls.length > 0) ? article.imageUrls[0] : article.imageUrl || 'https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';
+            
+            return `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+                    <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-14 overflow-hidden">${article.title}</h3>
+                        <a href="article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Fisher-Yates shuffle algorithm
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -239,5 +324,8 @@
         });
 
     </script>
+
+    <script src="../js/script.js"> </script>
+    <script src="../js/go-top-button.js"></script>
 </body>
 </html>
