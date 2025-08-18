@@ -9,8 +9,8 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tiptap Rich Text Editor -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@tiptap/core@2.1.12/dist/index.esm.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@tiptap/starter-kit@2.1.12/dist/index.esm.js"></script>
+    <script type="module" src="https://esm.sh/@tiptap/core@2.1.12"></script>
+    <script type="module" src="https://esm.sh/@tiptap/starter-kit@2.1.12"></script>
     <style>
         .ProseMirror {
             border: 1px solid #d1d5db;
@@ -27,14 +27,41 @@
 </head>
 <body class="bg-gray-100 font-sans">
 
-    <!-- Password Protection Overlay -->
-    <div id="password-overlay" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm mx-auto">
-            <h2 class="text-2xl font-bold mb-4">Admin Access</h2>
-            <p class="text-gray-600 mb-4">Please enter the password to manage articles.</p>
-            <input type="password" id="password-input" class="w-full px-4 py-2 border rounded-lg mb-4" placeholder="Password">
-            <button id="password-submit" class="w-full bg-green-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700">Login</button>
-            <p id="password-error" class="text-red-500 mt-2 text-sm hidden">Incorrect password.</p>
+    <!-- Login Screen -->
+    <div id="login-screen" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm mx-auto w-full">
+            <h2 class="text-2xl font-bold mb-4 text-center">Admin Access</h2>
+            <p class="text-gray-600 mb-6 text-center">Sign in to manage articles.</p>
+            
+            <!-- Email/Password Form -->
+            <form id="email-form" class="text-left">
+                <div class="mb-4">
+                    <label for="email-input" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email-input" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                </div>
+                <div class="mb-6">
+                    <label for="password-input" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="password-input" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                </div>
+                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                     <button type="button" id="email-signin-button" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700">Sign In</button>
+                     <button type="button" id="email-signup-button" class="w-full bg-gray-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-700">Create Account</button>
+                </div>
+            </form>
+
+            <!-- Divider -->
+            <div class="relative flex py-5 items-center">
+                <div class="flex-grow border-t border-gray-300"></div>
+                <span class="flex-shrink mx-4 text-gray-400 text-sm">OR</span>
+                <div class="flex-grow border-t border-gray-300"></div>
+            </div>
+
+            <!-- Google Sign-in Button -->
+            <button id="google-login-button" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center">
+                <i class="fab fa-google mr-3"></i>
+                Sign In with Google
+            </button>
+            <p id="login-error" class="text-red-500 mt-4 text-sm hidden h-4"></p>
         </div>
     </div>
 
@@ -100,9 +127,15 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-        import { Editor } from 'https://cdn.jsdelivr.net/npm/@tiptap/core@2.1.12/dist/tiptap-core.esm.js';
-        import StarterKit from 'https://cdn.jsdelivr.net/npm/@tiptap/starter-kit@2.1.12/dist/tiptap-starter-kit.esm.js';
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { Editor } from 'https://esm.sh/@tiptap/core@2.1.12';
+        import StarterKit from 'https://esm.sh/@tiptap/starter-kit@2.1.12';
+
+        // --- IMPORTANT: Add your allowed Google accounts here ---
+        const allowedEmails = [
+            "admin@metroviganhospital.com",
+            "marketing@metroviganhospital.com"
+        ];
 
         // --- Your Specific Firebase Configuration ---
         const firebaseConfig = {
@@ -114,19 +147,23 @@
             appId: "1:751450211377:web:b0765182c55f0ead268110",
             measurementId: "G-SKFD2L78KJ"
         };
-        const appId = firebaseConfig.appId; // Use the appId from your config
+        const appId = firebaseConfig.appId;
 
         // --- Firebase Initialization ---
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
 
         // --- DOM Elements ---
-        const passwordOverlay = document.getElementById('password-overlay');
+        const loginScreen = document.getElementById('login-screen');
         const mainContent = document.getElementById('main-content');
+        const googleLoginButton = document.getElementById('google-login-button');
+        const emailSignInButton = document.getElementById('email-signin-button');
+        const emailSignUpButton = document.getElementById('email-signup-button');
+        const emailInput = document.getElementById('email-input');
         const passwordInput = document.getElementById('password-input');
-        const passwordSubmit = document.getElementById('password-submit');
-        const passwordError = document.getElementById('password-error');
+        const loginError = document.getElementById('login-error');
         const form = document.getElementById('upload-form');
         const submitButton = document.getElementById('submit-button');
         const submitText = document.getElementById('submit-text');
@@ -141,28 +178,78 @@
         const modalButtons = document.getElementById('modal-buttons');
 
         // --- Tiptap Editor ---
-        const editor = new Editor({
-            element: document.querySelector('#editor'),
-            extensions: [StarterKit],
-            content: '<p>Start writing your article here...</p>',
-        });
+        let editor;
+        try {
+            editor = new Editor({
+                element: document.querySelector('#editor'),
+                extensions: [StarterKit],
+                content: '<p>Start writing your article here...</p>',
+            });
+        } catch(e) {
+            console.error("Tiptap editor failed to initialize:", e);
+            document.getElementById('editor').innerHTML = '<p class="text-red-500">Error: Could not load text editor.</p>';
+        }
 
         // --- State ---
         let articlesCache = [];
 
         // --- Functions ---
-        async function initializeAdmin() {
+        function showLoginError(message) {
+            loginError.textContent = message;
+            loginError.classList.remove('hidden');
+        }
+
+        function clearLoginError() {
+            loginError.classList.add('hidden');
+        }
+
+        async function grantAccess() {
+            loginScreen.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            await loadArticles();
+        }
+
+        async function handleGoogleLogin() {
+            clearLoginError();
             try {
-                console.log("Attempting to sign in anonymously...");
-                await signInAnonymously(auth);
-                console.log("Sign in successful. User:", auth.currentUser);
-                passwordOverlay.classList.add('hidden');
-                mainContent.classList.remove('hidden');
-                await loadArticles();
+                await signInWithPopup(auth, provider);
+                // Auth state change will handle the rest
             } catch (error) {
-                console.error("Firebase Authentication Error:", error);
-                passwordError.textContent = "Authentication failed. Check console for details.";
-                passwordError.classList.remove('hidden');
+                console.error("Google Sign-In Error:", error);
+                showLoginError("An error occurred during Google sign-in.");
+            }
+        }
+        
+        async function handleEmailSignUp() {
+            clearLoginError();
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            if (!allowedEmails.map(e => e.toLowerCase()).includes(email.toLowerCase())) {
+                showLoginError("This email is not authorized to create an account.");
+                return;
+            }
+
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                // Auth state change will handle the rest
+            } catch (error) {
+                console.error("Email Sign-Up Error:", error);
+                showLoginError(error.message);
+            }
+        }
+
+        async function handleEmailSignIn() {
+            clearLoginError();
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                // Auth state change will handle the rest
+            } catch (error) {
+                console.error("Email Sign-In Error:", error);
+                showLoginError("Incorrect email or password.");
             }
         }
 
@@ -263,17 +350,28 @@
             );
         }
 
-        // --- Event Listeners ---
-        const correctPassword = "mvh-admin-2025";
-        passwordSubmit.addEventListener('click', () => {
-            if (passwordInput.value === correctPassword) {
-                passwordError.classList.add('hidden');
-                initializeAdmin();
+        // --- Auth State Change Listener ---
+        onAuthStateChanged(auth, (user) => {
+            if (user && user.email) {
+                console.log("Auth state changed. User signed in:", user.email);
+                const isAllowed = allowedEmails.map(email => email.toLowerCase()).includes(user.email.toLowerCase());
+                if (isAllowed) {
+                    grantAccess();
+                } else {
+                    showLoginError("Access Denied. This account is not authorized.");
+                    signOut(auth);
+                }
             } else {
-                passwordError.textContent = "Incorrect password.";
-                passwordError.classList.remove('hidden');
+                console.log("Auth state changed. User signed out or email not available.");
+                loginScreen.classList.remove('hidden');
+                mainContent.classList.add('hidden');
             }
         });
+
+        // --- Event Listeners ---
+        googleLoginButton.addEventListener('click', handleGoogleLogin);
+        emailSignInButton.addEventListener('click', handleEmailSignIn);
+        emailSignUpButton.addEventListener('click', handleEmailSignUp);
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
