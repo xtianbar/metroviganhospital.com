@@ -220,7 +220,7 @@
     <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center hidden z-50 p-4">
         
         <!-- Modal Content -->
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-full flex flex-col">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-full flex flex-col relative">
             
             <!-- Modal Header -->
             <div class="flex justify-between items-center p-6 border-b border-gray-200 flex-shrink-0">
@@ -233,57 +233,60 @@
                 <form id="booking-form">
                     <input type="hidden" name="_subject" value="New Appointment Booking Request!">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="relative md:col-span-2">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                            <i class="fa-solid fa-user"></i>
-                            </span>
-                            <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz"
-                                class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+                        
+                        <!-- Full Name -->
+                        <div class="md:col-span-2">
+                            <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input type="text" id="full-name" name="name" required placeholder="Juan Dela Cruz" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                            </div>
                         </div>
-                        </div>
+
                         <!-- Phone -->
-                        <div class="relative ">
-                            <label for="phone" class="block text-sm font-medium text-gray-700">Cellphone Number</label>
-                            <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                <i class="fa-solid fa-mobile-screen"></i>
-                            </span>
-                            <input type="tel" id="phone" name="phone"
-                                    pattern="^(09|\+639)\d{9}$" maxlength="15"
-                                    placeholder="09 or +639"
-                                    title="Enter a valid PH number: starts with 09 or +639"
-                                    required
-                                    class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                             <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                    <i class="fa-solid fa-mobile-screen"></i>
+                                </span>
+                                <input type="tel" id="phone" maxlength="15" name="phone" pattern="^(09|\+639)\d{9}$" title="Enter a valid PH number: starts with 09 or +639" required placeholder="09 or +639" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
                             </div>
                         </div>
+
                         <!-- Email Address -->
-                        <div class="relative">
+                        <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                                <i class="fa-solid fa-envelope"></i>
-                            </span>
-                            <input type="email" id="email" name="email" required placeholder="example@email.com"
-                                    class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <input type="email" id="email" name="email" required placeholder="example@email.com" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
                             </div>
-                        </div>
-                        <div class="relative">
+                        </div>               
+
+                        <!-- Preferred Date -->
+                        <div>
                             <label for="date" class="block text-sm font-medium text-gray-600 mb-1">Preferred Date</label>
-                            <input type="date" id="date" name="preferred_date" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                            <input type="date" id="date" name="preferred_date" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition mt-1">
                         </div>
-                        <div class="relative">
+
+                        <!-- Preferred Time -->
+                        <div>
                             <label for="time" class="block text-sm font-medium text-gray-600 mb-1">Preferred Time</label>
-                             <select id="time" name="preferred_time" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                             <select id="time" name="preferred_time" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition mt-1">
                                 <option value="" disabled selected>Select a time slot...</option>
                                 <option value="Morning (8AM-12PM)">Morning (8AM - 12PM)</option>
                                 <option value="Afternoon (1PM-5PM)">Afternoon (1PM - 5PM)</option>
                             </select>
                         </div>
+
+                        <!-- Reason for Visit -->
                         <div class="md:col-span-2">
                             <label for="reason" class="block text-sm font-medium text-gray-600 mb-1">Reason for Visit (Optional)</label>
-                            <textarea id="reason" name="reason" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"></textarea>
+                            <textarea id="reason" name="reason" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition mt-1"></textarea>
                         </div>
                     </div>
                     <p class="text-xs text-gray-500 mt-6">
@@ -297,6 +300,16 @@
                 </form>
                 <div id="status-message" class="mt-4 text-center"></div>
             </div>
+
+            <!-- NEW: Thank You Message Overlay -->
+            <div id="thank-you-wrapper" class="absolute inset-0 bg-white bg-opacity-95 flex flex-col justify-center items-center text-center p-8 rounded-2xl hidden transition-opacity duration-300">
+                <div id="check-icon" class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center text-white text-6xl opacity-0 scale-75 transition-all duration-300 ease-out">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mt-6">Thank You!</h3>
+                <p class="text-gray-600 mt-2">Your appointment request has been sent successfully.</p>
+            </div>
+
         </div>
     </div>
     
