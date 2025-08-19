@@ -59,41 +59,59 @@
         });
 
         // --- Form Submission Logic ---
-        const form = document.getElementById('booking-form');
-        const submitButton = document.getElementById('submit-button');
-        const statusMessage = document.getElementById('status-message');
+        //contact-us form script
+const form = document.getElementById('contact-form');
+  const thankYouWrapper = document.getElementById('thank-you-wrapper');
+  const checkIcon = document.getElementById('check-icon');
+  const SITE_KEY = "6LdVjZ8rAAAAAMTpN-pXZT9SoR2JHcmCUFNDwv2W";
 
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault();
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending Request...';
-            const formData = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-                if (response.ok) {
-                    statusMessage.innerHTML = '<p class="text-green-600 font-medium">Thank you! Your request has been sent.</p>';
-                    form.reset();
-                } else {
-                    const data = await response.json();
-                    if (Object.hasOwn(data, 'errors')) {
-                        statusMessage.innerHTML = `<p class="text-red-600 font-medium">${data["errors"].map(error => error["message"]).join(", ")}</p>`;
-                    } else {
-                        statusMessage.innerHTML = '<p class="text-red-600 font-medium">Oops! There was a problem. Please try again.</p>';
-                    }
-                }
-            } catch (error) {
-                statusMessage.innerHTML = '<p class="text-red-600 font-medium">A network error occurred. Please try again.</p>';
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Request Appointment';
-            }
-        });
+    const formData = new FormData(form);
+
+    const phoneInput = form.querySelector('#phone');
+    const phonePattern = /^(09|\+639)\d{9}$/;
+    if (!phonePattern.test(phoneInput.value)) {
+      alert("Please enter a valid Philippine phone number (starts with 09 or +639).");
+      return;
+    }
+
+   // Execute reCAPTCHA v3
+   grecaptcha.ready(function () {
+      grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(async function (token) {
+        const formData = new FormData(form);
+        formData.append('g-recaptcha-response', token); // Append token for Formspree
+
+        try {
+          const response = await fetch("https://formspree.io/f/xkgzljjj", {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            form.reset();
+
+            // Show thank you + animate checkmark
+            thankYouWrapper.classList.remove('hidden');
+            checkIcon.classList.remove('opacity-0', 'scale-75');
+            checkIcon.classList.add('opacity-100', 'scale-100');
+
+            setTimeout(() => {
+              checkIcon.classList.add('opacity-0', 'scale-75');
+              checkIcon.classList.remove('opacity-100', 'scale-100');
+              thankYouWrapper.classList.add('hidden');
+            }, 5000);
+          } else {
+            alert("Something went wrong. Please try again later.");
+          }
+        } catch (error) {
+          alert("There was an error submitting the form.");
+        }
+      });
+    });
+  });
 
         // --- Date Picker Logic ---
         const dateInput = document.getElementById('date');
@@ -102,3 +120,4 @@
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
         dateInput.min = `${year}-${month}-${day}`;
+
