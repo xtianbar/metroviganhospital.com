@@ -35,7 +35,7 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdVjZ8rAAAAAMTpN-pXZT9SoR2JHcmCUFNDwv2W"></script>
   <!-- For SEO Ranking -->
   <script type="application/ld+json">
 {
@@ -206,12 +206,100 @@
           delivering advanced breast cancer screening with the latest imaging technology 
           for early detection and better health outcomes.
         </p>
-        <a href="/contact-us" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300">
-          Book Your Screening Today
-        </a>
+        <!-- This button will open the modal -->
+        <button id="open-booking-modal-button" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300">
+            Book an Appointment
+        </button>
       </div>
 
     </div>
+
+    <!-- =============================================================== -->
+    <!-- APPOINTMENT BOOKING MODAL -->
+    <!-- =============================================================== -->
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center hidden z-50 p-4">
+        
+        <!-- Modal Content -->
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-full flex flex-col">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-200 flex-shrink-0">
+                <h2 class="text-2xl font-bold text-green-700">Book an Appointment</h2>
+                <button id="close-booking-modal-button" class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+            </div>
+
+            <!-- Scrollable Modal Body with Form -->
+            <div class="overflow-y-auto p-8">
+                <form id="booking-form" action="https://formspree.io/f/xkgzljjj" method="POST">
+                    <input type="hidden" name="_subject" value="New Appointment Booking Request!">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="relative md:col-span-2">
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz"
+                                class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="relative ">
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Cellphone Number</label>
+                            <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </span>
+                            <input type="tel" id="phone" name="phone"
+                                    pattern="^(09|\+639)\d{9}$" maxlength="15"
+                                    placeholder="09 or +639"
+                                    title="Enter a valid PH number: starts with 09 or +639"
+                                    required
+                                    class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+                            </div>
+                        </div>
+                        <!-- Email Address -->
+                        <div class="relative">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input type="email" id="email" name="email" required placeholder="example@email.com"
+                                    class="pl-10 mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500">
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <label for="date" class="block text-sm font-medium text-gray-600 mb-1">Preferred Date</label>
+                            <input type="date" id="date" name="preferred_date" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                        </div>
+                        <div class="relative">
+                            <label for="time" class="block text-sm font-medium text-gray-600 mb-1">Preferred Time</label>
+                             <select id="time" name="preferred_time" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                                <option value="" disabled selected>Select a time slot...</option>
+                                <option value="Morning (8AM-12PM)">Morning (8AM - 12PM)</option>
+                                <option value="Afternoon (1PM-5PM)">Afternoon (1PM - 5PM)</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="reason" class="block text-sm font-medium text-gray-600 mb-1">Reason for Visit (Optional)</label>
+                            <textarea id="reason" name="reason" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"></textarea>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-6">
+                        Please note: Submitting this form is a request. Our staff will contact you to confirm the final date and time.
+                    </p>
+                    <div class="mt-4 text-right">
+                        <button type="submit" id="submit-button" class="bg-green-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                            Request Appointment
+                        </button>
+                    </div>
+                </form>
+                <div id="status-message" class="mt-4 text-center"></div>
+            </div>
+        </div>
+    </div>
+    
   </section>
 
   <section class="relative w-full bg-blue-50 py-16 px-6">
@@ -522,8 +610,8 @@
   </footer>
 
 <script src="js/go-top-button.js"></script>
-<script src="js/script.js"></script>
-  
+<script src="js/booking.js"></script>
+
 <!-- AOS Script -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   

@@ -285,3 +285,8 @@ html.modal-open {
             font-style: italic;
             color: #4b5563;
         }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            opacity: 0.6;
+        }
