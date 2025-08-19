@@ -218,74 +218,41 @@ const doctorsList = [
 // ========================
 // IMAGE HANDLING (OPTIMIZED)
 // ========================
-const imageFolder = "img/doctors/"; // Relative path to your images folder
+const imageFolder = "img/doctors/";
 
-/**
- * Checks for all doctor images in the background and updates them on the page.
- */
 async function updateImagesInBackground() {
-    // Create an array of promises. Each promise will check if one doctor's image exists.
-    // This allows all checks to run in parallel, which is much faster.
     const promises = doctors.map(async (doc, index) => {
         const nameKey = getFirstAndLastName(doc.name);
         const imagePath = `${imageFolder}dr_${nameKey}.avif`;
-        
         const exists = await checkImageExists(imagePath);
-
         if (exists) {
-            // If the image is found, update the path in our main data array.
             doctors[index].image = imagePath;
-            
-            // Also, find the corresponding <img> element on the page and update its 'src'.
-            // We use a data-attribute to easily find the correct image.
             const imgElement = document.querySelector(`img[data-name="${doc.name}"]`);
             if (imgElement) {
                 imgElement.src = imagePath;
             }
         }
     });
-
-    // Wait for all the background checks to complete.
     await Promise.all(promises);
     console.log("All image checks are complete.");
 }
 
-/**
- * Checks if a single image file exists at a given URL.
- * @param {string} url - The path to the image file.
- * @returns {Promise<boolean>} - True if the image loads, false if it fails.
- */
 function checkImageExists(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+    });
 }
 
-/**
- * Creates a filename-friendly string from a doctor's full name.
- * @param {string} fullName - The doctor's full name.
- * @returns {string} - A formatted string like "firstname_lastname".
- */
 function getFirstAndLastName(fullName) {
-    // UPDATED LINE: Made the comma and space optional to handle both cases
     const cleanName = fullName.replace(/,? ?(Jr|Sr|I|II|III|IV|V)\.?$/i, '');
-
-    // The rest of the function remains the same
     const parts = cleanName.trim().split(/\s+/);
-    const firstName = parts[0]
-        .replace(/[^a-zA-Z]/g, "")
-        .toLowerCase();
-
+    const firstName = parts[0].replace(/[^a-zA-Z]/g, "").toLowerCase();
     const lastNameParts = parts.slice(parts.findIndex(p => p.includes(".")) + 1);
-    
     const lastName = (lastNameParts.length ? lastNameParts : parts.slice(-1))
-        .join("-")
-        .replace(/[^a-zA-Z-]/g, "")
-        .toLowerCase();
-
+        .join("-").replace(/[^a-zA-Z-]/g, "").toLowerCase();
     return `${firstName}_${lastName}`;
 }
 
@@ -308,55 +275,51 @@ function initPage() {
     const loadMoreBtn = document.getElementById("loadMore");
     const closeModalBtn = document.getElementById("closeModal");
 
-    // Populate the specialty dropdown filter
-    // Use a Set to automatically get unique specialty values
-    const specialties = [...new Set(doctors.map(d => d.specialty).filter(s => s))].sort();
-    specialties.forEach(s => {
-        const opt = document.createElement("option");
-        opt.value = s;
-        opt.textContent = s;
-        specialtyFilter.appendChild(opt);
-    });
-
     // --- Pagination Logic ---
     let displayedCount = 0;
-    const increment = 20; // Number of doctors to show per click
+    const increment = 20;
 
-    /**
-     * Renders a batch of doctor cards to the grid.
-     * @param {Array} list - The list of doctors to render from.
-     * @param {boolean} reset - If true, clears the grid before rendering.
-     */
+    // NEW: Variables to track touch coordinates for the swipe gesture
+    let touchStartY = 0;
+    let touchEndY = 0;
+
     function renderDoctors(list, reset = false) {
         if (reset) {
             grid.innerHTML = "";
             displayedCount = 0;
         }
-        
         const slice = list.slice(displayedCount, displayedCount + increment);
-        
         slice.forEach(doc => {
             const card = document.createElement("div");
             card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center py-6";
-            
-            // Add a `data-name` attribute to the img tag. This is crucial for the
-            // background image update function to find and update the correct image.
             card.innerHTML = `
-                <img src="${doc.image}" data-name="${doc.name}" class="w-28 h-28 mx-auto rounded-full mb-3 object-cover">
+                <img src="${doc.image}" data-name="${doc.name}" alt="Doctor IMG" class="w-28 h-28 mx-auto rounded-full mb-3 object-cover">
                 <h3 class="text-lg font-semibold">Dr. ${doc.name}</h3>
                 <p class="text-green-600">${doc.specialty || 'N/A'}</p>
             `;
             card.onclick = () => showModal(doc);
             grid.appendChild(card);
         });
-        
         displayedCount += slice.length;
-        
-        // Show or hide the "Load More" button
         loadMoreBtn.classList.toggle("hidden", displayedCount >= list.length);
     }
 
     // --- Modal Logic ---
+    function closeDoctorModal() {
+        modal.classList.add("hidden");
+        document.documentElement.classList.remove("modal-open");
+    }
+
+    // NEW: A function to handle the swipe gesture logic
+    function handleModalSwipe() {
+        const swipeDistance = touchEndY - touchStartY;
+        const swipeThreshold = 50; // Min distance in pixels to be considered a swipe
+
+        // If the swipe is long enough (up or down), close the modal
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            closeDoctorModal();
+        }
+    }
 
     function safeText(value) {
         if (!value) return "N/A";
@@ -369,17 +332,14 @@ function initPage() {
 
     function setModalField(element, label, value) {
         const safeValue = safeText(value);
-        element.textContent = ""; // Clear previous content
-
+        element.textContent = "";
         if (label) {
             const labelSpan = document.createElement("span");
             labelSpan.textContent = label + " ";
             element.appendChild(labelSpan);
         }
-
         const valueSpan = document.createElement("span");
         valueSpan.textContent = safeValue;
-
         if (safeValue === "N/A") {
             valueSpan.style.color = "#888";
             valueSpan.style.fontStyle = "italic";
@@ -392,53 +352,66 @@ function initPage() {
         setModalField(modalSpecialty, "", doc.specialty);
         setModalField(modalRoom, "Clinic:", doc.room);
         setModalField(modalSchedule, "Schedule:", doc.schedule);
-        
         const hmoList = doc.hmo && doc.hmo.length ? doc.hmo.join(", ") : "";
         setModalField(modalHmo, "HMO Accreditations:", hmoList);
-        
         modalImage.src = doc.image;
+        
         modal.classList.remove("hidden");
+        document.documentElement.classList.add("modal-open");
     }
 
     // --- Filtering Logic ---
-/**
- * Converts a string to a basic, accent-free, lowercase version.
- * e.g., "Abelañes" becomes "abelanes"
- * @param {string} str The string to normalize.
- * @returns {string} The normalized string.
- */
-function normalizeString(str) {
-  if (!str) return "";
-  return str
-    .toLowerCase()
-    .normalize("NFD") // Decomposes characters (e.g., ñ -> n + ~)
-    .replace(/[\u0300-\u036f]/g, ""); // Removes the accent marks (e.g., ~)
-}
+    function normalizeString(str) {
+        if (!str) return "";
+        return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
 
-function filterDoctors() {
-    // Use the helper to normalize the user's search input
-    const search = normalizeString(searchBox.value); 
-    const specialty = specialtyFilter.value;
-
-    currentList = doctors.filter(doc => {
-        // Normalize the doctor's data before checking for a match
-        const nameMatch = normalizeString(doc.name).includes(search);
-        const specialtyMatch = normalizeString(doc.specialty).includes(search);
-        const roomMatch = normalizeString(doc.room).includes(search);
-        const hmoMatch = doc.hmo && doc.hmo.some(hmo => normalizeString(hmo).includes(search));
-        const specialtyFilterMatch = (specialty === "all" || doc.specialty === specialty);
-        
-        return specialtyFilterMatch && (nameMatch || specialtyMatch || roomMatch || hmoMatch);
-    });
-
-    renderDoctors(currentList, true); // Re-render the list from scratch
-}
+    function filterDoctors() {
+        const search = normalizeString(searchBox.value);
+        const specialty = specialtyFilter.value;
+        currentList = doctors.filter(doc => {
+            const nameMatch = normalizeString(doc.name).includes(search);
+            const specialtyMatch = normalizeString(doc.specialty).includes(search);
+            const roomMatch = normalizeString(doc.room).includes(search);
+            const hmoMatch = doc.hmo && doc.hmo.some(hmo => normalizeString(hmo).includes(search));
+            const specialtyFilterMatch = (specialty === "all" || doc.specialty === specialty);
+            return specialtyFilterMatch && (nameMatch || specialtyMatch || roomMatch || hmoMatch);
+        });
+        renderDoctors(currentList, true);
+    }
 
     // --- Event Listeners ---
     searchBox.addEventListener("input", filterDoctors);
     specialtyFilter.addEventListener("change", filterDoctors);
     loadMoreBtn.addEventListener("click", () => renderDoctors(currentList));
-    closeModalBtn.onclick = () => modal.classList.add("hidden");
+    closeModalBtn.addEventListener("click", closeDoctorModal);
+    
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            closeDoctorModal();
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+            closeDoctorModal();
+        }
+    });
+
+    // NEW: Event listeners for the swipe-to-close gesture on the modal background
+    modal.addEventListener('touchstart', (e) => {
+        // Only track swipes that start on the background, not the content
+        if (e.target === modal) {
+            touchStartY = e.changedTouches[0].screenY;
+        }
+    }, { passive: true });
+
+    modal.addEventListener('touchend', (e) => {
+        if (e.target === modal) {
+            touchEndY = e.changedTouches[0].screenY;
+            handleModalSwipe();
+        }
+    });
 
     // Initial render of the first batch of doctors
     renderDoctors(doctors);
