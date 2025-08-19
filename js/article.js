@@ -123,8 +123,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebas
               
               return `
                   <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-                      <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
-                      <div class="p-6">
+                      <a href="article.html?id=${article.id}">
+                        <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                      </a>
+                        <div class="p-6">
                           <h3 class="text-lg font-semibold mb-2 h-14 overflow-hidden">${article.title}</h3>
                           <a href="article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
                       </div>
