@@ -31,14 +31,14 @@
       </a>
   
       <!-- Toggle Button (Mobile) -->
-      <button id="menu-toggle" type="button" 
+      <button id="mobile-toggle" type="button" 
               class="inline-flex items-center p-2 text-xl text-green-700 hover:text-black transition justify-center rounded-lg lg:hidden">
         <span class="sr-only">Open main menu</span>
         <i class="fa-solid fa-bars"></i>
       </button>
   
       <!-- Navbar Menu -->
-      <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
+      <div id="navbar-mobile" class="hidden w-full lg:flex lg:w-auto">
         <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
           <li><a href="../" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Home</a></li>
           <li><a href="../services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Services</a></li>
@@ -60,24 +60,24 @@
     </nav>
 
     <main class="pt-32">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-            <div id="article-container" class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12">
-                <!-- Loading Spinner -->
-                <div id="loading" class="text-center py-12">
-                    <i class="fas fa-spinner fa-spin text-4xl text-green-600"></i>
-                    <p class="mt-2 text-gray-600">Loading Article...</p>
-                </div>
-                <!-- Article content will be injected here -->
-            </div>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div id="article-container" class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-12">
+              <!-- Loading Spinner -->
+              <div id="loading" class="text-center py-12">
+                  <i class="fas fa-spinner fa-spin text-4xl text-green-600"></i>
+                  <p class="mt-2 text-gray-600">Loading Article...</p>
+              </div>
+              <!-- Article content will be injected here -->
+          </div>
 
-            <!-- Related News Section -->
-            <div class="max-w-4xl mx-auto mt-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8">Related News</h2>
-                <div id="related-news-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    <!-- Related articles will be injected here -->
-                </div>
-            </div>
-        </div>
+          <!-- Related News Section -->
+          <div class="max-w-4xl mx-auto mt-16">
+              <h2 class="text-3xl font-bold text-gray-900 mb-8">Related News</h2>
+              <div id="related-news-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+                  <!-- Related articles will be injected here -->
+              </div>
+          </div>
+      </div>
     </main>
 
     <!-- FOOTER -->
@@ -176,156 +176,183 @@
     </div>
     </footer>
 
-    <!-- Firebase -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-        import { getFirestore, doc, getDoc, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-        
-        const firebaseConfig = {
-            apiKey: "AIzaSyAG_4ZJS6PhL1m95j0KSKNVOH6vM_erxg8",
-            authDomain: "metroviganhospit-1754712078671.firebaseapp.com",
-            projectId: "metroviganhospit-1754712078671",
-            storageBucket: "metroviganhospit-1754712078671.firebasestorage.app",
-            messagingSenderId: "751450211377",
-            appId: "1:751450211377:web:b0765182c55f0ead268110",
-            measurementId: "G-SKFD2L78KJ"
-        };
-        const appId = firebaseConfig.appId;
+        <!-- Firebase -->
+        <script type="module">
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+          import { getFirestore, doc, getDoc, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+          import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+          
+          const firebaseConfig = {
+              apiKey: "AIzaSyAG_4ZJS6PhL1m95j0KSKNVOH6vM_erxg8",
+              authDomain: "metroviganhospit-1754712078671.firebaseapp.com",
+              projectId: "metroviganhospit-1754712078671",
+              storageBucket: "metroviganhospit-1754712078671.firebasestorage.app",
+              messagingSenderId: "751450211377",
+              appId: "1:751450211377:web:b0765182c55f0ead268110",
+              measurementId: "G-SKFD2L78KJ"
+          };
+          const appId = firebaseConfig.appId;
+  
+          const app = initializeApp(firebaseConfig);
+          const db = getFirestore(app);
+          const auth = getAuth(app);
+  
+          const articleContainer = document.getElementById('article-container');
+          const loadingEl = document.getElementById('loading');
+          const relatedNewsGrid = document.getElementById('related-news-grid');
+  
+          async function fetchAndDisplayArticle() {
+              const params = new URLSearchParams(window.location.search);
+              const articleId = params.get('id');
+  
+              if (!articleId) {
+                  articleContainer.innerHTML = `<p class="text-red-500 text-center">Error: No article ID provided.</p>`;
+                  return;
+              }
+  
+              try {
+                  await signInAnonymously(auth);
+                  const articleRef = doc(db, `/artifacts/${appId}/public/data/articles`, articleId);
+                  const docSnap = await getDoc(articleRef);
+  
+                  loadingEl.classList.add('hidden');
+  
+                  if (docSnap.exists()) {
+                      const article = docSnap.data();
+                      renderArticle(article);
+                      fetchAndDisplayRelatedArticles(articleId); // Fetch related articles
+                  } else {
+                      articleContainer.innerHTML = `<p class="text-red-500 text-center">Error: Article not found.</p>`;
+                  }
+              } catch (error) {
+                  console.error("Error fetching article:", error);
+                  loadingEl.classList.add('hidden');
+                  articleContainer.innerHTML = `<p class="text-red-500 text-center">Could not load the article. Please try again later.</p>`;
+              }
+          }
+  
+          function renderArticle(article) {
+              document.title = `${article.title} - Metro Vigan Hospital`;
+  
+              const articleDate = article.date.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+              
+              let mainImage = 'https://placehold.co/1200x600/cccccc/ffffff?text=Image+Not+Available';
+              let otherImagesHTML = '';
+  
+              if (article.imageUrls && Array.isArray(article.imageUrls) && article.imageUrls.length > 0) {
+                  mainImage = article.imageUrls[0];
+                  if (article.imageUrls.length > 1) {
+                      // Create a grid for additional images
+                      otherImagesHTML = `
+                          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-8">
+                              ${article.imageUrls.slice(1).map(url => `
+                                  <div>
+                                      <img src="${url}" alt="Article image" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
+                                  </div>
+                              `).join('')}
+                          </div>
+                      `;
+                  }
+              } else if (article.imageUrl && typeof article.imageUrl === 'string') {
+                  mainImage = article.imageUrl;
+              }
+  
+              articleContainer.innerHTML = `
+                  <a href="news.html" class="text-green-600 font-medium hover:underline mb-8 inline-block">&larr; Back to News</a>
+                  <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">${article.title}</h1>
+                  <p class="text-gray-500 mb-6">${article.author} &bull; ${articleDate}</p>
+                  <img src="${mainImage}" alt="${article.title}" class="w-full h-auto rounded-lg shadow-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/cccccc/ffffff?text=Image+Not+Found';">
+                  <div class="article-content text-gray-700">
+                      ${article.content}
+                      ${otherImagesHTML}
+                  </div>
+              `;
+          }
+  
+          async function fetchAndDisplayRelatedArticles(currentArticleId) {
+              try {
+                  const articlesRef = collection(db, `/artifacts/${appId}/public/data/articles`);
+                  const querySnapshot = await getDocs(query(articlesRef));
+  
+                  let allArticles = [];
+                  querySnapshot.forEach(doc => {
+                      allArticles.push({ id: doc.id, ...doc.data() });
+                  });
+  
+                  // Filter out the current article and shuffle the rest
+                  let relatedArticles = allArticles.filter(article => article.id !== currentArticleId);
+                  shuffleArray(relatedArticles);
+  
+                  // Take the first 3
+                  const articlesToDisplay = relatedArticles.slice(0, 3);
+  
+                  if (articlesToDisplay.length > 0) {
+                      relatedNewsGrid.innerHTML = articlesToDisplay.map(createRelatedArticleCardHTML).join('');
+                  } else {
+                      relatedNewsGrid.innerHTML = '<p class="col-span-3 text-center text-gray-500">No other news available.</p>';
+                  }
+  
+              } catch (error) {
+                  console.error("Error fetching related articles:", error);
+                  relatedNewsGrid.innerHTML = '<p class="col-span-3 text-center text-red-500">Could not load related news.</p>';
+              }
+          }
+  
+          function createRelatedArticleCardHTML(article) {
+              const thumbnailUrl = (article.imageUrls && article.imageUrls.length > 0) ? article.imageUrls[0] : article.imageUrl || 'https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';
+              
+              return `
+                  <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+                      <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                      <div class="p-6">
+                          <h3 class="text-lg font-semibold mb-2 h-14 overflow-hidden">${article.title}</h3>
+                          <a href="article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
+                      </div>
+                  </div>
+              `;
+          }
+          
+          // Fisher-Yates shuffle algorithm
+          function shuffleArray(array) {
+              for (let i = array.length - 1; i > 0; i--) {
+                  const j = Math.floor(Math.random() * (i + 1));
+                  [array[i], array[j]] = [array[j], array[i]];
+              }
+          }
+  
+          document.addEventListener('DOMContentLoaded', () => {
+              fetchAndDisplayArticle();
+          });
+      </script>
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        // --- Select Elements ---
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('navbar-mobile');
+  const icon = toggleBtn.querySelector('i');
 
-        const articleContainer = document.getElementById('article-container');
-        const loadingEl = document.getElementById('loading');
-        const relatedNewsGrid = document.getElementById('related-news-grid');
+  // --- Click Event to Toggle Menu ---
+  toggleBtn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-xmark');
+  });
 
-        async function fetchAndDisplayArticle() {
-            const params = new URLSearchParams(window.location.search);
-            const articleId = params.get('id');
+  // --- NEW: Scroll Event to Close Menu ---
+  window.addEventListener('scroll', () => {
+    // Check if the menu is currently open (!hidden)
+    const isMenuOpen = !menu.classList.contains('hidden');
 
-            if (!articleId) {
-                articleContainer.innerHTML = `<p class="text-red-500 text-center">Error: No article ID provided.</p>`;
-                return;
-            }
-
-            try {
-                await signInAnonymously(auth);
-                const articleRef = doc(db, `/artifacts/${appId}/public/data/articles`, articleId);
-                const docSnap = await getDoc(articleRef);
-
-                loadingEl.classList.add('hidden');
-
-                if (docSnap.exists()) {
-                    const article = docSnap.data();
-                    renderArticle(article);
-                    fetchAndDisplayRelatedArticles(articleId); // Fetch related articles
-                } else {
-                    articleContainer.innerHTML = `<p class="text-red-500 text-center">Error: Article not found.</p>`;
-                }
-            } catch (error) {
-                console.error("Error fetching article:", error);
-                loadingEl.classList.add('hidden');
-                articleContainer.innerHTML = `<p class="text-red-500 text-center">Could not load the article. Please try again later.</p>`;
-            }
-        }
-
-        function renderArticle(article) {
-            document.title = `${article.title} - Metro Vigan Hospital`;
-
-            const articleDate = article.date.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            
-            let mainImage = 'https://placehold.co/1200x600/cccccc/ffffff?text=Image+Not+Available';
-            let otherImagesHTML = '';
-
-            if (article.imageUrls && Array.isArray(article.imageUrls) && article.imageUrls.length > 0) {
-                mainImage = article.imageUrls[0];
-                if (article.imageUrls.length > 1) {
-                    otherImagesHTML = article.imageUrls.slice(1).map(url => `
-                        <img src="${url}" alt="Article image" class="my-8 rounded-lg shadow-md" onerror="this.style.display='none'">
-                    `).join('');
-                }
-            } else if (article.imageUrl && typeof article.imageUrl === 'string') {
-                mainImage = article.imageUrl;
-            }
-
-            articleContainer.innerHTML = `
-                <a href="../news" class="text-green-600 font-medium hover:underline mb-8 inline-block">&larr; Back to News</a>
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">${article.title}</h1>
-                <p class="text-gray-500 mb-6">${article.author} &bull; ${articleDate}</p>
-                <img src="${mainImage}" alt="${article.title}" class="w-full h-auto rounded-lg shadow-lg mb-8" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/cccccc/ffffff?text=Image+Not+Found';">
-                <div class="article-content text-gray-700">
-                    ${article.content}
-                    ${otherImagesHTML}
-                </div>
-            `;
-        }
-
-        async function fetchAndDisplayRelatedArticles(currentArticleId) {
-            try {
-                const articlesRef = collection(db, `/artifacts/${appId}/public/data/articles`);
-                const querySnapshot = await getDocs(query(articlesRef));
-
-                let allArticles = [];
-                querySnapshot.forEach(doc => {
-                    allArticles.push({ id: doc.id, ...doc.data() });
-                });
-
-                // Filter out the current article and shuffle the rest
-                let relatedArticles = allArticles.filter(article => article.id !== currentArticleId);
-                shuffleArray(relatedArticles);
-
-                // Take the first 3
-                const articlesToDisplay = relatedArticles.slice(0, 3);
-
-                if (articlesToDisplay.length > 0) {
-                    relatedNewsGrid.innerHTML = articlesToDisplay.map(createRelatedArticleCardHTML).join('');
-                } else {
-                    relatedNewsGrid.innerHTML = '<p class="col-span-3 text-center text-gray-500">No other news available.</p>';
-                }
-
-            } catch (error) {
-                console.error("Error fetching related articles:", error);
-                relatedNewsGrid.innerHTML = '<p class="col-span-3 text-center text-red-500">Could not load related news.</p>';
-            }
-        }
-
-        function createRelatedArticleCardHTML(article) {
-            const thumbnailUrl = (article.imageUrls && article.imageUrls.length > 0) ? article.imageUrls[0] : article.imageUrl || 'https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';
-            
-            return `
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-                    <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2 h-14 overflow-hidden">${article.title}</h3>
-                        <a href="article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Fisher-Yates shuffle algorithm
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchAndDisplayArticle();
-            // Mobile menu toggle
-            const toggleBtn = document.getElementById('menu-toggle');
-            const menu = document.getElementById('navbar-menu');
-            toggleBtn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
-        });
-
+    if (isMenuOpen) {
+      // Close the menu
+      menu.classList.add('hidden');
+      // Reset the icon back to the hamburger
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+    }
+  });
     </script>
-
-    <script src="../js/script.js"> </script>
     <script src="../js/go-top-button.js"></script>
 </body>
 </html>

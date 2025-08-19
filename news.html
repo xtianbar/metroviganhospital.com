@@ -32,14 +32,14 @@
       </a>
   
       <!-- Toggle Button (Mobile) -->
-      <button id="menu-toggle" type="button" 
+      <button id="mobile-toggle" type="button" 
               class="inline-flex items-center p-2 text-xl text-green-700 hover:text-black transition justify-center rounded-lg lg:hidden">
         <span class="sr-only">Open main menu</span>
         <i class="fa-solid fa-bars"></i>
       </button>
   
       <!-- Navbar Menu -->
-      <div id="navbar-menu" class="hidden w-full lg:flex lg:w-auto">
+      <div id="navbar-mobile" class="hidden w-full lg:flex lg:w-auto">
         <ul class="font-medium flex flex-col p-4 text-lg lg:flex-row lg:space-x-7">
           <li><a href="/" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Home</a></li>
           <li><a href="/services" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Services</a></li>
@@ -61,27 +61,27 @@
     </nav>
 
     <main class="pt-32">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center" data-aos="fade-down">News & Updates</h1>
-            <p class="text-gray-600 mb-12 text-center max-w-3xl mx-auto" data-aos="fade-down" data-aos-delay="100">The latest announcements, health tips, and stories from Metro Vigan Hospital.</p>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center" data-aos="fade-down">News & Updates</h1>
+          <p class="text-gray-600 mb-12 text-center max-w-3xl mx-auto" data-aos="fade-down" data-aos-delay="100">The latest announcements, health tips, and stories from Metro Vigan Hospital.</p>
 
-            <!-- Loading Spinner -->
-            <div id="loading" class="text-center py-12">
-                <i class="fas fa-spinner fa-spin text-4xl text-green-600"></i>
-                <p class="mt-2 text-gray-600">Loading Articles...</p>
-            </div>
+          <!-- Loading Spinner -->
+          <div id="loading" class="text-center py-12">
+              <i class="fas fa-spinner fa-spin text-4xl text-green-600"></i>
+              <p class="mt-2 text-gray-600">Loading Articles...</p>
+          </div>
 
-            <!-- Featured Article Section -->
-            <div id="featured-article-container" class="hidden mb-16">
-                <!-- Featured article will be injected here by JavaScript -->
-            </div>
+          <!-- Featured Article Section -->
+          <div id="featured-article-container" class="hidden mb-16">
+              <!-- Featured article will be injected here by JavaScript -->
+          </div>
 
-            <!-- Articles Grid -->
-            <div id="articles-grid" class="hidden grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <!-- Other articles will be injected here by JavaScript -->
-            </div>
-             <p id="no-articles" class="hidden text-center text-gray-500 py-12">No articles found. Please check back later.</p>
-        </div>
+          <!-- Articles Grid -->
+          <div id="articles-grid" class="hidden grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+              <!-- Other articles will be injected here by JavaScript -->
+          </div>
+           <p id="no-articles" class="hidden text-center text-gray-500 py-12">No articles found. Please check back later.</p>
+      </div>
     </main>
 
     <!-- FOOTER -->
@@ -180,142 +180,181 @@
     </div>
     </footer>
 
-    <script src="js/script.js"> </script>
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+      // --- Select Elements ---
+const toggleBtn = document.getElementById('mobile-toggle');
+const menu = document.getElementById('navbar-mobile');
+const icon = toggleBtn.querySelector('i');
+
+// --- Click Event to Toggle Menu ---
+toggleBtn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
+});
+
+// --- NEW: Scroll Event to Close Menu ---
+window.addEventListener('scroll', () => {
+  // Check if the menu is currently open (!hidden)
+  const isMenuOpen = !menu.classList.contains('hidden');
+
+  if (isMenuOpen) {
+    // Close the menu
+    menu.classList.add('hidden');
+    // Reset the icon back to the hamburger
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+  }
+});
+  </script>
     <script src="js/go-top-button.js"></script>
     
     <!-- Firebase -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-        
-        const firebaseConfig = {
-            apiKey: "AIzaSyAG_4ZJS6PhL1m95j0KSKNVOH6vM_erxg8",
-            authDomain: "metroviganhospit-1754712078671.firebaseapp.com",
-            projectId: "metroviganhospit-1754712078671",
-            storageBucket: "metroviganhospit-1754712078671.firebasestorage.app",
-            messagingSenderId: "751450211377",
-            appId: "1:751450211377:web:b0765182c55f0ead268110",
-            measurementId: "G-SKFD2L78KJ"
-        };
-        const appId = firebaseConfig.appId;
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+      import { getFirestore, collection, getDocs, query } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+      import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+      
+      const firebaseConfig = {
+          apiKey: "AIzaSyAG_4ZJS6PhL1m95j0KSKNVOH6vM_erxg8",
+          authDomain: "metroviganhospit-1754712078671.firebaseapp.com",
+          projectId: "metroviganhospit-1754712078671",
+          storageBucket: "metroviganhospit-1754712078671.firebasestorage.app",
+          messagingSenderId: "751450211377",
+          appId: "1:751450211377:web:b0765182c55f0ead268110",
+          measurementId: "G-SKFD2L78KJ"
+      };
+      const appId = firebaseConfig.appId;
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const auth = getAuth(app);
 
-        const loadingEl = document.getElementById('loading');
-        const featuredContainer = document.getElementById('featured-article-container');
-        const articlesGrid = document.getElementById('articles-grid');
-        const noArticlesEl = document.getElementById('no-articles');
+      const loadingEl = document.getElementById('loading');
+      const featuredContainer = document.getElementById('featured-article-container');
+      const articlesGrid = document.getElementById('articles-grid');
+      const noArticlesEl = document.getElementById('no-articles');
 
-        async function fetchArticles() {
-            try {
-                const articlesRef = collection(db, `/artifacts/${appId}/public/data/articles`);
-                const q = query(articlesRef);
-                const querySnapshot = await getDocs(q);
-                
-                loadingEl.classList.add('hidden');
+      async function fetchArticles() {
+          try {
+              const articlesRef = collection(db, `/artifacts/${appId}/public/data/articles`);
+              const q = query(articlesRef);
+              const querySnapshot = await getDocs(q);
+              
+              loadingEl.classList.add('hidden');
 
-                if (querySnapshot.empty) {
-                    noArticlesEl.classList.remove('hidden');
-                    return;
-                }
+              if (querySnapshot.empty) {
+                  noArticlesEl.classList.remove('hidden');
+                  return;
+              }
 
-                let articles = [];
-                querySnapshot.forEach(doc => {
-                    const data = doc.data();
-                    if (data.date && typeof data.date.toDate === 'function') {
-                        articles.push({ id: doc.id, ...data });
-                    } else {
-                        console.warn(`Skipping article ${doc.id}: missing or invalid date.`);
-                    }
-                });
+              let articles = [];
+              querySnapshot.forEach(doc => {
+                  const data = doc.data();
+                  if (data.date && typeof data.date.toDate === 'function') {
+                      articles.push({ id: doc.id, ...data });
+                  } else {
+                      console.warn(`Skipping article ${doc.id}: missing or invalid date.`);
+                  }
+              });
 
-                if (articles.length === 0) {
-                    noArticlesEl.classList.remove('hidden');
-                    return;
-                }
+              if (articles.length === 0) {
+                  noArticlesEl.classList.remove('hidden');
+                  return;
+              }
 
-                articles.sort((a, b) => b.date.toDate() - a.date.toDate());
+              articles.sort((a, b) => b.date.toDate() - a.date.toDate());
 
-                const featuredArticle = articles.find(a => a.featured) || articles[0];
-                const otherArticles = articles.filter(a => a.id !== featuredArticle.id);
+              const featuredArticle = articles.find(a => a.featured) || articles[0];
+              const otherArticles = articles.filter(a => a.id !== featuredArticle.id);
 
-                if (featuredArticle) {
-                    featuredContainer.innerHTML = createFeaturedArticleHTML(featuredArticle);
-                    featuredContainer.classList.remove('hidden');
-                }
+              if (featuredArticle) {
+                  featuredContainer.innerHTML = createFeaturedArticleHTML(featuredArticle);
+                  featuredContainer.classList.remove('hidden');
+              }
 
-                if (otherArticles.length > 0) {
-                    articlesGrid.innerHTML = otherArticles.map(createArticleCardHTML).join('');
-                    articlesGrid.classList.remove('hidden');
-                }
-                
-            } catch (error) {
-                console.error("Error fetching articles: ", error);
-                loadingEl.classList.remove('hidden');
-                loadingEl.innerHTML = '<p class="text-red-500">Failed to load articles. Please check your Firestore rules and configuration.</p>';
-            }
-        }
+              if (otherArticles.length > 0) {
+                  articlesGrid.innerHTML = otherArticles.map(createArticleCardHTML).join('');
+                  articlesGrid.classList.remove('hidden');
+              }
+              
+          } catch (error) {
+              console.error("Error fetching articles: ", error);
+              loadingEl.classList.remove('hidden');
+              loadingEl.innerHTML = '<p class="text-red-500">Failed to load articles. Please check your Firestore rules and configuration.</p>';
+          }
+      }
 
-        function createFeaturedArticleHTML(article) {
-            const articleDate = article.date.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            return `
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden md:flex hover:shadow-2xl transition" data-aos="fade-up">
-                    <div class="md:w-1/2">
-                        <img src="${article.imageUrl}" alt="${article.title}" class="h-72 w-full object-cover md:h-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
-                    </div>
-                    <div class="p-8 md:p-10 md:w-1/2 flex flex-col justify-center">
-                        <p class="text-sm text-gray-500 mb-2">${article.author} &bull; ${articleDate}</p>
-                        <h2 class="text-3xl font-bold text-gray-800 mb-4">${article.title}</h2>
-                        <p class="text-gray-600 text-sm mb-6">${truncate(article.content, 200)}</p>
-                        <a href="/news/article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function createArticleCardHTML(article) {
-            return `
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="100">
-                    <img src="${article.imageUrl}" alt="${article.title}" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2">${article.title}</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            ${truncate(article.content, 200)}
-                        </p>
-                        <a href="/news/article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            `;
-        }
+      function getThumbnailUrl(article) {
+          let thumbnailUrl = 'https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';
+          if (article.imageUrls && Array.isArray(article.imageUrls) && article.imageUrls.length > 0) {
+              thumbnailUrl = article.imageUrls[0];
+          } else if (article.imageUrl && typeof article.imageUrl === 'string') {
+              thumbnailUrl = article.imageUrl;
+          }
+          return thumbnailUrl;
+      }
 
-        function truncate(str, maxLength) {
-            if (!str) return '';
-            const strippedString = str.replace(/<[^>]+>/g, '');
-            if (strippedString.length <= maxLength) return strippedString;
-            return strippedString.substring(0, maxLength) + '...';
-        }
+      function createFeaturedArticleHTML(article) {
+          const articleDate = article.date.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+          const thumbnailUrl = getThumbnailUrl(article);
+          return `
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden md:flex hover:shadow-2xl transition" data-aos="fade-up">
+                  <div class="md:w-1/2">
+                      <img src="${thumbnailUrl}" alt="${article.title}" class="h-64 w-full object-cover md:h-full" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                  </div>
+                  <div class="p-8 md:p-10 md:w-1/2 flex flex-col justify-center">
+                      <p class="text-sm text-gray-500 mb-2">${article.author} &bull; ${articleDate}</p>
+                      <h2 class="text-3xl font-bold text-gray-800 mb-4">${article.title}</h2>
+                      <p class="text-gray-600 text-sm mb-6">${truncate(article.content, 200)}</p>
+                      <a href="article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+              </div>
+          `;
+      }
+      
+      function createArticleCardHTML(article) {
+          const thumbnailUrl = getThumbnailUrl(article);
+          return `
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition" data-aos="fade-up" data-aos-delay="100">
+                  <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                  <div class="p-6">
+                      <h3 class="text-lg font-semibold mb-2">${article.title}</h3>
+                      <p class="text-gray-600 text-sm mb-4">
+                          ${truncate(article.content, 150)}
+                      </p>
+                      <a href="article.html?id=${article.id}" class="text-green-600 font-medium hover:underline">Read more <i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+              </div>
+          `;
+      }
 
-        async function initializePage() {
-            try {
-                await signInAnonymously(auth);
-                await fetchArticles();
-            } catch (error) {
-                console.error("Initialization error:", error);
-                loadingEl.innerHTML = '<p class="text-red-500">Could not connect to the database. Please check console for details.</p>';
-            }
-        }
+      function truncate(str, maxLength) {
+          if (!str) return '';
+          const strippedString = str.replace(/<[^>]+>/g, '');
+          if (strippedString.length <= maxLength) return strippedString;
+          return strippedString.substring(0, maxLength) + '...';
+      }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            initializePage();
-            const toggleBtn = document.getElementById('menu-toggle');
-            const menu = document.getElementById('navbar-menu');
-            toggleBtn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
-        });
+      async function initializePage() {
+          try {
+              await signInAnonymously(auth);
+              await fetchArticles();
+          } catch (error) {
+              console.error("Initialization error:", error);
+              loadingEl.innerHTML = '<p class="text-red-500">Could not connect to the database. Please check console for details.</p>';
+          }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+          initializePage();
+          const toggleBtn = document.getElementById('menu-toggle');
+          const menu = document.getElementById('navbar-menu');
+          toggleBtn.addEventListener('click', () => {
+              menu.classList.toggle('hidden');
+          });
+      });
     </script>
     
     <!-- AOS Script -->
