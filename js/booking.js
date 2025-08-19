@@ -60,7 +60,7 @@
 
         // --- Form Submission Logic ---
         //contact-us form script
-const form = document.getElementById('contact-form');
+const form = document.getElementById('booking-form');
   const thankYouWrapper = document.getElementById('thank-you-wrapper');
   const checkIcon = document.getElementById('check-icon');
   const SITE_KEY = "6LdVjZ8rAAAAAMTpN-pXZT9SoR2JHcmCUFNDwv2W";
