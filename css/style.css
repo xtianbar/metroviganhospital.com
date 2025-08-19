@@ -74,9 +74,10 @@ body {
     clip-path: ellipse(160% 100% at 50% 100%);
   }
 
-body.modal-open {
+html.modal-open {
   overflow: hidden;
 }
+
     .modal {
       display: none;
     }

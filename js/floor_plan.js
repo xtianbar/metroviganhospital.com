@@ -1,3 +1,29 @@
+  // --- Select Elements ---
+  const toggleBtn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('navbar-menu');
+  const icon = toggleBtn.querySelector('i');
+
+  // --- Click Event to Toggle Menu ---
+  toggleBtn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-xmark');
+  });
+
+  // --- NEW: Scroll Event to Close Menu ---
+  window.addEventListener('scroll', () => {
+    // Check if the menu is currently open (!hidden)
+    const isMenuOpen = !menu.classList.contains('hidden');
+
+    if (isMenuOpen) {
+      // Close the menu
+      menu.classList.add('hidden');
+      // Reset the icon back to the hamburger
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars');
+    }
+  });
+
 const floors = {
   1: { image: "img/floor_plan/1.avif", hotspots: [
     
@@ -654,7 +680,7 @@ const floors = {
           ], descriptions: "Administrative board meeting office." },
         ] }
     };
-    
+
 // DOM elements
 const floorButtons = document.querySelectorAll('.floor-btn');
 const floorContainer = document.getElementById('floorContainer');
@@ -682,10 +708,8 @@ function fadeIn(element) {
 function loadFloor(floorNumber) {
   const floor = floors[floorNumber];
   floorContainer.innerHTML = '';
-
   const floorWrapper = document.createElement('div');
   floorWrapper.className = 'relative w-full';
-
   const floorImg = document.createElement('img');
   floorImg.src = floor.image;
   floorImg.alt = `Floor ${floorNumber}`;
@@ -693,11 +717,7 @@ function loadFloor(floorNumber) {
   floorWrapper.appendChild(floorImg);
   floorContainer.appendChild(floorWrapper);
   fadeIn(floorWrapper);
-
-  // Add hotspots
   floor.hotspots.forEach((h) => createHotspot(h, floorWrapper));
-
-  // Update button highlight
   floorButtons.forEach(b => b.classList.remove('bg-green-600', 'text-white'));
   document.querySelector(`.floor-btn[data-floor="${floorNumber}"]`).classList.add('bg-green-600', 'text-white');
   activeFloor = parseInt(floorNumber);
@@ -707,10 +727,8 @@ function loadFloor(floorNumber) {
 function createHotspot(h, wrapper) {
   const hotspot = document.createElement("div");
   hotspot.className = "hotspot absolute rounded-full cursor-pointer";
-
   const viewportWidth = window.innerWidth;
   let hotspotSize, tooltipFont;
-
   if (viewportWidth < 480) {
     hotspotSize = 12; tooltipFont = "10px";
   } else if (viewportWidth < 768) {
@@ -718,13 +736,11 @@ function createHotspot(h, wrapper) {
   } else {
     hotspotSize = 24; tooltipFont = "12px";
   }
-
   hotspot.style.width = `${hotspotSize}px`;
   hotspot.style.height = `${hotspotSize}px`;
   hotspot.style.backgroundColor = "rgba(22, 163, 74, 0.5)";
   hotspot.style.top = h.top;
   hotspot.style.left = h.left;
-
   const tooltip = document.createElement("span");
   tooltip.className = "tooltip absolute bg-black text-white px-2 py-1 rounded whitespace-nowrap";
   tooltip.style.fontSize = tooltipFont;
@@ -733,10 +749,8 @@ function createHotspot(h, wrapper) {
   tooltip.style.top = `-150%`;
   tooltip.style.left = `50%`;
   tooltip.style.transform = `translateX(-50%)`;
-
   hotspot.appendChild(tooltip);
   wrapper.appendChild(hotspot);
-
   requestAnimationFrame(() => adjustTooltip(tooltip));
   hotspot.addEventListener("click", () => openModal(h));
 }
@@ -744,7 +758,6 @@ function createHotspot(h, wrapper) {
 function adjustTooltip(tooltip) {
   const rect = tooltip.getBoundingClientRect();
   const viewportWidth = window.innerWidth;
-
   if (rect.top < 10) tooltip.style.top = `150%`;
   if (rect.left < 0) {
     tooltip.style.left = `0`;
@@ -760,7 +773,6 @@ function adjustTooltip(tooltip) {
 function openModal(hotspot) {
   modalName.textContent = hotspot.name;
   modalDesc.innerHTML = '';
-
   if (Array.isArray(hotspot.descriptions)) {
     hotspot.descriptions.forEach(desc => {
       const p = document.createElement('p');
@@ -771,54 +783,38 @@ function openModal(hotspot) {
   } else {
     modalDesc.textContent = hotspot.descriptions || "";
   }
-
   currentImages = hotspot.images || [];
   currentImageIndex = 0;
   if (currentImages.length > 0) currentImageEl.src = currentImages[currentImageIndex];
-
   generateThumbnails();
   modal.classList.remove('hidden');
+  document.documentElement.classList.add('modal-open'); // Change this from 'body' to 'documentElement'
+}
+
+function closeTheModal() {
+  modal.classList.add('hidden');
+  document.documentElement.classList.remove('modal-open'); // Change this from 'body' to 'documentElement'
 }
 
 // Swipe to close modal on mobile
 let touchStartY = 0;
 let touchEndY = 0;
-
-// Close modal when tapping the background (click or tap)
-modal.addEventListener('click', (e) => {
-  // Only close if the background (not modal content) is clicked
-  if (e.target === modal) {
-    modal.classList.add('hidden');
-  }
-});
-
-// Swipe to close modal (up or down)
 modal.addEventListener('touchstart', (e) => {
-  if (e.target !== modal) return; // only swipe on background
+  if (e.target !== modal) return;
   touchStartY = e.changedTouches[0].screenY;
 }, { passive: true });
-
 modal.addEventListener('touchend', (e) => {
-  if (e.target !== modal) return; // only swipe on background
+  if (e.target !== modal) return;
   touchEndY = e.changedTouches[0].screenY;
   handleSwipeGesture();
 });
 
 function handleSwipeGesture() {
   const swipeDistance = touchEndY - touchStartY;
-
-  // Close only if swipe distance is significant (50px up/down)
   if (Math.abs(swipeDistance) > 50) {
-    modal.classList.add('hidden');
+    closeTheModal(); // CORRECTED: This now calls the proper closing function
   }
 }
-
-// Close modal when clicking/tapping the background
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.classList.add('hidden');
-  }
-});
 
 function generateThumbnails() {
   thumbnailContainer.innerHTML = '';
@@ -843,8 +839,6 @@ function updateImage() {
   });
 }
 
-closeModal.addEventListener('click', () => modal.classList.add('hidden'));
-
 // Image slideshow buttons
 document.getElementById('nextImage').addEventListener('click', () => showNextImage());
 document.getElementById('prevImage').addEventListener('click', () => showPrevImage());
@@ -866,7 +860,6 @@ function showPrevImage() {
 // Modal swipe for images
 const modalImageWrapper = document.getElementById('modalImageWrapper');
 let touchStartX = 0, touchEndX = 0;
-
 modalImageWrapper.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
 modalImageWrapper.addEventListener('touchend', e => {
   touchEndX = e.changedTouches[0].screenX;
@@ -881,24 +874,38 @@ floorContainer.addEventListener('touchend', e => {
   floorTouchEndX = e.changedTouches[0].screenX;
   const swipeThreshold = 50;
   if (floorTouchEndX < floorTouchStartX - swipeThreshold && activeFloor < Object.keys(floors).length) {
-    loadFloor(activeFloor + 1); // Swipe left → Next floor
+    loadFloor(activeFloor + 1);
   } 
   else if (floorTouchEndX > floorTouchStartX + swipeThreshold && activeFloor > 1) {
-    loadFloor(activeFloor - 1); // Swipe right → Previous floor
+    loadFloor(activeFloor - 1);
   }
 });
 
-// Keyboard navigation (optional)
+
+// --- CORRECTED: All Event Listeners are now consolidated and correct ---
+
+// Listen for clicks on the close button
+closeModal.addEventListener('click', closeTheModal);
+
+// Listen for clicks on the modal background
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeTheModal();
+  }
+});
+
+// Listen for all keyboard presses
 document.addEventListener('keydown', (e) => {
   if (!modal.classList.contains('hidden')) {
     if (e.key === 'ArrowRight') showNextImage();
     if (e.key === 'ArrowLeft') showPrevImage();
-    if (e.key === 'Escape') modal.classList.add('hidden');
+    if (e.key === 'Escape') closeTheModal(); // Corrected
   } else {
-    if (e.key === 'ArrowUp' && activeFloor < Object.keys(floors).length) loadFloor(activeFloor + 1);
-    if (e.key === 'ArrowDown' && activeFloor > 1) loadFloor(activeFloor - 1);
+    if (e.key === 'ArrowRight' && activeFloor < Object.keys(floors).length) loadFloor(activeFloor + 1);
+    if (e.key === 'ArrowLeft' && activeFloor > 1) loadFloor(activeFloor - 1);
   }
 });
+
 
 // Floor buttons
 floorButtons.forEach(btn => btn.addEventListener('click', () => loadFloor(btn.dataset.floor)));
@@ -909,46 +916,35 @@ loadFloor(activeFloor);
 // Recalculate hotspots on resize
 window.addEventListener('resize', () => loadFloor(activeFloor));
 
-
-
 //TOOLTIP
-    const circleWrapper = document.querySelector(".circle-wrapper");
-    const circleTooltip = document.querySelector(".circle-tooltip");
-    
-    circleWrapper.addEventListener("mouseenter", () => {
-      requestAnimationFrame(() => {
-        const rect = circleTooltip.getBoundingClientRect();
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-    
-        // Reset to default (above)
-        circleTooltip.style.bottom = "100%";
-        circleTooltip.style.top = "auto";
-        circleTooltip.style.left = "50%";
-        circleTooltip.style.transform = "translateX(-50%)";
-        circleTooltip.style.right = "auto";
-        circleTooltip.style.whiteSpace = "nowrap";
-        circleTooltip.style.maxWidth = "none";
-        circleTooltip.style.textAlign = "center";
-    
-        // Flip below if too close to top
-        if (rect.top < 10) {
-          circleTooltip.style.top = "100%";
-          circleTooltip.style.bottom = "auto";
-          circleTooltip.style.transform = "translateX(-50%)";
-        }
-    
-        // Shift right if overflowing left
-        if (rect.left < 0) {
-          circleTooltip.style.left = "0";
-          circleTooltip.style.transform = "translateX(0)";
-        }
-    
-        // Shift left if overflowing right
-        if (rect.right > vw) {
-          circleTooltip.style.left = "auto";
-          circleTooltip.style.right = "0";
-          circleTooltip.style.transform = "translateX(0)";
-        }
-      });
-    });
+const circleWrapper = document.querySelector(".circle-wrapper");
+const circleTooltip = document.querySelector(".circle-tooltip");
+circleWrapper.addEventListener("mouseenter", () => {
+  requestAnimationFrame(() => {
+    const rect = circleTooltip.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    circleTooltip.style.bottom = "100%";
+    circleTooltip.style.top = "auto";
+    circleTooltip.style.left = "50%";
+    circleTooltip.style.transform = "translateX(-50%)";
+    circleTooltip.style.right = "auto";
+    circleTooltip.style.whiteSpace = "nowrap";
+    circleTooltip.style.maxWidth = "none";
+    circleTooltip.style.textAlign = "center";
+    if (rect.top < 10) {
+      circleTooltip.style.top = "100%";
+      circleTooltip.style.bottom = "auto";
+      circleTooltip.style.transform = "translateX(-50%)";
+    }
+    if (rect.left < 0) {
+      circleTooltip.style.left = "0";
+      circleTooltip.style.transform = "translateX(0)";
+    }
+    if (rect.right > vw) {
+      circleTooltip.style.left = "auto";
+      circleTooltip.style.right = "0";
+      circleTooltip.style.transform = "translateX(0)";
+    }
+  });
+});
