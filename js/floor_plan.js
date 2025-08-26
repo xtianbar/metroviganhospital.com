@@ -453,12 +453,14 @@ const floors = {
             "Private ICU"
             ] },
             { top: "62%", left: "88.5%", name: "ICU 2", images: [
-            "ihttps://placehold.net/1.png"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Private ICU"
             ] },
             { top: "44%", left: "91%", name: "Main ICU", images: [
-            "https://placehold.net/1.png"
+            "img/facility/icu_1.avif",
+            "img/facility/icu_2.avif",
+            "img/facility/icu_3.avif",
           ], descriptions: [
             "Intensive Care Unit (ICU): Critical care for seriously ill patients.",
             ] },
