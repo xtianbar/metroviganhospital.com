@@ -5,7 +5,7 @@ const icon = toggleBtn.querySelector('i');
 
 // --- Define Global Variables ---
 let scrollPositionOnOpen; // This will store where the user was when they opened the menu.
-const scrollThreshold = 150; // Pixels to scroll AFTER opening before menu closes. Adjust as needed.
+const scrollThreshold = 300; // Pixels to scroll AFTER opening before menu closes. Adjust as needed.
 
 // --- Click Event to Toggle Menu ---
 toggleBtn.addEventListener('click', () => {
