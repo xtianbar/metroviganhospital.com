@@ -1,28 +1,42 @@
-  // --- Select Elements ---
-  const toggleBtn = document.getElementById('menu-toggle');
-  const menu = document.getElementById('navbar-menu');
-  const icon = toggleBtn.querySelector('i');
+// --- Select Elements ---
+const toggleBtn = document.getElementById('menu-toggle');
+const menu = document.getElementById('navbar-menu');
+const icon = toggleBtn.querySelector('i');
 
-  // --- Click Event to Toggle Menu ---
-  toggleBtn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-xmark');
-  });
+// --- Define Global Variables ---
+let scrollPositionOnOpen; // This will store where the user was when they opened the menu.
+const scrollThreshold = 150; // Pixels to scroll AFTER opening before menu closes. Adjust as needed.
 
-  // --- NEW: Scroll Event to Close Menu ---
-  window.addEventListener('scroll', () => {
-    // Check if the menu is currently open (!hidden)
-    const isMenuOpen = !menu.classList.contains('hidden');
+// --- Click Event to Toggle Menu ---
+toggleBtn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
 
-    if (isMenuOpen) {
-      // Close the menu
-      menu.classList.add('hidden');
-      // Reset the icon back to the hamburger
-      icon.classList.remove('fa-xmark');
-      icon.classList.add('fa-bars');
-    }
-  });
+  // Check if the menu was just opened
+  const isMenuOpen = !menu.classList.contains('hidden');
+
+  // If the menu is now open, record the current scroll position.
+  if (isMenuOpen) {
+    scrollPositionOnOpen = window.scrollY;
+  }
+});
+
+// --- Scroll Event to Close Menu (Relative Check) ---
+window.addEventListener('scroll', () => {
+  // Check if the menu is currently open
+  const isMenuOpen = !menu.classList.contains('hidden');
+
+  // UPDATED CONDITION:
+  // Checks if you've scrolled past the threshold FROM THE POINT you opened the menu.
+  if (isMenuOpen && window.scrollY > scrollPositionOnOpen + scrollThreshold) {
+    // Close the menu
+    menu.classList.add('hidden');
+    // Reset the icon back to the hamburger
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+  }
+});
 
 //contact-us form script
 const form = document.getElementById('contact-form');
