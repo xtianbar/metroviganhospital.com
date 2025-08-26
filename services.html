@@ -35,7 +35,7 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdVjZ8rAAAAAMTpN-pXZT9SoR2JHcmCUFNDwv2W"></script>
   <!-- For SEO Ranking -->
   <script type="application/ld+json">
 {
@@ -160,13 +160,13 @@
             <li><a href="/careers" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-[#04813b]">Careers</a></li>
             <li><a href="/about-us" class="block py-2 hover:underline hover:underline-offset-[0.425rem] hover:decoration-green-700">About Us</a></li>
             <li class="flex flex-col md:flex-row gap-4">
-            <a href="https://labresult.metroviganhospital.com/" target="_blank" class="block w-full md:w-1/2 lg:w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
-                Lab Results
-            </a>
-            <a href="/contact-us" class="block w-full md:w-1/2 lg:hidden text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
-                Contact Us
-            </a>
-          </li>
+              <a href="https://labresult.metroviganhospital.com/" target="_blank" class="block w-full md:w-1/2 lg:hidden text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
+                  Lab Results
+              </a>
+              <a href="/contact-us" class="block w-full md:w-1/2 lg:w-full text-center text-white rounded-md bg-[#16a94c] hover:bg-[#04813b] px-6 py-2">
+                  Contact Us
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -206,12 +206,113 @@
           delivering advanced breast cancer screening with the latest imaging technology 
           for early detection and better health outcomes.
         </p>
-        <a href="/contact-us" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300">
-          Book Your Screening Today
-        </a>
+        <!-- This button will open the modal -->
+        <button id="open-booking-modal-button" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300">
+            Book an Appointment
+        </button>
       </div>
 
     </div>
+
+    <!-- =============================================================== -->
+    <!-- APPOINTMENT BOOKING MODAL -->
+    <!-- =============================================================== -->
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center hidden z-50 p-4">
+        
+        <!-- Modal Content -->
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-full flex flex-col relative">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-200 flex-shrink-0">
+                <h2 class="text-2xl font-bold text-green-700">Book an Appointment</h2>
+                <button id="close-booking-modal-button" class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+            </div>
+
+            <!-- Scrollable Modal Body with Form -->
+            <div class="overflow-y-auto p-8">
+                <form id="booking-form">
+                    <input type="hidden" name="_subject" value="New Appointment Booking Request!">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Full Name -->
+                        <div class="md:col-span-2">
+                            <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input type="text" id="full-name" name="name" required placeholder="Juan Dela Cruz" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                             <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                    <i class="fa-solid fa-mobile-screen"></i>
+                                </span>
+                                <input type="tel" id="phone" maxlength="15" name="phone" pattern="^(09|\+639)\d{9}$" title="Enter a valid PH number: starts with 09 or +639" required placeholder="09 or +639" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                            </div>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <input type="email" id="email" name="email" required placeholder="example@email.com" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                            </div>
+                        </div>               
+
+                        <!-- Preferred Date -->
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-gray-600 mb-1">Preferred Date</label>
+                            <input type="date" id="date" name="preferred_date" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition mt-1">
+                        </div>
+
+                        <!-- Preferred Time -->
+                        <div>
+                            <label for="time" class="block text-sm font-medium text-gray-600 mb-1">Preferred Time</label>
+                             <select id="time" name="preferred_time" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition mt-1">
+                                <option value="" disabled selected>Select a time slot...</option>
+                                <option value="Morning (8AM-12PM)">Morning (8AM - 12PM)</option>
+                                <option value="Afternoon (1PM-5PM)">Afternoon (1PM - 5PM)</option>
+                            </select>
+                        </div>
+
+                        <!-- Reason for Visit -->
+                        <div class="md:col-span-2">
+                            <label for="reason" class="block text-sm font-medium text-gray-600 mb-1">Reason for Visit (Optional)</label>
+                            <textarea id="reason" name="reason" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition mt-1"></textarea>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-6">
+                        Please note: Submitting this form is a request. Our staff will contact you to confirm the final date and time.
+                    </p>
+                    <div class="mt-4 text-right">
+                        <button type="submit" id="submit-button" class="bg-green-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                            Request Appointment
+                        </button>
+                    </div>
+                </form>
+                <div id="status-message" class="mt-4 text-center"></div>
+            </div>
+
+            <!-- NEW: Thank You Message Overlay -->
+            <div id="thank-you-wrapper" class="absolute inset-0 bg-white bg-opacity-95 flex flex-col justify-center items-center text-center p-8 rounded-2xl hidden transition-opacity duration-300">
+                <div id="check-icon" class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center text-white text-6xl opacity-0 scale-75 transition-all duration-300 ease-out">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mt-6">Thank You!</h3>
+                <p class="text-gray-600 mt-2">Your appointment request has been sent successfully.</p>
+            </div>
+
+        </div>
+    </div>
+    
   </section>
 
   <section class="relative w-full bg-blue-50 py-16 px-6">
@@ -522,8 +623,8 @@
   </footer>
 
 <script src="js/go-top-button.js"></script>
-<script src="js/script.js"></script>
-  
+<script src="js/booking.js"></script>
+
 <!-- AOS Script -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   

@@ -67,8 +67,10 @@ function createArticleCardHTML(article) {
     }
     
     return `
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-            <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition mb-12">
+            <a href="/news/article.html?id=${article.id}">
+                <img src="${thumbnailUrl}" alt="${article.title}" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+            </a>
             <div class="p-6">
                 <h3 class="text-lg font-semibold mb-2">${article.title}</h3>
                 <p class="text-gray-600 text-sm mb-4">

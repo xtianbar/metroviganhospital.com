@@ -74,9 +74,10 @@ body {
     clip-path: ellipse(160% 100% at 50% 100%);
   }
 
-body.modal-open {
+html.modal-open {
   overflow: hidden;
 }
+
     .modal {
       display: none;
     }
@@ -283,4 +284,9 @@ body.modal-open {
             margin: 1.5em 0;
             font-style: italic;
             color: #4b5563;
+        }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            opacity: 0.6;
         }
