@@ -152,8 +152,9 @@ const floors = {
             "Medical Records: Manages patient health records and documentation."
           ]},
            { top: "47%", left: "73%", name: "Mammography", images: [
-            "img/facility/xray_2.avif",
-            "img/facility/xray_1.avif",
+            "img/facility/mammography.avif",
+            "img/facility/mammography-1.avif",
+            "img/facility/mammography-2.avif",
           ], descriptions: "X-Ray Department: Diagnostic imaging services." },
           { top: "47%", left: "78%", name: "X-Ray", images: [
             "img/facility/xray_1.avif",
@@ -372,7 +373,7 @@ const floors = {
             "Room Details: Regular Private"
             ] },
           { top: "37%", left: "25%", name: "Ward A", images: [
-            "https://placehold.net/6.png"
+            "img/facility/ward-a.avif"
           ], descriptions: [
             "Room for ICU Relatives"
             ] },
@@ -406,13 +407,16 @@ const floors = {
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
-          { top: "44%", left: "60%", name: "Marketing", images: [
-            "https://placehold.net/5.png"
+          { top: "44%", left: "60%", name: "Auditing Room", images: [
+            "img/facility/audit-1.avif",
+            "img/facility/audit-2.avif",
+            "img/facility/audit-3.avif"
           ], descriptions: [
-            "Marketing Office: Handles hospital promotions and community outreach.",
+            "Auditing Room: Financial auditing and compliance checks.",
             ] },
             { top: "44%", left: "65.3%", name: "TB Dots", images: [
-            "https://placehold.net/5.png"
+            "img/facility/tb-dots.avif",
+            "img/facility/tb-dots-2.avif"
           ], descriptions: [
             "TB Dots: Tuberculosis Directly Observed Treatment, Short-course (DOTS) program for TB patients.",
             ] },
@@ -480,7 +484,9 @@ const floors = {
             "Room Details: Regular Private"
             ] },
             { top: "56%", left: "25%", name: "Ward B", images: [
-            "https://placehold.net/6.png"
+            "img/facility/nbb-1.avif",
+            "img/facility/nbb-2.avif",
+            "img/facility/nbb-3.avif"
           ], descriptions: [
             "Room for Indigent Patient"
             ] },
