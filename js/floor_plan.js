@@ -49,7 +49,7 @@ const floors = {
       ] },
              
     { top: "40%", left: "47.2%", name: "Comfort Rooms", images: [
-      "https://placehold.net/8.png", 
+      "img/facility/comfort-rooms.avif", 
       ], descriptions: [
       "Comfort Rooms for patients and visitors."
       ] },
@@ -73,6 +73,11 @@ const floors = {
       ], descriptions: 
       "PhilHealth Konsultasyong Sulit Tama (Konsulta) is a comprehensive outpatient benefits as mandated by the Universal Health Care Law." 
       },
+      { top: "64%", left: "81%", name: "Panoramic X-Ray", images: [
+        "img/facility/panoramic.avif",
+        ], descriptions: 
+        "Panoramic X-Ray: Specialized dental imaging services." 
+        },
 
     { top: "64%", left: "60%", name: "OPD Room 105", images: [
       "img/facility/opd_1.avif",
@@ -591,17 +596,17 @@ const floors = {
             "Central Supply Records: Manages inventory and records of hospital supplies."
             ] },  
         { top: "37%", left: "45%", name: "St. Benedict", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Ward for Male Patients"
             ] },
           { top: "37%", left: "33.5%", name: "San Roque", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Surgical Ward for Male Patients"
             ] },
             { top: "37%", left: "23%", name: "Sto. Niño", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Pediatric Ward"
             ] },
@@ -613,40 +618,43 @@ const floors = {
             "Room Details: Regular Private"
             ] },
             { top: "60%", left: "23%", name: "St. Pauline", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Maternity Ward"
             ] },
             { top: "60%", left: "33.5%", name: "St. Catherine", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Surgical Ward for Female Patients"
             ] },
             { top: "60%", left: "45%", name: "St. Therese", images: [
-            "img/facility/or.avif"
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Ward for Female Patients"
             ] },
 
-            { top: "80.5%", left: "69%", name: "Room 307", images: [
-            "img/facility/regular_private.avif"
+            { top: "80.5%", left: "68%", name: "Room 407", images: [
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
-            { top: "80.5%", left: "73.5%", name: "Room 306", images: [
-            "img/facility/regular_private.avif"
+            { top: "80.5%", left: "73%", name: "Room 406", images: [
+            "https://placehold.net/1.png"
           ], descriptions: [
             "Room Details: Regular Private"
             ] },
-            { top: "80.5%", left: "77.8%", name: "Room 305", images: [
-            "img/facility/regular_private.avif"
+            { top: "80.5%", left: "77.8%", name: "Respiratory Unit", images: [
+            "img/facility/rt-1.avif",
+            "img/facility/rt-2.avif",
           ], descriptions: [
-            "Room Details: Regular Private"
+            "Respiratory Therapy Unit: Provides respiratory care and treatments for patients with breathing difficulties."
             ] },
-            { top: "80.5%", left: "82.5%", name: "Room 304", images: [
-            "img/facility/regular_private.avif"
+            { top: "80.5%", left: "82.5%", name: "EEG Room", images: [
+            "img/facility/eeg-3.avif",
+            "img/facility/eeg-1.avif",
+            "img/facility/eeg-2.avif"
           ], descriptions: [
-            "Room Details: Regular Private"
+            "Electroencephalogram (EEG) Room: Diagnostic service to measure electrical activity in the brain."
             ] },
             { top: "80.5%", left: "86.5%", name: "Room 303", images: [
             "img/facility/regular_private.avif"
@@ -668,7 +676,18 @@ const floors = {
           ], descriptions: [
             "Chief Operating Officer (COO): Oversees daily operations and ensures efficient hospital management."
             ] },
-            
+            { top: "62.5%", left: "69%", name: "Rehabilitation Room", images: [
+              "img/facility/rehab-1.avif",
+              "img/facility/rehab-2.avif",
+              "img/facility/rehab-3.avif"
+            ], descriptions: [
+              "Rehabilitation Room: Provides physical therapy and rehabilitation services to patients recovering from injuries or surgeries."
+              ] },
+              { top: "47.5%", left: "90%", name: "Dialysis", images: [
+                "img/facility/dialysis.avif",
+              ], descriptions: [
+                "Dialysis Center: Provides dialysis treatment for patients with kidney failure."
+                ] },
         ] },
         
       5: { image: "img/floor_plan/5.avif", hotspots: [
@@ -677,15 +696,112 @@ const floors = {
             "img/facility/ns5_2.avif"
           ], descriptions: [
             "Nurse Station 5: Central hub for nursing staff on this floor."
+            ] },
+          { top: "42.5%", left: "6%", name: "Room 511", images: [
+            "img/facility/regular_private.avif"
+           ], descriptions: [
+            "Room Details: Regular Private"
             ] },  
-        { top: "50%", left: "50%", name: "Suite Room", images: [
-            "img/facility/or.avif"
-          ], descriptions: "Luxurious suite for VIP patients." },
+          { top: "42.5%", left: "16%", name: "Room 510", images: [
+            "img/facility/regular_private.avif"
+            ], descriptions: [
+            "Room Details: Regular Private"
+            ] },
+            { top: "40.5%", left: "40%", name: "Room 507", images: [
+              "img/facility/regular_private.avif"
+              ], descriptions: [
+              "Room Details: Regular Private"
+              ] },
+             { top: "40.5%", left: "52%", name: "Room 505", images: [
+              "img/facility/regular_private.avif"
+              ], descriptions: [
+              "Room Details: Regular Private"
+              ] }, 
+              { top: "40.5%", left: "61%", name: "Room 503", images: [
+                "img/facility/regular_private.avif"
+                ], descriptions: [
+                "Room Details: Regular Private"
+                ] }, 
+                  { top: "40.5%", left: "93%", name: "Room 501", images: [
+                    "img/facility/regular_private.avif"
+                    ], descriptions: [
+                    "Room Details: Regular Private"
+                    ] },
+                { top: "40.5%", left: "78%", name: "Oncology Room", images: [
+                  "img/facility/onco-2.avif",
+                  "img/facility/onco.avif"
+                  ], descriptions: [
+                  "Oncology Room: Specialized care for cancer patients."
+                  ] }, 
+                  { top: "61%", left: "28%", name: "Room 509", images: [
+                    "img/facility/suite_room.avif"
+                    ], descriptions: [
+                    "Room Details: Suite Room"
+                    ] },
+                  { top: "61%", left: "40%", name: "Room 508", images: [
+                    "img/facility/regular_private.avif"
+                    ], descriptions: [
+                    "Room Details: Regular Private"
+                    ] },
+                  { top: "61%", left: "61%", name: "Room 504", images: [
+                    "img/facility/regular_private.avif"
+                    ], descriptions: [
+                    "Room Details: Regular Private"
+                    ] },
+                    { top: "61%", left: "73.2%", name: "Room 502", images: [
+                      "img/facility/regular_private.avif"
+                      ], descriptions: [
+                      "Room Details: Regular Private"
+                      ] },
+                      { top: "78%", left: "90%", name: "Board Room", images: [
+                        "img/facility/board-room-1.avif",
+                        "img/facility/board-room-2.avif",
+                        "img/facility/board-room-3.avif"
+                        ], descriptions: [
+                        "Board Room: Meeting space for hospital board members."
+                        ] },
+                      { top: "81%", left: "69%", name: "Chief of Clinics", images: [
+                        "img/facility/coc.avif"
+                        ], descriptions: [
+                        "Chief of Clinics: Oversees clinical operations and ensures quality patient care."
+                        ] },
+                      { top: "81%", left: "61.3%", name: "OPD Room 5", images: [
+                        "img/facility/opd-room.avif"
+                        ], descriptions: [
+                        "Room Details: Regular Private"
+                        ] },
+                        { top: "81%", left: "54.5%", name: "OPD Room 4", images: [
+                          "img/facility/opd-room.avif"
+                          ], descriptions: [
+                          "Room Details: Regular Private"
+                          ] },
+                          { top: "81%", left: "47.5%", name: "OPD Room 3", images: [
+                            "img/facility/opd-room.avif"
+                            ], descriptions: [
+                            "Room Details: Regular Private"
+                            ] },
+                            { top: "81%", left: "40.5%", name: "OPD Room 2", images: [
+                              "img/facility/opd-room.avif"
+                              ], descriptions: [
+                              "Room Details: Regular Private"
+                              ] },  
+                              { top: "81%", left: "34%", name: "OPD Room 1", images: [
+                                "img/facility/opd-room.avif"
+                                ], descriptions: [
+                                "Room Details: Regular Private"
+                                ] },                            
+            { top: "61%", left: "52%", name: "Room 506", images: [
+            "img/facility/regular_private.avif"
+                ], descriptions: [
+                "Room Details: Regular Private"
+                ] }, 
         ] },
       6: { image: "img/floor_plan/6.avif", hotspots: [
-          { top: "40%", left: "60%", name: "Board of Directors Office", images: [
-            "img/facility/or.avif"
-          ], descriptions: "Administrative board meeting office." },
+          { top: "40%", left: "50%", name: "MVH Hall", images: [
+            "https://placehold.net/1.png"
+                ], descriptions: [
+                "MVH Hall: Venue for seminars, workshops, and large meetings."
+                ] }, 
         ] }
     };
 
