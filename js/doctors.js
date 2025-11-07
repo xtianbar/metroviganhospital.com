@@ -78,7 +78,6 @@ const doctorsList = [
     { name: "Rainick Brenhizar T. Navarro", specialty: "Neurology", hmo: [], room: "Room 111", schedule: "Mon & Fri: 9AM-12NN" },
     { name: "Frances Monina M. Obrero-Artajos", specialty: "Endocrinology, Diabetes and Metabolism", hmo: [], room: "OPD Extension, Room 5", schedule: "Thu: 10AM-12NN" },
     { name: "Elton Ong", specialty: "Neurology", hmo: [], room: "Room 111", schedule: "Tue & Fri: 6AM" },
-    { name: "Isabella R. Panelo", specialty: "Internal Medicine", hmo: [], room: "", schedule: "" },
     { name: "Donaryn V. Pasamonte", specialty: "Hematology", hmo: [], room: "Ground Floor, Room 102", schedule: "Sat: 9AM" },
     { name: "Ma. Eileen O. Pascua", specialty: "Gastroenterology", hmo: [], room: "Ground Floor, Room 109", schedule: "Tue: 2PM-4PM" },
     { name: "Eugene R. Pipo III", specialty: "Dermatology", hmo: [], room: "", schedule: "" },
@@ -206,7 +205,13 @@ const doctorsList = [
     { name: "Porfirio Tugas", specialty: "Surgery", hmo: [], room: "", schedule: "" },
     { name: "Ria Jane U. Uclaray", specialty: "Surgery/Pediatrics", hmo: [], room: "Ground Floor, Room 102", schedule: "Fri: 9AM" },
     { name: "Crispin Allan T. Viado", specialty: "Surgery - Neuro", hmo: [], room: "Ground Floor, Room 102", schedule: "Wed: 1PM & Sat: 10AM" },
-    { name: "Johnson E. Zabat", specialty: "Surgery - Urology", hmo: [], room: "Ground Floor, Room 106", schedule: "Thu: 2PM-4PM" }
+    { name: "Johnson E. Zabat", specialty: "Surgery - Urology", hmo: [], room: "Ground Floor, Room 106", schedule: "Thu: 2PM-4PM" },
+    { name: "Edmund S. Edrozo Jr.", specialty: "Internal Medicine - Oncology", hmo: [], room: "", schedule: "" },
+    { name: "Marizar R. Pelayo-Pundan", specialty: "General Pediatrician", hmo: [], room: "", schedule: "" },
+    { name: "Isabella R. Panelo", specialty: "Nephrology", hmo: [], room: "", schedule: "" },
+    { name: "Karla Modesta C. Albano-Antiporda", specialty: "Pediatric Endocrinology", hmo: [], room: "", schedule: "" },
+    { name: "Donnel Guenter T. Rubio", specialty: "Urologic - Oncology", hmo: [], room: "", schedule: "" },
+    { name: "Lina Flavia R. Pipo", specialty: "Radiology", hmo: [], room: "", schedule: "" }
 ];
 
 
